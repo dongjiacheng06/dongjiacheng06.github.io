@@ -575,6 +575,50 @@
   text-decoration: underline;
 }
 
+/* ===== 左下悬浮快速链接 ===== */
+.floating-left-links {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.floating-left-links .floating-link {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  backdrop-filter: blur(8px);
+  transition: transform var(--transition-fast), background var(--transition-fast);
+}
+
+.floating-left-links .floating-link:hover {
+  transform: translateY(-2px);
+  background: rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 768px) {
+  .floating-left-links {
+    left: 12px;
+    bottom: 12px;
+    gap: 8px;
+  }
+
+  .floating-left-links .floating-link {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+  }
+}
+
 /* ===== 动画效果 ===== */
 @keyframes fadeUpCard {
   to {
