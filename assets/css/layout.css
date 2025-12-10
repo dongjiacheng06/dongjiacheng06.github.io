@@ -19,7 +19,7 @@
 }
 
 .section-title {
-  font-size: var(--font-size-3xl);
+  font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
   color: var(--primary);
   margin-bottom: var(--spacing-lg);
@@ -67,7 +67,7 @@
 }
 
 .hero-text h1 {
-  font-size: var(--font-size-4xl);
+  font-size: var(--font-size-3xl);
   font-weight: var(--font-weight-bold);
   color: var(--primary);
   margin-bottom: var(--spacing-sm);
@@ -75,16 +75,16 @@
 }
 
 .hero-text .subtitle {
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-lg);
   color: var(--text-secondary);
   margin-bottom: var(--spacing-md);
   font-weight: var(--font-weight-medium);
 }
 
 .hero-text p {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-base);
   margin-bottom: var(--spacing-md);
-  line-height: var(--line-height-relaxed);
+  line-height: var(--line-height-base);
 }
 
 .hero-image {
