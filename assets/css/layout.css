@@ -15,14 +15,14 @@
 
 /* ===== 区块样式 ===== */
 .section {
-  padding: var(--spacing-lg) 0;
+  padding: var(--spacing-md) 0;
 }
 
 .section-title {
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
   color: var(--primary);
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
   position: relative;
   padding-left: var(--spacing-md);
 }
@@ -41,7 +41,7 @@
 /* ===== 英雄区域 ===== */
 .hero {
   background: var(--bg-primary);
-  padding: var(--spacing-xl) 0;
+  padding: var(--spacing-lg) 0;
   position: relative;
   overflow: hidden;
 }
@@ -60,7 +60,7 @@
 .hero-content {
   display: grid;
   grid-template-columns: 1fr 200px;
-  gap: var(--spacing-xl);
+  gap: var(--spacing-lg);
   align-items: center;
   position: relative;
   z-index: 1;
