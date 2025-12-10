@@ -27,9 +27,11 @@
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <link rel="stylesheet" href="assets/css/main.css">
     <!-- JavaScript -->
     <script src="assets/js/main.js" defer></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -47,7 +49,7 @@
                     <a href="#about" aria-label="About section">About</a>
                     <a href="#news" aria-label="News section">News</a>
                     <a href="#research" aria-label="Research section">Research</a>
-                    <a href="#opportunity" aria-label="Opportunity section">Opportunity</a>
+                    <a href="#visitors" aria-label="Visitors section">Visitors</a>
                     <a href="#experience" aria-label="Experience section">Experience</a>
                     <a href="#education" aria-label="Education section">Education</a>
                     <a href="#awards" aria-label="Awards section">Awards</a>
@@ -71,14 +73,14 @@
                 <div class="hero-content">
                     <div class="hero-text">
                         <h1>Jiacheng Dong</h1>
-                        <p class="subtitle">董嘉铖</p>
-                        <p class="subtitle">Undergraduate at ZJU-UIUC Institute | Electrical Engineering Major</p>
-                        <p>Hello! I am currently pursuing my B.S. degree in Electrical Engineering at the ZJU-UIUC Joint Institute of Zhejiang University (2024–2028). I am passionate about <strong>3D vision</strong>, <strong>3D Gaussian Splatting</strong>, and <strong>3D reconstruction</strong>. I recently joined the <strong><a href="https://cvnext.github.io/" target="_blank">CVNext Lab</a></strong> in July 2025, where I work on cutting-edge research in computer vision and AI.</p>
+                        <p class="subtitle">Undergraduate, ZJU-UIUC Institute | ECE</p>
+                        <p class="subtitle">3D computer vision & neural scene representations</p>
+                        <p>Hello! I am currently pursuing my B.S. degree in Electrical Engineering at the ZJU-UIUC Joint Institute of Zhejiang University (2024-2028). I work on <strong>3D computer vision</strong>, <strong>neural 3D/4D scene representations</strong>, and <strong>3D reconstruction</strong>. I joined the <strong><a href="https://cvnext.github.io/" target="_blank">CVNext Lab</a></strong> in July 2025.</p>
                         <p><strong>Professional GPA:</strong> 4.0/4.0 | <strong>Cumulative GPA:</strong> 3.88/4.0</p>
                         <div class="social-links">
                             <a href="mailto:Dong48@illinois.edu"><i class="fas fa-envelope"></i>Email</a>
                             <a href="https://github.com/dongjiacheng06" target="_blank"><i class="fab fa-github"></i>GitHub</a>
-                            <a href="https://dongjiacheng06.github.io/dongjiacheng06-blog/" target="_blank"><i class="fas fa-blog"></i>博客</a>
+                            <a href="https://dongjiacheng06.github.io/dongjiacheng06-blog/" target="_blank"><i class="fas fa-blog"></i>Blog</a>
                         </div>
                     </div>
                     <div class="hero-image">
@@ -91,48 +93,48 @@
         <!-- News Section -->
         <section id="news" class="section">
             <div class="container scroll-animate delay-1">
-                <h2 class="section-title">🔥 News</h2>
+                <h2 class="section-title">News</h2>
                 <div class="card">
                     <div class="news-item">
                         <div class="news-date">2025.10</div>
                         <div class="news-content">
-                            <span class="news-emoji">🏅</span>Awarded the National Scholarship in recognition of academic excellence.
+                            <span class="news-emoji">•</span>Awarded the National Scholarship for academic excellence.
                         </div>
                     </div>
                     <div class="news-item">
                         <div class="news-date">2025.07</div>
                         <div class="news-content">
-                            <span class="news-emoji">🎈</span>Great honor to join the <strong><a href="https://cvnext.github.io/" target="_blank">CVNext Lab</a></strong> at ZJU-UIUC Institute as a research assistant!
+                            <span class="news-emoji">•</span>Joined <strong><a href="https://cvnext.github.io/" target="_blank">CVNext Lab</a></strong> (RA), ZJU-UIUC Institute.
                         </div>
                     </div>
                     <div class="news-item">
                         <div class="news-date">2025.07</div>
                         <div class="news-content">
-                            <span class="news-emoji">🌐</span>My personal academic homepage is now online with a new blog section.
+                            <span class="news-emoji">•</span>Personal academic homepage launched with blog.
                         </div>
                     </div>
                     <div class="news-item">
                         <div class="news-date">2025.03</div>
                         <div class="news-content">
-                            <span class="news-emoji">🔬</span>Joined <strong><a href="https://person.zju.edu.cn/mahanzhi" target="_blank">Prof. Hanzhi Ma's Lab</a></strong> to study electromagnetic compatibility and artificial intelligence.
+                            <span class="news-emoji">•</span>Joined <strong><a href="https://person.zju.edu.cn/mahanzhi" target="_blank">Prof. Hanzhi Ma's Lab</a></strong> (EMC & AI).
                         </div>
                     </div>
                     <div class="news-item">
                         <div class="news-date">2025.02</div>
                         <div class="news-content">
-                            <span class="news-emoji">🎉</span>Our team won <strong>Outstanding Award & SIAM Award</strong> in MCM 2025 for tourism sustainability modeling.
+                            <span class="news-emoji">•</span>Won <strong>Outstanding Award & SIAM Award</strong> in MCM 2025 (tourism sustainability modeling).
                         </div>
                     </div>
                     <div class="news-item">
                         <div class="news-date">2024.11</div>
                         <div class="news-content">
-                            <span class="news-emoji">🧪</span>Started my first research experience at <strong><a href="https://person.zju.edu.cn/caojixing" target="_blank">Prof. Jixing Cao's Lab</a></strong> focusing on computer vision and point cloud processing.
+                            <span class="news-emoji">•</span>Started research at <strong><a href="https://person.zju.edu.cn/caojixing" target="_blank">Prof. Jixing Cao's Lab</a></strong> (CV & point clouds).
                         </div>
                     </div>
                     <div class="news-item">
                         <div class="news-date">2024.09</div>
                         <div class="news-content">
-                            <span class="news-emoji">🎓</span>Started my undergraduate studies at ZJU-UIUC Institute, Zhejiang University.
+                            <span class="news-emoji">•</span>Enrolled at ZJU-UIUC Institute, Zhejiang University.
                         </div>
                     </div>
                 </div>
@@ -142,7 +144,7 @@
         <!-- Research Section -->
         <section id="research" class="section">
             <div class="container scroll-animate delay-2">
-                <h2 class="section-title">🔎 Research</h2>
+                <h2 class="section-title">Research</h2>
                 <div class="card">
                     <p>I focus on 3D computer vision and neural scene representations. My current research interests include:</p>
                     <ul>
@@ -150,16 +152,20 @@
                         <li>Latent 3D scene representations and spatial / world memory learned from continuous visual streams.</li>
                         <li>Time-series modeling and streaming 4D reconstruction of dynamic, object-centric scenes.</li>
                     </ul>
+                    <div class="info-box" style="margin-top:0.75rem;">
+                        <strong>Seeking Remote Intern/Assistant (26Fall):</strong> Open to robotics and embodied intelligence projects (remote; on-site summer in US labs). Focused on robotic manipulation and RL for control. Contact via Email or WeChat.
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Opportunity Section -->
-        <section id="opportunity" class="section">
+        <!-- Visitors Section -->
+        <section id="visitors" class="section">
             <div class="container scroll-animate delay-2">
+                <h2 class="section-title">Visitors</h2>
                 <div class="card">
-                    <h3 style="margin-top:0;">📬 Seeking Remote Intern/Assistant (RA) Opportunity</h3>
-                    <p>I am looking for research opportunities in 26Fall related to robotics and embodied intelligence, especially in labs based in the United States that support remote collaboration or on-site summer research. I am passionate about developing efficient and intelligent systems that connect decision-making, control, and real-world interaction. My current research interests include robotic manipulation and reinforcement learning for control. If our research interests align, please feel free to contact me via Email or WeChat.</p>
+                    <p style="margin-top:0;">Approximate location of current visitors (powered by IP-based lookup).</p>
+                    <div id="visit-map" style="height:360px; border-radius:12px; overflow:hidden; border:1px solid #e0e0e0;"></div>
                 </div>
             </div>
         </section>
@@ -167,7 +173,7 @@
         <!-- Experience Section -->
         <section id="experience" class="section">
             <div class="container scroll-animate delay-3">
-                <h2 class="section-title">💼 Experience</h2>
+                <h2 class="section-title">Experience</h2>
                 <div class="card">
                     <div class="experience-item">
                         <div class="experience-header">
@@ -208,7 +214,7 @@
         <!-- Publications Section -->
         <section id="publications" class="section">
             <div class="container scroll-animate delay-1">
-                <h2 class="section-title">📃 Publications</h2>
+                <h2 class="section-title">Publications</h2>
                 <div class="card">
                     <div class="experience-item">
                         <div class="experience-header">
@@ -229,7 +235,7 @@
         <!-- Awards Section -->
         <section id="awards" class="section">
             <div class="container scroll-animate delay-2">
-                <h2 class="section-title">🎖 Awards & Honors</h2>
+                <h2 class="section-title">Awards & Honors</h2>
                 <div class="card">
                     <div class="award-item">
                         <div class="award-title">National Scholarship</div>
@@ -260,7 +266,7 @@
         <!-- Education Section -->
         <section id="education" class="section">
             <div class="container scroll-animate delay-3">
-                <h2 class="section-title">🎓 Education</h2>
+                <h2 class="section-title">Education</h2>
                 <div class="card">
                     <div class="experience-item">
                         <div class="experience-header">
@@ -291,7 +297,7 @@
         <!-- Contact Section -->
         <section id="contact" class="section">
             <div class="container scroll-animate delay-4">
-                <h2 class="section-title">📧 Contact</h2>
+                <h2 class="section-title">Contact</h2>
                 <div class="card">
                     <p><strong>Email:</strong> <a href="mailto:Dong48@illinois.edu">Dong48@illinois.edu</a></p>
                     <p><strong>GitHub:</strong> <a href="https://github.com/dongjiacheng06" target="_blank">dongjiacheng06</a></p>
@@ -299,7 +305,7 @@
                     <p><strong>Lab:</strong> <a href="https://cvnext.github.io/" target="_blank">CVNext Lab</a></p>
                     
                     <div class="info-box">
-                        <h4 style="margin-top:0;color:var(--primary);">💡 Mentoring & Guidance</h4>
+                        <h4 style="margin-top:0;color:var(--primary);">Mentoring & Guidance</h4>
                         <p>I am deeply grateful to the many seniors who have guided and supported me throughout my research journey. Their mentorship has been invaluable and has shaped my academic growth significantly. I believe in paying this kindness forward.</p>
                         <p><strong>If you are a junior student</strong> interested in computer vision, 3D vision, research opportunities, or just want to chat about academic life, please feel free to reach out via email. I'm always happy to share my experiences and help where I can. Let's schedule a time to connect!</p>
                     </div>
@@ -333,5 +339,29 @@
             <i class="fas fa-home"></i>
         </a>
     </div>
+    <script>
+    (function() {
+        const mapEl = document.getElementById('visit-map');
+        if (!mapEl || typeof L === 'undefined') return;
+        const map = L.map(mapEl, { zoomControl: false }).setView([20, 0], 2);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+        fetch('https://ipapi.co/json/')
+            .then(r => r.json())
+            .then(data => {
+                if (!data || !data.latitude || !data.longitude) return;
+                const lat = Number(data.latitude);
+                const lon = Number(data.longitude);
+                const city = data.city || '';
+                const country = data.country_name || '';
+                L.marker([lat, lon]).addTo(map)
+                    .bindPopup(`You (approx): ${city ? city + ', ' : ''}${country}`).openPopup();
+                map.setView([lat, lon], 4);
+            })
+            .catch(() => {});
+    })();
+    </script>
 </body>
 </html>
