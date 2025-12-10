@@ -152,8 +152,8 @@
 .card {
   background: var(--bg-primary);
   border-radius: var(--border-radius);
-  padding: var(--spacing-xl);
-  margin-bottom: var(--spacing-xl);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
   box-shadow: var(--shadow);
   border: 1px solid var(--border-color);
   transition: all var(--transition-base);
