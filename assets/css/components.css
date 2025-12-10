@@ -177,6 +177,8 @@
 .card ul.manual-bullets li {
   position: relative;
   padding-left: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  line-height: var(--line-height-base);
 }
 
 .card ul.manual-bullets li::before {
