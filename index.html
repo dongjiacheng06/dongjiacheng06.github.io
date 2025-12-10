@@ -27,11 +27,9 @@
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <link rel="stylesheet" href="assets/css/main.css">
     <!-- JavaScript -->
     <script src="assets/js/main.js" defer></script>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -153,19 +151,8 @@
                         <li>Time-series modeling and streaming 4D reconstruction of dynamic, object-centric scenes.</li>
                     </ul>
                     <div class="info-box" style="margin-top:0.75rem;">
-                        <strong>Seeking Remote Intern/Assistant (26Fall):</strong> Open to robotics and embodied intelligence projects (remote; on-site summer in US labs). Focused on robotic manipulation and RL for control. Contact via Email or WeChat.
+                        <strong>Seeking Remote Intern/Assistant (26Fall):</strong> Open to 3D computer vision / neural 3D/4D scene representation projects (remote; summer on-site in US labs). Focus on streaming 3D/4D reconstruction and efficient learning. Contact via <a href="mailto:Dong48@illinois.edu">Email</a>.
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Visitors Section -->
-        <section id="visitors" class="section">
-            <div class="container scroll-animate delay-2">
-                <h2 class="section-title">Visitors</h2>
-                <div class="card">
-                    <p style="margin-top:0;">Approximate location of current visitors (powered by IP-based lookup).</p>
-                    <div id="visit-map" style="height:360px; border-radius:12px; overflow:hidden; border:1px solid #e0e0e0;"></div>
                 </div>
             </div>
         </section>
@@ -312,6 +299,24 @@
                 </div>
             </div>
         </section>
+
+        <!-- Visitors Section -->
+        <section id="visitors" class="section">
+            <div class="container scroll-animate delay-4">
+                <h2 class="section-title">Visitors</h2>
+                <div class="card">
+                    <p style="margin-top:0;">Visitor locations (ClustrMaps, approximate).</p>
+                    <div class="visitor-map" style="min-height:240px;">
+                        <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=REPLACE_WITH_CLUSTR_ID&cl=ffffff&w=a"></script>
+                        <noscript>
+                            <a href="https://clustrmaps.com" title="Visitor map">
+                                <img src="//clustrmaps.com/map_v2.png?d=REPLACE_WITH_CLUSTR_ID&cl=ffffff&w=a" alt="Visitor map" />
+                            </a>
+                        </noscript>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -339,29 +344,5 @@
             <i class="fas fa-home"></i>
         </a>
     </div>
-    <script>
-    (function() {
-        const mapEl = document.getElementById('visit-map');
-        if (!mapEl || typeof L === 'undefined') return;
-        const map = L.map(mapEl, { zoomControl: false }).setView([20, 0], 2);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 18,
-            attribution: '&copy; OpenStreetMap contributors'
-        }).addTo(map);
-        fetch('https://ipapi.co/json/')
-            .then(r => r.json())
-            .then(data => {
-                if (!data || !data.latitude || !data.longitude) return;
-                const lat = Number(data.latitude);
-                const lon = Number(data.longitude);
-                const city = data.city || '';
-                const country = data.country_name || '';
-                L.marker([lat, lon]).addTo(map)
-                    .bindPopup(`You (approx): ${city ? city + ', ' : ''}${country}`).openPopup();
-                map.setView([lat, lon], 4);
-            })
-            .catch(() => {});
-    })();
-    </script>
 </body>
 </html>
