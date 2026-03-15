@@ -14,8 +14,6 @@ I am currently interested in test-time training as a form of memory for long-con
 - Long-context vision models for learning from continuous visual experience
 - 3D representation learning for geometry, motion, and generation
 
-> Seeking remote research internship or assistant opportunities in 3D/4D scene perception and long-context vision modeling for Fall 2026. Remote collaboration during the semester and on-site visits in US labs during summer are both welcome.
-
 ## News
 
 - **Oct. 2025** Awarded the National Scholarship for academic excellence.
