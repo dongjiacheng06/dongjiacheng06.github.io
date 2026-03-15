@@ -1,10 +1,14 @@
 main:
   - title: "RecurGS: Interactive Scene Modeling via Discrete-State Recurrent Gaussian Fusion"
     authors: "Wenhao Hu, Haonan Zhou, Zesheng Li, Liu Liu, Jiacheng Dong, Zhizhong Su, Gaoang Wang"
-    conference: "Under double-blind review, 2025"
-    image: ./assets/images/3dgs.png
+    conference: "arXiv preprint, 2025"
+    image: ./assets/images/recurgs.png
     summary: "Interactive scene modeling with discrete-state recurrent Gaussian fusion for dynamic 3D understanding."
-    notes: "Conference submission"
+    arxiv: "https://arxiv.org/abs/2512.18386"
+    notes: "Preprint"
+  - title: "MeMix"
+    conference: "Preprint"
+    notes: "Preprint"
   - title: "TBR: A Training-Free Framework for Rapid Background Removal in Large-Scale Point Clouds"
     authors: "Jiacheng Dong, Yuxiao Zheng, Maolin Tian, Jun Liang, Jixing Cao"
     conference: "Pattern Recognition, under review, 2025"

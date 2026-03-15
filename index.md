@@ -34,12 +34,6 @@ A curated resource for learning-based 3D vision, intended to help scholars, prac
 - Repository: [dongjiacheng06/Learning-based-3D-Vision](https://github.com/dongjiacheng06/Learning-based-3D-Vision)
 - Stars: ![GitHub stars](https://img.shields.io/github/stars/dongjiacheng06/Learning-based-3D-Vision?style=social)
 
-### MeMix
-
-MeMix is preserved as a standalone project demo page based on the Nerfies template.
-
-- Project page: [View MeMix](/MeMix/)
-
 ## Education
 
 - **B.S. in Electrical Engineering**, ZJU-UIUC Joint Institute, Zhejiang University, 2024-2028 (expected)
