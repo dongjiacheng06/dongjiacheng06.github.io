@@ -8,7 +8,9 @@
   <div class="pub-row">
     {% if link.image %}
     <div class="col-sm-3 abbr" style="position: relative; padding-right: 15px; padding-left: 15px;">
-      <img src="{{ link.image }}" class="teaser img-fluid z-depth-1" style="width=100;height=40%">
+      <div class="teaser-frame">
+        <img src="{{ link.image }}" class="teaser img-fluid z-depth-1" style="width=100;height=40%">
+      </div>
     </div>
     <div class="col-sm-9" style="position: relative; padding-right: 15px; padding-left: 20px;">
     {% else %}
@@ -19,9 +21,6 @@
       <div class="author">{{ link.authors }}</div>
       {% endif %}
       <div class="periodical"><em>{{ link.conference }}</em></div>
-      {% if link.summary %}
-      <div class="periodical">{{ link.summary }}</div>
-      {% endif %}
       <div class="links">
         {% if link.arxiv %}
         <a href="{{ link.arxiv }}" class="btn btn-sm z-depth-0" role="button" target="_blank" style="font-size:12px;">arXiv</a>
