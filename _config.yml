@@ -11,10 +11,12 @@ canonical: https://dongjiacheng06.github.io/
 cv_link: "#education"
 github_link: https://github.com/dongjiacheng06
 xiaohongshu_link: https://www.xiaohongshu.com/user/profile/5f1457fa00000000010029ab
+xiaohongshu_icon: https://qimg.xiaohongshu.com/56b419e1cd35ad6a15406d3f21e9fda88e99b767?s=1476879314
+xiaohongshu_icon_fallback: ./assets/images/xiaohongshu.png
 
 avatar: ./assets/images/personal_photo.jpg
-favicon: ./images/favicon-32x32.png
-favicon_dark: ./images/favicon-32x32.png
+favicon: ./images/favicon-dog.png
+favicon_dark: ./images/favicon-dog.png
 
 enable_footnote: true
 auto_dark_mode: true

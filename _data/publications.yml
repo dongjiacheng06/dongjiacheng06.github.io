@@ -1,16 +1,18 @@
 main:
   - title: "RecurGS: Interactive Scene Modeling via Discrete-State Recurrent Gaussian Fusion"
-    authors: "Wenhao Hu, Haonan Zhou, Zesheng Li, Liu Liu, Jiacheng Dong, Zhizhong Su, Gaoang Wang"
+    authors: "Wenhao Hu, Haonan Zhou, Zesheng Li, Liu Liu, <strong>Jiacheng Dong</strong>, Zhizhong Su, Gaoang Wang"
     conference: "arXiv preprint, 2025"
     image: ./assets/images/recurgs.png
     summary: "Interactive scene modeling with discrete-state recurrent Gaussian fusion for dynamic 3D understanding."
     arxiv: "https://arxiv.org/abs/2512.18386"
     notes: "Preprint"
-  - title: "MeMix"
+  - title: "MeMix: Writing Less, Remembering More for Streaming 3D Reconstruction"
+    authors: "<strong>Jiacheng Dong</strong>*, Huan Li*, Sicheng Zhou*, Wenhao Hu, Weili Xu, Yan Wang"
     conference: "Preprint"
+    image: ./images/Memix.png
     notes: "Preprint"
   - title: "TBR: A Training-Free Framework for Rapid Background Removal in Large-Scale Point Clouds"
-    authors: "Jiacheng Dong, Yuxiao Zheng, Maolin Tian, Jun Liang, Jixing Cao"
+    authors: "<strong>Jiacheng Dong</strong>, Yuxiao Zheng, Maolin Tian, Jun Liang, Jixing Cao"
     conference: "Pattern Recognition, under review, 2025"
     image: ./assets/images/TBR.png
     summary: "I led the complete rewrite of the Python implementation, achieving a 20x performance improvement, and led manuscript writing covering methodology, experiments, and analysis."

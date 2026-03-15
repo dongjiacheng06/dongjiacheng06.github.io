@@ -79,7 +79,12 @@
 
         {% if site.xiaohongshu_link %}
         <a style="margin: 0 5px 0 0" href="{{ site.xiaohongshu_link }}" title="Xiaohongshu" rel="noopener">
-          <i class="fa-solid fa-book-open"></i>
+          <img
+            src="{{ site.xiaohongshu_icon }}"
+            onerror="this.onerror=null;this.src='{{ site.xiaohongshu_icon_fallback }}';"
+            alt="Xiaohongshu"
+            style="width:1.12rem;height:1.12rem;border-radius:0.28rem;display:inline-block;vertical-align:-0.14rem;"
+          >
         </a>
         {% endif %}
 
