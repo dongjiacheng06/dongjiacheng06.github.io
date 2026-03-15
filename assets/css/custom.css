@@ -45,22 +45,24 @@
 
 .section-list .teaser-frame {
   width: 100%;
-  min-height: 180px;
-  max-height: 220px;
-  padding: 0.65rem;
-  border-radius: 14px;
-  border: 1px solid rgba(4, 51, 97, 0.12);
-  background: linear-gradient(180deg, rgba(249, 251, 255, 0.96), rgba(242, 246, 252, 0.96));
+  min-height: 168px;
+  max-height: 208px;
+  padding: 0.3rem;
+  border-radius: 12px;
+  border: 1px solid rgba(4, 51, 97, 0.08);
+  background: rgba(255, 255, 255, 0.58);
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .section-list .teaser {
   width: auto !important;
   height: auto !important;
   max-width: 100%;
-  max-height: 190px;
+  max-height: 182px;
   margin: 0 !important;
   border-radius: 12px !important;
   box-shadow: none !important;
@@ -127,7 +129,7 @@
   }
 
   .section-list .teaser-frame {
-    border-color: rgba(98, 180, 219, 0.25);
-    background: linear-gradient(180deg, rgba(40, 42, 55, 0.96), rgba(32, 33, 43, 0.96));
+    border-color: rgba(98, 180, 219, 0.16);
+    background: rgba(36, 38, 49, 0.45);
   }
 }
