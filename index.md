@@ -25,14 +25,7 @@ I am currently interested in test-time training as a form of memory for long-con
 
 {% include_relative _includes/publications.md %}
 
-## Selected Projects
-
-### Learning-based 3D Vision
-
-A curated resource for learning-based 3D vision, intended to help scholars, practitioners, and enthusiasts track progress in 3D vision and its role in embodied intelligence and world perception.
-
-- Repository: [dongjiacheng06/Learning-based-3D-Vision](https://github.com/dongjiacheng06/Learning-based-3D-Vision)
-- Stars: ![GitHub stars](https://img.shields.io/github/stars/dongjiacheng06/Learning-based-3D-Vision?style=social)
+{% include_relative _includes/projects.md %}
 
 ## Education
 

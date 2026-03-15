@@ -1,0 +1,8 @@
+main:
+  - title: "Learning-based 3D Vision"
+    image: ./assets/images/learning3d.png
+    summary: "A curated resource for learning-based 3D vision, intended to help scholars, practitioners, and enthusiasts track progress in 3D vision and its role in embodied intelligence and world perception."
+    code: "https://github.com/dongjiacheng06/Learning-based-3D-Vision"
+    code_label: "Repository"
+    badge: "https://img.shields.io/github/stars/dongjiacheng06/Learning-based-3D-Vision?style=social"
+    badge_alt: "GitHub stars"

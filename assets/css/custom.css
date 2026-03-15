@@ -1,0 +1,112 @@
+.section-list {
+  margin-top: 2rem;
+}
+
+.section-list ol.bibliography {
+  list-style: none;
+  padding: 0;
+  margin-top: 0;
+}
+
+.section-list ol.bibliography li {
+  min-height: 0;
+  margin-bottom: 1rem;
+}
+
+.section-list .card-item {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(4, 51, 97, 0.12);
+  border-radius: 18px;
+  box-shadow: 0 16px 32px rgba(4, 51, 97, 0.08);
+  padding: 0.95rem;
+}
+
+.section-list .pub-row {
+  align-items: stretch;
+  gap: 1rem;
+}
+
+.section-list .col-sm-3.abbr {
+  flex: 0 0 32%;
+  min-width: 250px;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.section-list .col-sm-9,
+.section-list .col-sm-12 {
+  flex: 1 1 auto;
+  padding-left: 0.15rem !important;
+  padding-right: 0.15rem !important;
+}
+
+.section-list .teaser {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 180px;
+  max-height: 220px;
+  margin: 0 !important;
+  border-radius: 14px !important;
+  box-shadow: none !important;
+  border: 1px solid rgba(4, 51, 97, 0.12);
+  object-fit: cover;
+}
+
+.section-list .title {
+  font-size: 1.08rem;
+  line-height: 1.35;
+  margin-bottom: 0.35rem;
+}
+
+.section-list .author,
+.section-list .periodical {
+  line-height: 1.55;
+}
+
+.section-list .links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.6rem;
+  align-items: center;
+  margin-top: 0.75rem;
+}
+
+.section-list .link-badge {
+  line-height: 0;
+}
+
+.section-list .link-badge img {
+  height: 22px;
+  width: auto;
+}
+
+@media (max-width: 760px) {
+  .section-list .pub-row {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .section-list .col-sm-3.abbr {
+    min-width: 0;
+    width: 100%;
+    flex-basis: auto;
+  }
+
+  .section-list .teaser {
+    min-height: 0;
+    max-height: none;
+    height: auto !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .section-list .card-item {
+    background: rgba(33, 34, 43, 0.94);
+    border-color: rgba(98, 180, 219, 0.22);
+    box-shadow: 0 18px 32px rgba(0, 0, 0, 0.22);
+  }
+
+  .section-list .teaser {
+    border-color: rgba(98, 180, 219, 0.25);
+  }
+}
