@@ -1,45 +1,73 @@
-﻿---
-layout: single
-permalink: /
-title: "Jiacheng Dong"
-author_profile: true
-redirect_from:
-  - /about/
-  - /about.html
 ---
+layout: homepage
+---
+
+## About Me
 
 I am an undergraduate in Electrical Engineering at the ZJU-UIUC Joint Institute of Zhejiang University (B.S. 2024-2028). My research focuses on understanding and modeling the dynamic 3D world, with current interests in streaming 4D perception, long-context vision models, and 3D representation learning. Since July 2025, I have been working with [Prof. Gaoang Wang](https://cvnext.github.io/) in the CVNext Lab.
 
 I am currently interested in test-time training as a form of memory for long-context visual understanding.
 
-Contact
-======
-- Email: [Dong48@illinois.edu](mailto:Dong48@illinois.edu)
-- GitHub: [dongjiacheng06](https://github.com/dongjiacheng06)
-- Lab: [CVNext Lab](https://cvnext.github.io/)
+## Research Interests
 
-Research interests
-======
 - Streaming 4D perception and reconstruction of dynamic scenes
 - Long-context vision models for learning from continuous visual experience
 - 3D representation learning for geometry, motion, and generation
 
 > Seeking remote research internship or assistant opportunities in 3D/4D scene perception and long-context vision modeling for Fall 2026. Remote collaboration during the semester and on-site visits in US labs during summer are both welcome.
 
-News
-======
-- **2025.10** Awarded the National Scholarship for academic excellence.
-- **2025.07** Joined [CVNext Lab](https://cvnext.github.io/) as a research assistant at the ZJU-UIUC Institute.
-- **2025.07** Personal academic homepage launched with blog support.
-- **2025.02** Won the Outstanding Award and SIAM Award in MCM 2025 for tourism sustainability modeling.
-- **2024.11** Started research in [Prof. Jixing Cao's lab](https://person.zju.edu.cn/caojixing) on computer vision and point clouds.
-- **2024.09** Enrolled at the ZJU-UIUC Institute, Zhejiang University.
+## News
 
-Visitors
-======
+- **Oct. 2025** Awarded the National Scholarship for academic excellence.
+- **Jul. 2025** Joined [CVNext Lab](https://cvnext.github.io/) as a research assistant at the ZJU-UIUC Joint Institute.
+- **Jul. 2025** Personal academic homepage launched.
+- **Feb. 2025** Won the Outstanding Award and SIAM Award in MCM 2025 for tourism sustainability modeling.
+- **Nov. 2024** Started research in [Prof. Jixing Cao's lab](https://person.zju.edu.cn/caojixing) on computer vision and point clouds.
+- **Sep. 2024** Enrolled at the ZJU-UIUC Joint Institute, Zhejiang University.
+
+{% include_relative _includes/publications.md %}
+
+## Selected Projects
+
+### Learning-based 3D Vision
+
+A curated resource for learning-based 3D vision, intended to help scholars, practitioners, and enthusiasts track progress in 3D vision and its role in embodied intelligence and world perception.
+
+- Repository: [dongjiacheng06/Learning-based-3D-Vision](https://github.com/dongjiacheng06/Learning-based-3D-Vision)
+- Stars: ![GitHub stars](https://img.shields.io/github/stars/dongjiacheng06/Learning-based-3D-Vision?style=social)
+
+### MeMix
+
+MeMix is preserved as a standalone project demo page based on the Nerfies template.
+
+- Project page: [View MeMix](/MeMix/)
+
+## Education
+
+- **B.S. in Electrical Engineering**, ZJU-UIUC Joint Institute, Zhejiang University, 2024-2028 (expected)
+- Professional GPA: 4.0/4.0
+- Cumulative GPA: 3.88/4.0
+- Planned minor: Computer Science at the University of Illinois Urbana-Champaign
+
+## Research Experience
+
+- **Jul. 2025 - Present**, Research Assistant, CVNext Lab, ZJU-UIUC Joint Institute
+  - Advisor: Prof. Gaoang Wang
+  - Focus: streaming 4D perception, long-context vision models, and dynamic 3D world understanding
+- **Nov. 2024 - Present**, Undergraduate Researcher, Prof. Jixing Cao's Lab
+  - Focus: point cloud understanding and efficient large-scale 3D scene processing
+  - Led the core implementation and manuscript writing for the TBR project
+
+## Awards and Honors
+
+- **National Scholarship**, Ministry of Education, China, Oct. 2025
+- **Outstanding Award and SIAM Award**, MCM 2025, Feb. 2025
+
+## Visitors
+
 Visitor locations are approximate and provided by MapMyVisitors.
 
-<div class="visitor-map" style="min-height:240px;">
+<div style="min-height:240px;">
   <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=Alhn33sy7T7USCgc9_Vaq5J7IenRhtRoRzYJZN21IQY&cl=ffffff&w=a"></script>
   <noscript><a href="https://mapmyvisitors.com" title="Visitor map">Visitor map</a></noscript>
 </div>
