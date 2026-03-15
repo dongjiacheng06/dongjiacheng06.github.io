@@ -2,8 +2,28 @@
 
 <!-- start custom head snippets -->
 
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.getRegistrations().then(function (registrations) {
+        registrations.forEach(function (registration) {
+          registration.unregister();
+        });
+      });
+
+      if ('caches' in window) {
+        caches.keys().then(function (keys) {
+          keys.forEach(function (key) {
+            caches.delete(key);
+          });
+        });
+      }
+    });
+  }
+</script>
+
 <!-- Support for Academicons -->
-<link rel="stylesheet" href="{{ base_path }}/assets/css/academicons.css"/>
+<link rel="stylesheet" href="{{ base_path }}/assets/css/academicons.css?v={{ site.time | date: '%s' }}"/>
 
 <!-- favicon from https://commons.wikimedia.org/wiki/File:OOjs_UI_icon_academic-progressive.svg -->
 <link rel="apple-touch-icon" sizes="180x180" href="{{ base_path }}/images/apple-touch-icon-180x180.png"/>
