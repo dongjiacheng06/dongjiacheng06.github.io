@@ -27,25 +27,7 @@ plugins:
 exclude:
   - Gemfile
   - Gemfile.lock
-  - README.md
-  - LICENSE
-  - CONTRIBUTING.md
-  - Dockerfile
-  - docker-compose.yaml
-  - package.json
-  - prompt.json
-  - create_friendly_urls.sh
-  - vendor/
   - .bundle/
   - .sass-cache/
+  - vendor/
   - _site/
-  - components/
-  - docs/
-  - markdown_generator/
-  - paper_notes/
-  - scripts/
-  - talkmap/
-  - talkmap.ipynb
-  - talkmap.py
-  - talkmap_out.ipynb
-  - temp-minimal-light-20260315/
