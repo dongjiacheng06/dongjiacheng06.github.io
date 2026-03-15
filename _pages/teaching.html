@@ -1,0 +1,17 @@
+﻿---
+layout: archive
+title: "Teaching"
+permalink: /teaching/
+author_profile: true
+---
+
+{% include base_path %}
+
+{% assign teaching_count = site.teaching | size %}
+{% if teaching_count == 0 %}
+<p>No teaching entries are listed at the moment.</p>
+{% else %}
+  {% for post in site.teaching reversed %}
+    {% include archive-single.html %}
+  {% endfor %}
+{% endif %}

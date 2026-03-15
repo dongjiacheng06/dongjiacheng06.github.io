@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>页面未找�?- 404 | Jiacheng Dong</title>
+    <meta name="description" content="抱歉，您访问的页面不存在�?>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#3498db">
+    
+    <!-- Favicon and PWA icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/images/icon-192.png">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/main.css">
+    
+    <!-- Custom 404 Styles -->
+    <style>
+        .error-container {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .error-content {
+            max-width: 600px;
+        }
+        
+        .error-code {
+            font-size: 8rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+            background: linear-gradient(135deg, var(--primary), #2980b9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .error-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+        
+        .error-message {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+        
+        .error-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+        }
+        
+        .error-btn:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .error-btn.secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .error-btn.secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .suggestions {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+        }
+        
+        .suggestions h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .suggestion-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .suggestion-item {
+            margin-bottom: 0.8rem;
+        }
+        
+        .suggestion-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .suggestion-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+            color: var(--text);
+            background: var(--bg);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        
+        .suggestion-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateX(5px);
+            border-color: var(--primary);
+        }
+        
+        .suggestion-icon {
+            font-size: 1rem;
+            opacity: 0.7;
+            min-width: 16px;
+        }
+        
+        .suggestion-link:hover .suggestion-icon {
+            opacity: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 6rem;
+            }
+            
+            .error-title {
+                font-size: 2rem;
+            }
+            
+            .error-message {
+                font-size: 1rem;
+            }
+            
+            .error-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .error-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+    
+    <!-- JavaScript -->
+    <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="/" class="logo" aria-label="Jiacheng Dong's Homepage">Jiacheng Dong</a>
+            <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-links" role="navigation">
+                <!-- Main page sections -->
+                <li class="nav-section" role="none">
+                    <a href="/#about">About</a>
+                    <a href="/#news">News</a>
+                    <a href="/#research">Research</a>
+                    <a href="/#projects">Projects</a>
+                    <a href="/#education">Education</a>
+                    <a href="/#awards">Awards</a>
+                    <a href="/#visitors">Visitors</a>
+                </li>
+                <!-- External pages -->
+                <li class="nav-external" role="none">
+                    <a href="/hobbies">Hobbies</a>
+                    <a href="/photography">Photography</a>
+                    <a href="https://dongjiacheng06.github.io/dongjiacheng06-blog/">Blog</a>
+                    <a href="/sitemap">Sitemap</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="error-container">
+        <div class="error-content">
+            <div class="error-code">404</div>
+            <h1 class="error-title">页面未找�?/h1>
+            <p class="error-message">
+                抱歉，您访问的页面不存在。可能是链接错误、页面已被移动或删除�?br>
+                请尝试以下方式找到您需要的内容�?            </p>
+            
+            <div class="error-actions">
+                <a href="/" class="error-btn">
+                    <i class="fas fa-home"></i>
+                    返回首页
+                </a>
+                <a href="https://dongjiacheng06.github.io/dongjiacheng06-blog/" class="error-btn secondary">
+                    <i class="fas fa-blog"></i>
+                    浏览博客
+                </a>
+                <a href="/sitemap" class="error-btn secondary">
+                    <i class="fas fa-sitemap"></i>
+                    网站导航
+                </a>
+            </div>
+            
+            <div class="suggestions">
+                <h3><i class="fas fa-lightbulb"></i> 推荐页面</h3>
+                <ul class="suggestion-list">
+                    <li class="suggestion-item">
+                        <a href="/" class="suggestion-link">
+                            <i class="suggestion-icon fas fa-user"></i>
+                            关于�?- 了解我的学术背景和研究兴�?                        </a>
+                    </li>
+                    <li class="suggestion-item">
+                        <a href="/blog/3dgs" class="suggestion-link">
+                            <i class="suggestion-icon fas fa-cube"></i>
+                            3D Gaussian Splatting 部署指南
+                        </a>
+                    </li>
+                    <li class="suggestion-item">
+                        <a href="https://dongjiacheng06.github.io/dongjiacheng06-blog/" class="suggestion-link">
+                            <i class="suggestion-icon fas fa-blog"></i>
+                            技术博�?- 3D视觉和计算机视觉相关文章
+                        </a>
+                    </li>
+                    <li class="suggestion-item">
+                        <a href="/photography" class="suggestion-link">
+                            <i class="suggestion-icon fas fa-camera"></i>
+                            摄影作品 - 记录生活中的美好瞬间
+                        </a>
+                    </li>
+                    <li class="suggestion-item">
+                        <a href="/hobbies" class="suggestion-link">
+                            <i class="suggestion-icon fas fa-heart"></i>
+                            兴趣爱好 - 乒乓球、音乐、动漫等
+                        </a>
+                    </li>
+                    <li class="suggestion-item">
+                        <a href="mailto:Dong48@illinois.edu" class="suggestion-link">
+                            <i class="suggestion-icon fas fa-envelope"></i>
+                            联系�?- 学术交流或技术讨�?                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="mailto:Dong48@illinois.edu" aria-label="Send email to Jiacheng Dong">Email</a>
+                <a href="https://github.com/dongjiacheng06" target="_blank" rel="noopener" aria-label="Visit GitHub profile">GitHub</a>
+                <a href="/" aria-label="Visit homepage">主页</a>
+                <a href="/blog" aria-label="Visit blog page">博客</a>
+                <a href="/sitemap" aria-label="网站导航">Sitemap</a>
+            </div>
+            <div>&copy; 2025 Jiacheng Dong. All rights reserved.</div>
+            <div style="margin-top:0.5rem; font-size:0.9rem; opacity:0.8;">
+                Personal Website: <a href="https://dongjiacheng06.github.io" target="_blank" rel="noopener" style="color:#fff;" aria-label="Visit personal website">dongjiacheng06.github.io</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 如果用户来自搜索引擎或有referrer，提供更有针对性的建议
+        document.addEventListener('DOMContentLoaded', function() {
+            const referrer = document.referrer;
+            const currentURL = window.location.pathname;
+            
+            // 尝试提供智能建议
+            if (currentURL.includes('blog') && !currentURL.includes('blog/')) {
+                // 如果访问的是博客相关但URL不正�?                const blogBtn = document.querySelector('a[href="https://dongjiacheng06.github.io/dongjiacheng06-blog/"]');
+                if (blogBtn) {
+                    blogBtn.style.background = 'var(--primary)';
+                    blogBtn.style.color = 'white';
+                }
+            }
+            
+            // 记录404页面访问以便后续优化
+            if (window.gtag) {
+                gtag('event', 'page_not_found', {
+                    'page_path': currentURL,
+                    'referrer': referrer
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+

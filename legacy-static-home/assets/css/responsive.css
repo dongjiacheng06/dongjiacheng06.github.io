@@ -1,0 +1,410 @@
+/**
+ * 响应式设计和媒体查询
+ */
+
+/* ===== 断点定义 ===== */
+/* 
+  - xs: 0px
+  - sm: 576px
+  - md: 768px
+  - lg: 992px
+  - xl: 1200px
+  - xxl: 1400px
+*/
+
+/* ===== 小屏幕设备 (手机, 576px 及以下) ===== */
+@media (max-width: 575.98px) {
+  .container {
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+  }
+  
+  .hero {
+    padding: var(--spacing-xl) 0;
+  }
+  
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+    text-align: center;
+  }
+  
+  .hero-text h1 {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .hero-image img {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+  
+  .nav-toggle {
+    display: block;
+    order: -1;
+    align-self: flex-end;
+  }
+  
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: var(--bg-primary);
+    box-shadow: var(--shadow);
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+  }
+  
+  .nav-links.active {
+    display: flex;
+    animation: slideIn 0.3s ease-out forwards;
+  }
+  
+  .nav-section,
+  .nav-external {
+    flex-direction: column;
+    gap: 0;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+  
+  .nav-links a {
+    width: 100%;
+    text-align: left;
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .nav-links a:last-child {
+    border-bottom: none;
+  }
+  
+  .social-links {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .hobbies-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .hobby-with-image {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .experience-header {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .experience-date {
+    margin-left: 0;
+  }
+  
+  .article {
+    padding: var(--spacing-lg);
+  }
+  
+  .article-header {
+    margin: calc(-1 * var(--spacing-lg)) calc(-1 * var(--spacing-lg)) var(--spacing-lg) calc(-1 * var(--spacing-lg));
+    padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-md) var(--spacing-lg);
+  }
+  
+  .footer-links {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+  
+  .section-title {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .card {
+    padding: var(--spacing-lg);
+  }
+}
+
+/* ===== 中等屏幕设备 (平板, 576px - 767.98px) ===== */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: var(--spacing-xl);
+  }
+  
+  .hero-text h1 {
+    font-size: var(--font-size-4xl);
+  }
+  
+  .hobbies-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== 平板设备 (768px - 991.98px) ===== */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .nav-toggle {
+    display: none;
+  }
+  
+  .nav-links {
+    display: flex;
+  }
+  
+  .hero-content {
+    grid-template-columns: 2fr 1fr;
+  }
+  
+  .hobbies-grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+  
+  .blog-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  
+  .nav-section {
+    gap: var(--spacing-md);
+  }
+  
+  .nav-external {
+    gap: var(--spacing-sm);
+  }
+}
+
+/* ===== 桌面设备 (992px - 1199.98px) ===== */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .container {
+    max-width: 960px;
+  }
+  
+  .hero-content {
+    grid-template-columns: 1fr 200px;
+  }
+  
+  .hobbies-grid {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+  
+  .blog-grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+}
+
+/* ===== 大屏幕设备 (1200px 及以上) ===== */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+    padding-left: var(--spacing-xl);
+    padding-right: var(--spacing-xl);
+  }
+  
+  .hero {
+    padding: 5rem 0;
+  }
+  
+  .blog-grid {
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  }
+  
+  .hobbies-grid {
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  }
+}
+
+/* ===== 超大屏幕 (1400px 及以上) ===== */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+  
+  .hero-text h1 {
+    font-size: 3.5rem;
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+  }
+}
+
+/* ===== 触摸设备优化 ===== */
+@media (pointer: coarse) {
+  /* 增加触摸目标大小 */
+  .nav-links a,
+  .btn,
+  .social-links a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* 移除悬停效果 */
+  .card:hover,
+  .blog-card:hover,
+  .hobby-card:hover {
+    transform: none;
+    box-shadow: var(--shadow);
+  }
+  
+  /* 简化动画 */
+  .scroll-animate {
+    transition-duration: 0.3s;
+  }
+}
+
+/* ===== 高分辨率屏幕优化 ===== */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* 针对高分辨率屏幕的字体优化 */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ===== 打印样式 ===== */
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  .nav,
+  .nav-toggle,
+  .footer,
+  .social-links {
+    display: none !important;
+  }
+  
+  .hero {
+    page-break-inside: avoid;
+  }
+  
+  .section {
+    page-break-inside: avoid;
+  }
+  
+  .card {
+    border: 1px solid #ccc;
+    page-break-inside: avoid;
+  }
+  
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* ===== 横向/纵向优化 ===== */
+@media (orientation: landscape) and (max-height: 500px) {
+  .hero {
+    padding: var(--spacing-lg) 0;
+  }
+  
+  .hero-content {
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-lg);
+  }
+  
+  .hero-text h1 {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .nav {
+    padding: var(--spacing-sm) 0;
+  }
+}
+
+/* ===== 可访问性优化 ===== */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-animate,
+  .blog-card,
+  .card {
+    transition: none;
+    animation: none;
+  }
+  
+  .scroll-animate {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  :root {
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    --border-color: #000;
+  }
+  
+  .card {
+    border: 2px solid var(--border-color);
+  }
+}
+
+/* ===== 深色模式响应式调整 ===== */
+@media (prefers-color-scheme: dark) {
+  .hero::before {
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(44, 62, 80, 0.1) 100%);
+  }
+  
+  .nav-links {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+  }
+}
+
+/* ===== 性能优化的媒体查询 ===== */
+@media (min-width: 768px) {
+  /* 仅在桌面端启用复杂动画 */
+  .hover-lift:hover {
+    transform: translateY(-5px);
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+  
+  /* 桌面端才显示的元素 */
+  .desktop-only {
+    display: block;
+  }
+}
+
+@media (max-width: 767.98px) {
+  /* 移动端隐藏的元素 */
+  .desktop-only {
+    display: none;
+  }
+  
+  /* 移动端才显示的元素 */
+  .mobile-only {
+    display: block;
+  }
+}
+
+.mobile-only {
+  display: none;
+}

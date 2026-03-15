@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# 禁止访问特定目录和文件
+Disallow: /assets/
+Disallow: /.htaccess
+Disallow: /manifest.json
+
+# 站点地图
+Sitemap: https://dongjiacheng06.github.io/sitemap.xml
+
+# 爬取延迟（毫秒）
+Crawl-delay: 1
