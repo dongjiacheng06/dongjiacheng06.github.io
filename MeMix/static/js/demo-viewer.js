@@ -8,11 +8,11 @@ const SCENES = [
         title: 'Office Seq-07',
         views: 300,
         left: {
-            title: 'CUT',
+            title: 'CUT w/o MeMix',
             src: './static/models/examples/cut-office-seq-07.glb'
         },
         right: {
-            title: 'CUT w.MeMix',
+            title: 'CUT w/ MeMix',
             src: './static/models/examples/cut-w-memix-office-seq-07.glb'
         }
     },
@@ -21,11 +21,11 @@ const SCENES = [
         title: 'Green Room',
         views: 500,
         left: {
-            title: 'CUT',
+            title: 'CUT w/o MeMix',
             src: './static/models/examples/cut-green-room.glb'
         },
         right: {
-            title: 'CUT w.MeMix',
+            title: 'CUT w/ MeMix',
             src: './static/models/examples/cut-w-memix-green-room.glb'
         }
     },
@@ -34,56 +34,69 @@ const SCENES = [
         title: 'Fire Seq-03',
         views: 400,
         left: {
-            title: 'TTT',
+            title: 'TTT w/o MeMix',
             src: './static/models/examples/ttt-fire-seq-03.glb'
         },
         right: {
-            title: 'TTT w.MeMix',
+            title: 'TTT w/ MeMix',
             src: './static/models/examples/ttt-w-memix-fire-seq-03.glb'
-        }
-    },
-    {
-        id: 'stairs-seq-01',
-        title: 'Stairs Seq-01',
-        views: 400,
-        left: {
-            title: 'TTT',
-            src: './static/models/examples/ttt-stairs-seq-01.glb'
-        },
-        right: {
-            title: 'TTT w.MeMix',
-            src: './static/models/examples/ttt-w-memix-stairs-seq-01.glb'
-        }
-    },
-    {
-        id: 'heads-seq-01',
-        title: 'Heads Seq-01',
-        views: 500,
-        left: {
-            title: 'TTSA',
-            src: './static/models/examples/ttsa-heads-seq-01.glb'
-        },
-        right: {
-            title: 'TTSA w.MeMix',
-            src: './static/models/examples/ttsa-w-memix-heads-seq-01.glb'
-        }
-    },
-    {
-        id: 'redkitchen-seq-03',
-        title: 'Red Kitchen Seq-03',
-        views: 500,
-        left: {
-            title: 'TTSA',
-            src: './static/models/examples/ttsa-redkitchen-seq-03.glb'
-        },
-        right: {
-            title: 'TTSA w.MeMix',
-            src: './static/models/examples/ttsa-w-memix-redkitchen-seq-03.glb'
         }
     }
 ];
 
 const DEFAULT_SCENE_ID = SCENES[0].id;
+const MAX_CACHED_ASSETS = 6;
+const MODEL_ASSET_VERSION = '20260316-quant1';
+const ASSET_CACHE = new Map();
+let assetCacheStamp = 0;
+
+function getAssetUrl(asset) {
+    return `${asset.src}?v=${MODEL_ASSET_VERSION}`;
+}
+
+function markAssetEntryUsed(entry) {
+    entry.lastUsedAt = ++assetCacheStamp;
+}
+
+function disposeAssetEntry(entry) {
+    if (!entry || !entry.root) {
+        return;
+    }
+
+    entry.root.traverse((object) => {
+        if (object.geometry) {
+            object.geometry.dispose();
+        }
+
+        if (object.material) {
+            const materials = Array.isArray(object.material) ? object.material : [object.material];
+            materials.forEach((material) => {
+                if (material && typeof material.dispose === 'function') {
+                    material.dispose();
+                }
+            });
+        }
+    });
+}
+
+function pruneAssetCache() {
+    const readyEntries = Array.from(ASSET_CACHE.values()).filter((entry) => entry.status === 'ready');
+    if (readyEntries.length <= MAX_CACHED_ASSETS) {
+        return;
+    }
+
+    const disposableEntries = readyEntries
+        .filter((entry) => !entry.attachedTo)
+        .sort((left, right) => left.lastUsedAt - right.lastUsedAt);
+
+    let overflow = readyEntries.length - MAX_CACHED_ASSETS;
+    while (overflow > 0 && disposableEntries.length) {
+        const entry = disposableEntries.shift();
+        ASSET_CACHE.delete(entry.url);
+        disposeAssetEntry(entry);
+        overflow -= 1;
+    }
+}
 
 class DemoViewer {
     constructor(root) {
@@ -96,7 +109,7 @@ class DemoViewer {
         this.renderPending = true;
         this.isApplyingSync = false;
         this.syncTween = null;
-        this.currentObject = null;
+        this.currentEntry = null;
         this.loadVersion = 0;
         this.loader = new GLTFLoader();
         this.card = root.closest('.demo-viewer-card');
@@ -207,14 +220,14 @@ class DemoViewer {
         }
     }
 
-    applyRenderableStyle(object) {
+    applyRenderableStyle(object, pointClouds = this.pointClouds, boundingSize = this.boundingSize) {
         const geometry = object.geometry;
         const hasColor = Boolean(geometry && geometry.getAttribute('color'));
         const positionAttribute = geometry ? geometry.getAttribute('position') : null;
         const vertexCount = positionAttribute ? positionAttribute.count : 0;
 
         if (object.isPoints) {
-            const diagonal = this.boundingSize.length();
+            const diagonal = boundingSize.length();
             const densityFactor = THREE.MathUtils.clamp(1.16 - Math.log10(Math.max(vertexCount, 10)) * 0.08, 0.72, 1.02);
             const basePointSize = THREE.MathUtils.clamp(diagonal * 3.2 * densityFactor, 3.8, 8.6) * 0.06;
             object.material = new THREE.PointsMaterial({
@@ -227,7 +240,7 @@ class DemoViewer {
                 depthWrite: true
             });
             object.userData.basePointSize = basePointSize;
-            this.pointClouds.push(object);
+            pointClouds.push(object);
             return;
         }
 
@@ -249,16 +262,16 @@ class DemoViewer {
         root.updateMatrixWorld(true);
     }
 
-    updateBounds(root) {
+    updateBounds(root, center = this.boundingCenter, size = this.boundingSize) {
         const box = new THREE.Box3().setFromObject(root);
         if (box.isEmpty()) {
-            this.boundingCenter.set(0, 0, 0);
-            this.boundingSize.set(1, 1, 1);
+            center.set(0, 0, 0);
+            size.set(1, 1, 1);
             return;
         }
 
-        box.getCenter(this.boundingCenter);
-        box.getSize(this.boundingSize);
+        box.getCenter(center);
+        box.getSize(size);
     }
 
     updatePointCloudSizes(force = false) {
@@ -305,37 +318,114 @@ class DemoViewer {
         this.renderPending = true;
     }
 
-    disposeObject(root) {
-        if (!root) {
-            return;
+    prepareAssetRoot(root) {
+        const preparedCenter = new THREE.Vector3();
+        const preparedSize = new THREE.Vector3(1, 1, 1);
+        const preparedPointClouds = [];
+
+        this.orientScene(root);
+        this.updateBounds(root, preparedCenter, preparedSize);
+        root.traverse((object) => {
+            this.applyRenderableStyle(object, preparedPointClouds, preparedSize);
+        });
+
+        return {
+            root,
+            boundingCenter: preparedCenter,
+            boundingSize: preparedSize,
+            pointClouds: preparedPointClouds
+        };
+    }
+
+    getPreparedAssetEntry(asset) {
+        const assetUrl = getAssetUrl(asset);
+        const cachedEntry = ASSET_CACHE.get(assetUrl);
+        if (cachedEntry) {
+            markAssetEntryUsed(cachedEntry);
+            return cachedEntry.promise;
         }
 
-        root.traverse((object) => {
-            if (object.geometry) {
-                object.geometry.dispose();
-            }
+        const entry = {
+            src: asset.src,
+            url: assetUrl,
+            status: 'loading',
+            attachedTo: null,
+            lastUsedAt: 0,
+            root: null,
+            pointClouds: [],
+            boundingCenter: new THREE.Vector3(),
+            boundingSize: new THREE.Vector3(1, 1, 1),
+            promise: null
+        };
 
-            if (object.material) {
-                const materials = Array.isArray(object.material) ? object.material : [object.material];
-                materials.forEach((material) => {
-                    if (material && typeof material.dispose === 'function') {
-                        material.dispose();
+        entry.promise = new Promise((resolve, reject) => {
+            this.loader.load(
+                assetUrl,
+                (gltf) => {
+                    const root = gltf.scene || gltf.scenes[0];
+                    if (!root) {
+                        ASSET_CACHE.delete(assetUrl);
+                        reject(new Error('No renderable scene found in GLB.'));
+                        return;
                     }
-                });
-            }
+
+                    const prepared = this.prepareAssetRoot(root);
+                    entry.status = 'ready';
+                    entry.root = prepared.root;
+                    entry.pointClouds = prepared.pointClouds;
+                    entry.boundingCenter.copy(prepared.boundingCenter);
+                    entry.boundingSize.copy(prepared.boundingSize);
+                    markAssetEntryUsed(entry);
+                    resolve(entry);
+                },
+                undefined,
+                (error) => {
+                    ASSET_CACHE.delete(assetUrl);
+                    reject(error);
+                }
+            );
+        });
+
+        ASSET_CACHE.set(assetUrl, entry);
+        markAssetEntryUsed(entry);
+        return entry.promise;
+    }
+
+    prefetchAsset(asset) {
+        this.initialize();
+        this.getPreparedAssetEntry(asset).catch((error) => {
+            console.warn('Prefetch failed for asset:', asset.src, error);
         });
     }
 
-    replaceObject(nextObject) {
-        if (this.currentObject) {
-            this.scene.remove(this.currentObject);
-            this.disposeObject(this.currentObject);
+    detachCurrentEntry() {
+        if (!this.currentEntry) {
+            return;
         }
 
-        this.currentObject = nextObject;
-        if (nextObject) {
-            this.scene.add(nextObject);
+        if (this.currentEntry.root && this.currentEntry.root.parent === this.scene) {
+            this.scene.remove(this.currentEntry.root);
         }
+
+        this.currentEntry.attachedTo = null;
+        this.currentEntry = null;
+    }
+
+    attachPreparedEntry(entry) {
+        this.detachCurrentEntry();
+
+        this.currentEntry = entry;
+        entry.attachedTo = this;
+        markAssetEntryUsed(entry);
+
+        if (entry.root.parent && entry.root.parent !== this.scene) {
+            entry.root.parent.remove(entry.root);
+        }
+
+        this.pointClouds = entry.pointClouds;
+        this.boundingCenter.copy(entry.boundingCenter);
+        this.boundingSize.copy(entry.boundingSize);
+        this.scene.add(entry.root);
     }
 
     setKeyboardActive(isActive) {
@@ -363,45 +453,27 @@ class DemoViewer {
 
         const version = ++this.loadVersion;
 
-        return new Promise((resolve, reject) => {
-            this.loader.load(
-                asset.src,
-                (gltf) => {
-                    const root = gltf.scene || gltf.scenes[0];
-                    if (!root) {
-                        reject(new Error('No renderable scene found in GLB.'));
-                        return;
-                    }
+        if (this.currentEntry && this.currentEntry.src === asset.src) {
+            this.ready = true;
+            markAssetEntryUsed(this.currentEntry);
+            this.hideStatus();
+            this.renderPending = true;
+            return Promise.resolve(true);
+        }
 
-                    if (version !== this.loadVersion) {
-                        this.disposeObject(root);
-                        resolve(false);
-                        return;
-                    }
+        return this.getPreparedAssetEntry(asset).then((entry) => {
+            if (version !== this.loadVersion) {
+                return false;
+            }
 
-                    this.pointClouds = [];
-                    this.orientScene(root);
-                    this.updateBounds(root);
-                    root.traverse((object) => {
-                        this.applyRenderableStyle(object);
-                    });
-                    this.frameScene(root);
-                    this.replaceObject(root);
-                    this.updatePointCloudSizes(true);
-                    this.ready = true;
-                    this.hideStatus();
-                    this.renderPending = true;
-                    resolve(true);
-                },
-                undefined,
-                (error) => {
-                    if (version !== this.loadVersion) {
-                        resolve(false);
-                        return;
-                    }
-                    reject(error);
-                }
-            );
+            this.attachPreparedEntry(entry);
+            this.frameScene(entry.root);
+            this.updatePointCloudSizes(true);
+            this.ready = true;
+            this.hideStatus();
+            this.renderPending = true;
+            pruneAssetCache();
+            return true;
         });
     }
 
@@ -618,6 +690,16 @@ function boot() {
         const syncRegistry = createSyncRegistry(viewers);
         const buttons = Array.from(document.querySelectorAll('[data-demo-scene]'));
 
+        function prefetchScene(sceneId) {
+            const scene = SCENES.find((item) => item.id === sceneId);
+            if (!scene) {
+                return;
+            }
+
+            viewers[0].prefetchAsset(scene.left);
+            viewers[1].prefetchAsset(scene.right);
+        }
+
         async function showScene(sceneId) {
             const scene = SCENES.find((item) => item.id === sceneId) || SCENES[0];
             setActiveSceneButton(buttons, scene.id);
@@ -646,6 +728,12 @@ function boot() {
         buttons.forEach((button) => {
             button.addEventListener('click', () => {
                 showScene(button.dataset.demoScene);
+            });
+            button.addEventListener('pointerenter', () => {
+                prefetchScene(button.dataset.demoScene);
+            });
+            button.addEventListener('focus', () => {
+                prefetchScene(button.dataset.demoScene);
             });
         });
 

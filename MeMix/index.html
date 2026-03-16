@@ -68,7 +68,14 @@
         });
 
         (function () {
+            let demoViewerBooted = false;
+
             function bootDemoViewer() {
+                if (demoViewerBooted) {
+                    return;
+                }
+                demoViewerBooted = true;
+
                 if (window.location.protocol === 'file:') {
                     document.documentElement.classList.add('is-file-protocol');
                     document.querySelectorAll('.demo-status').forEach((node) => {
@@ -85,10 +92,30 @@
                 document.head.appendChild(script);
             }
 
+            function scheduleDemoViewerBoot() {
+                const section = document.getElementById('demos');
+                if (!section || !('IntersectionObserver' in window)) {
+                    bootDemoViewer();
+                    return;
+                }
+
+                const observer = new IntersectionObserver((entries) => {
+                    if (!entries.some((entry) => entry.isIntersecting)) {
+                        return;
+                    }
+                    observer.disconnect();
+                    bootDemoViewer();
+                }, {
+                    rootMargin: '720px 0px'
+                });
+
+                observer.observe(section);
+            }
+
             if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', bootDemoViewer);
+                document.addEventListener('DOMContentLoaded', scheduleDemoViewerBoot);
             } else {
-                bootDemoViewer();
+                scheduleDemoViewerBoot();
             }
         }());
     </script>
@@ -174,9 +201,9 @@
 
             <div class="container reveal delay-1">
                 <div class="video-placeholder">
-                    <video class="teaser-video" controls autoplay muted loop playsinline preload="auto"
+                    <video class="teaser-video" controls autoplay muted loop playsinline preload="metadata"
                         poster="./static/images/teaser-poster.jpg">
-                        <source src="./static/videos/memix-teaser.mp4?v=20260316-1818" type="video/mp4">
+                        <source src="./static/videos/memix-teaser.mp4?v=20260316-2122" type="video/mp4">
                     </video>
                 </div>
             </div>
@@ -224,8 +251,8 @@
                             A ViT encoder encodes each frame to tokens $\mathbf{X}_t$, which interact with state tokens
                             $\mathbf{S}_{t-1}$ through a dual-stream cross-attention decoder to produce predictions
                             $\mathbf{Y}_t$ and candidate state $\widehat{\mathbf{S}}_t$. MeMix computes dot scores between
-                            $\widehat{\mathbf{S}}_t$ and ${\mathbf{X}_t}$, selects \texttt{Bottom-k} patches to construct a
-                            binary mask $\mathbf{M}_t$, updating only \texttt{Bottom-K} patches. Decoded image tokens
+                            $\widehat{\mathbf{S}}_t$ and ${\mathbf{X}_t}$, selects $\texttt{Bottom-k}$ patches to construct a
+                            binary mask $\mathbf{M}_t$, updating only $\texttt{Bottom-K}$ patches. Decoded image tokens
                             $\mathbf{Y}_t$ are fed to the prediction head for output.
                         </figcaption>
                     </figure>
@@ -244,14 +271,14 @@
                         <p class="demo-scene-current-label">Current Scene</p>
                         <div class="demo-scene-current-main">
                             <h3 id="demo-scene-title">Office Seq-07</h3>
-                            <p id="demo-scene-pair" class="demo-scene-pair">CUT / CUT w.MeMix · 300 views</p>
+                            <p id="demo-scene-pair" class="demo-scene-pair">CUT w/o MeMix / CUT w/ MeMix · 300 views</p>
                         </div>
                     </div>
 
                     <div class="demo-compare-grid">
                         <article class="demo-viewer-card">
                             <div class="demo-viewer-head">
-                                <p class="demo-mode-label">o.MeMix</p>
+                                <p class="demo-mode-label">w/o MeMix</p>
                             </div>
                             <div id="demo-left" class="demo-model-viewer" data-demo-webgl="viewer"
                                 data-demo-sync-group="memix-compare" data-demo-panel="left">
@@ -261,7 +288,7 @@
 
                         <article class="demo-viewer-card">
                             <div class="demo-viewer-head">
-                                <p class="demo-mode-label">w.MeMix</p>
+                                <p class="demo-mode-label">w/ MeMix</p>
                             </div>
                             <div id="demo-right" class="demo-model-viewer" data-demo-webgl="viewer"
                                 data-demo-sync-group="memix-compare" data-demo-panel="right">
@@ -301,29 +328,6 @@
                             <span class="demo-scene-name">Fire Seq-03</span>
                             <span class="demo-scene-meta">TTT Pair · 400 views</span>
                         </button>
-                        <button class="demo-scene-button" type="button" data-demo-scene="stairs-seq-01"
-                            aria-pressed="false">
-                            <span class="demo-scene-thumb" aria-hidden="true">
-                                <img src="./static/images/examples/stairs-seq-01.png" alt="" loading="lazy">
-                            </span>
-                            <span class="demo-scene-name">Stairs Seq-01</span>
-                            <span class="demo-scene-meta">TTT Pair · 400 views</span>
-                        </button>
-                        <button class="demo-scene-button" type="button" data-demo-scene="heads-seq-01" aria-pressed="false">
-                            <span class="demo-scene-thumb" aria-hidden="true">
-                                <img src="./static/images/examples/heads-seq-01.png" alt="" loading="lazy">
-                            </span>
-                            <span class="demo-scene-name">Heads Seq-01</span>
-                            <span class="demo-scene-meta">TTSA Pair · 500 views</span>
-                        </button>
-                        <button class="demo-scene-button" type="button" data-demo-scene="redkitchen-seq-03"
-                            aria-pressed="false">
-                            <span class="demo-scene-thumb" aria-hidden="true">
-                                <img src="./static/images/examples/redkitchen-seq-03.png" alt="" loading="lazy">
-                            </span>
-                            <span class="demo-scene-name">Red Kitchen Seq-03</span>
-                            <span class="demo-scene-meta">TTSA Pair · 500 views</span>
-                        </button>
                     </div>
 
                     <p class="demo-footnote">Results are downsampled for efficient online rendering, with each frame capped at 1200 points, and camera motion is synced with ~100ms delay.</p>
@@ -350,7 +354,7 @@
                     <button class="experiment-tab" type="button" role="tab" aria-selected="false"
                         data-panel="efficiency">Efficiency</button>
                 </div>
-                <p class="experiment-note">Green cells indicate that <strong>w. MeMix</strong> matches or outperforms the corresponding backbone. Please refer to the paper for the complete tables.</p>
+                <p class="experiment-note">Green cells indicate that <strong>w/ MeMix</strong> matches or outperforms the corresponding backbone. Please refer to the paper for the complete tables.</p>
 
                 <div class="table-stack" data-tab-group="experiments">
                     <article class="scholarly-panel table-panel experiment-panel is-active" data-panel="sparse-3dr">
