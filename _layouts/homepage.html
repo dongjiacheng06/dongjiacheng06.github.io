@@ -61,7 +61,7 @@
         <br>
         <div class="social-icons">
         {% if site.google_scholar %}
-        <a style="margin: 0 5px 0 0" href="{{ site.google_scholar }}">
+        <a style="margin: 0 5px 0 0" href="{{ site.google_scholar }}" title="Google Scholar" rel="noopener" target="_blank">
           <i class="ai ai-google-scholar" style="font-size:1.2rem"></i>
         </a>
         {% endif %}
@@ -101,6 +101,12 @@
         </a>
         {% endif %}
         </div>
+        {% if site.wechat_qr %}
+        <div class="sidebar-qr">
+          <img src="{{ site.wechat_qr }}" alt="WeChat QR code">
+          <div class="sidebar-qr-label">WeChat</div>
+        </div>
+        {% endif %}
         <br>
 
       </header>
