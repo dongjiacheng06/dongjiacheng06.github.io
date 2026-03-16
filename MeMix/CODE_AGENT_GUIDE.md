@@ -121,7 +121,7 @@ If the paper changes:
 - The `Pipeline` section should show the standalone pipeline figure only.
 - The `Overview of MeMix` caption under the pipeline image now uses KaTeX auto-render; keep formula text in LaTeX form inside the `figcaption.katex-caption`.
 - Do not mix the pipeline figure with demo sheet previews unless explicitly requested.
-- The `3R Interactive Demo` section currently uses two side-by-side WebGL canvases for `o. MeMix` and `w. MeMix`.
+- The `3R Interactive Demo` section currently uses two side-by-side WebGL canvases for `w/o MeMix` and `w/ MeMix`.
 - Camera interaction is synchronized in `static/js/demo-viewer.js` with about `100ms` delay.
 - The active viewer also supports `W/A/S/D` panning, mapped through OrbitControls' keyboard pan handling.
 - Hovering or clicking a viewer panel makes that panel the active keyboard-control target.
@@ -181,7 +181,7 @@ The current interactive section was built with these concrete steps:
 1. The original placeholder demo layout in `#demos` was removed.
 2. A `model-viewer` attempt was added first, but it was not reliable for the current point-cloud GLBs.
 3. The final version replaced `model-viewer` with a custom Three.js dual-viewer in `static/js/demo-viewer.js`.
-4. Two side-by-side WebGL canvases were added for `o.MeMix` and `w.MeMix`.
+4. Two side-by-side WebGL canvases were added for `w/o MeMix` and `w/ MeMix`.
 5. Camera synchronization was moved into the dedicated Three.js viewer script and changed to buffered smooth following.
 6. The needed Three.js files were vendored locally into `static/js/vendor/`.
 7. `BufferGeometryUtils.js` also had to be vendored locally because `GLTFLoader` imports it.
@@ -287,7 +287,7 @@ When updating:
 - The default tabs are `Table 2`, `Table 4`, `Table 5`, `Table 6`, and `Table 7`.
 - `Table 2` and `Table 5` are currently reduced to 300-view 7-Scenes slices.
 - `Table 6` and `Table 7` are currently reduced to representative metrics with clearer MeMix gains.
-- Use `.metric-better-cell` when a `w. MeMix` cell is better than the corresponding backbone.
+- Use `.metric-better-cell` when a `w/ MeMix` cell is better than the corresponding backbone.
 - Keep the note above the tabs that explains green cells and points readers to the paper for full tables.
 - Avoid embedding PDF screenshots if the user asked for HTML tables.
 
