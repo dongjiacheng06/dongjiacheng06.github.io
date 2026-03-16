@@ -78,6 +78,18 @@
         </a>
         {% endif %}
 
+        {% if site.wechat_qr %}
+        <a
+          style="margin: 0 5px 0 0"
+          href="#wechat-modal"
+          id="wechat-trigger"
+          title="WeChat"
+          aria-label="Open WeChat QR code"
+        >
+          <i class="fab fa-weixin"></i>
+        </a>
+        {% endif %}
+
         {% if site.xiaohongshu_link %}
         <a style="margin: 0 5px 0 0" href="{{ site.xiaohongshu_link }}" title="Xiaohongshu" rel="noopener">
           <img
@@ -101,12 +113,6 @@
         </a>
         {% endif %}
         </div>
-        {% if site.wechat_qr %}
-        <div class="sidebar-qr">
-          <img src="{{ site.wechat_qr }}" alt="WeChat QR code">
-          <div class="sidebar-qr-label">WeChat</div>
-        </div>
-        {% endif %}
         <br>
 
       </header>
@@ -133,6 +139,50 @@
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
       ga('create', '{{ site.google_analytics }}', 'auto');
       ga('send', 'pageview');
+    </script>
+    {% endif %}
+    {% if site.wechat_qr %}
+    <div class="wechat-modal" id="wechat-modal" hidden>
+      <div class="wechat-modal-backdrop" data-close-wechat="true"></div>
+      <div class="wechat-modal-panel" role="dialog" aria-modal="true" aria-labelledby="wechat-modal-title">
+        <button type="button" class="wechat-modal-close" data-close-wechat="true" aria-label="Close WeChat QR">&times;</button>
+        <div class="wechat-modal-title" id="wechat-modal-title">WeChat</div>
+        <img src="{{ site.wechat_qr }}" alt="WeChat QR code">
+      </div>
+    </div>
+    <script>
+      (function() {
+        var trigger = document.getElementById('wechat-trigger');
+        var modal = document.getElementById('wechat-modal');
+        if (!trigger || !modal) {
+          return;
+        }
+
+        function closeWeChatModal() {
+          modal.hidden = true;
+          document.body.classList.remove('wechat-modal-open');
+        }
+
+        function openWeChatModal(event) {
+          event.preventDefault();
+          modal.hidden = false;
+          document.body.classList.add('wechat-modal-open');
+        }
+
+        trigger.addEventListener('click', openWeChatModal);
+
+        modal.addEventListener('click', function(event) {
+          if (event.target.dataset.closeWechat === 'true') {
+            closeWeChatModal();
+          }
+        });
+
+        document.addEventListener('keydown', function(event) {
+          if (event.key === 'Escape' && !modal.hidden) {
+            closeWeChatModal();
+          }
+        });
+      })();
     </script>
     {% endif %}
   </body>
