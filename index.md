@@ -4,7 +4,7 @@ layout: homepage
 
 ## About Me
 
-I am an undergraduate in Electrical Engineering at the ZJU-UIUC Joint Institute of Zhejiang University (B.S. 2024-2028). My research focuses on understanding and modeling the dynamic 3D world, with current interests in streaming 4D perception, long-context vision models, and 3D representation learning. Since July 2025, I have been working with [Prof. Gaoang Wang](https://cvnext.github.io/) in the CVNext Lab.
+I am an undergraduate in Electrical Engineering at the ZJU-UIUC Institute of Zhejiang University (B.S. 2024-2028). My research focuses on understanding and modeling the dynamic 3D world, with current interests in streaming 4D perception, long-context vision models, and 3D representation learning. Since July 2025, I have been working with [Prof. Gaoang Wang](https://cvnext.github.io/) in the CVNext Lab.
 
 I am currently interested in test-time training as a form of memory for long-context visual understanding.
 
@@ -14,14 +14,7 @@ I am currently interested in test-time training as a form of memory for long-con
 - Long-context vision models for learning from continuous visual experience
 - 3D representation learning for geometry, motion, and generation
 
-## News
-
-- **Oct. 2025** Awarded the National Scholarship for academic excellence.
-- **Jul. 2025** Joined [CVNext Lab](https://cvnext.github.io/) as a research assistant at the ZJU-UIUC Joint Institute.
-- **Jul. 2025** Personal academic homepage launched.
-- **Feb. 2025** Won the Outstanding Award and SIAM Award in MCM 2025 for tourism sustainability modeling.
-- **Nov. 2024** Started research in [Prof. Jixing Cao's lab](https://person.zju.edu.cn/caojixing) on computer vision and point clouds.
-- **Sep. 2024** Enrolled at the ZJU-UIUC Joint Institute, Zhejiang University.
+{% include_relative _includes/news.md %}
 
 {% include_relative _includes/publications.md %}
 
@@ -29,14 +22,12 @@ I am currently interested in test-time training as a form of memory for long-con
 
 ## Education
 
-- **B.S. in Electrical Engineering**, ZJU-UIUC Joint Institute, Zhejiang University, 2024-2028 (expected)
-- Professional GPA: 4.0/4.0
-- Cumulative GPA: 3.88/4.0
-- Planned minor: Computer Science at the University of Illinois Urbana-Champaign
+- **B.S. in Electrical Engineering**, ZJU-UIUC Institute, Zhejiang University, 2024-2028 (expected)
+- GPA: 3.86/4.0, 4.14/4.3
 
 ## Research Experience
 
-- **Jul. 2025 - Present**, Research Assistant, CVNext Lab, ZJU-UIUC Joint Institute
+- **Jul. 2025 - Present**, Research Assistant, CVNext Lab, ZJU-UIUC Institute
   - Advisor: Prof. Gaoang Wang
   - Focus: streaming 4D perception, long-context vision models, and dynamic 3D world understanding
 - **Nov. 2024 - Present**, Undergraduate Researcher, Prof. Jixing Cao's Lab
