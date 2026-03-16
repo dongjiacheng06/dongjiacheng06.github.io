@@ -14,7 +14,12 @@ I am currently interested in test-time training as a form of memory for long-con
 - Long-context vision models for learning from continuous visual experience
 - 3D representation learning for geometry, motion, and generation
 
-{% include_relative _includes/news.md %}
+## News
+- **[Dec. 2025]** Our paper **RecurGS** is out!
+- **[Oct. 2025]** Awarded the National Scholarship for academic excellence.
+- **[Jul. 2025]** Personal academic homepage launched.
+- **[Feb. 2025]** Won the Outstanding Award and SIAM Award in MCM 2025.
+- **[Sep. 2024]** Enrolled at the ZJU-UIUC Institute, Zhejiang University.
 
 {% include_relative _includes/publications.md %}
 
