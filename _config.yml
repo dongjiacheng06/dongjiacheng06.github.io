@@ -1,0 +1,38 @@
+title: Jiacheng Dong
+position: Undergraduate in Electrical Engineering
+affiliation: ZJU-UIUC Institute, Zhejiang University
+affiliation_link: https://zjui.intl.zju.edu.cn/
+email: Dong48@illinois.edu
+
+description: Jiacheng Dong's academic homepage featuring research in 3D and 4D scene perception, long-context vision models, publications, and projects.
+keywords: Jiacheng Dong, 3D vision, 4D perception, long-context vision, world models
+canonical: https://dongjiacheng06.github.io/
+
+cv_link: "#education"
+github_link: https://github.com/dongjiacheng06
+google_scholar: https://scholar.google.com/citations?user=YGfbISMAAAAJ
+xiaohongshu_link: https://www.xiaohongshu.com/user/profile/5f1457fa00000000010029ab
+xiaohongshu_icon: https://qimg.xiaohongshu.com/56b419e1cd35ad6a15406d3f21e9fda88e99b767?s=1476879314
+xiaohongshu_icon_fallback: ./assets/images/xiaohongshu.png
+wechat_qr: ./assets/images/wechat.jpg
+
+avatar: ./assets/images/personal_photo.jpg
+favicon: ./images/favicon-dog.png
+favicon_dark: ./images/favicon-dog.png
+
+enable_footnote: true
+auto_dark_mode: true
+font: "Serif"
+
+remote_theme: yaoyao-liu/minimal-light
+
+plugins:
+  - jekyll-remote-theme
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - .bundle/
+  - .sass-cache/
+  - vendor/
+  - _site/
