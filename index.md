@@ -10,9 +10,11 @@ I am currently interested in test-time training as a form of memory for long-con
 
 ## Research Interests
 
-- Streaming 4D perception and reconstruction of dynamic scenes
-- Long-context vision models for learning from continuous visual experience
-- 3D representation learning for geometry, motion, and generation
+My research focuses on understanding and modeling the dynamic 3D world. Current interests include:
+
+- Streaming 4D perception and reconstruction of dynamic scenes.
+- Long-context vision models for learning from continuous visual experience.
+- 3D representation learning for geometry, motion, and generation.
 
 ## News
 - **[Dec. 2025]** Our paper **RecurGS** is out!
