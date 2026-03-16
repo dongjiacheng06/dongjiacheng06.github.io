@@ -10,6 +10,7 @@ main:
     authors: "<strong>Jiacheng Dong</strong>*, Huan Li*, Sicheng Zhou*, Wenhao Hu, Weili Xu, Yan Wang"
     conference: "Preprint"
     image: ./images/Memix.png
+    page: "https://dongjiacheng06.github.io/MeMix/"
     notes: "Preprint"
   - title: "TBR: A Training-Free Framework for Rapid Background Removal in Large-Scale Point Clouds"
     authors: "<strong>Jiacheng Dong</strong>, Yuxiao Zheng, Maolin Tian, Jun Liang, Jixing Cao"
