@@ -49,6 +49,6 @@ I am currently interested in test-time training as a form of memory for long-con
 Visitor locations are approximate and provided by MapMyVisitors.
 
 <div style="min-height:240px;">
-  <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=Alhn33sy7T7USCgc9_Vaq5J7IenRhtRoRzYJZN21IQY&cl=ffffff&w=a"></script>
+  <script type="text/javascript" id="mapmyvisitors" src="https://mapmyvisitors.com/map.js?cl=ffffff&w=a&t=tt&d=Alhn33sy7T7USCgc9_Vaq5J7IenRhtRoRzYJZN21IQY"></script>
   <noscript><a href="https://mapmyvisitors.com" title="Visitor map">Visitor map</a></noscript>
 </div>
