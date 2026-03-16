@@ -1,490 +1,583 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="description"
-        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
-  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nerfies: Deformable Neural Radiance Fields</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="MeMix: Writing Less, Remembering More for Streaming 3D Reconstruction. Project page with paper, supplementary material, pipeline, demos, and citation.">
+    <meta name="keywords"
+        content="MeMix, Streaming 3D Reconstruction, CUT3R, TTT3R, TTSA3R, online reconstruction, memory mixture">
+    <title>MeMix: Writing Less, Remembering More for Streaming 3D Reconstruction</title>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="MeMix: Writing Less, Remembering More for Streaming 3D Reconstruction">
+    <meta property="og:description"
+        content="Training-free selective memory updates for long-horizon streaming 3D reconstruction.">
+    <meta property="og:image" content="./static/images/memix-pipeline.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MeMix: Writing Less, Remembering More for Streaming 3D Reconstruction">
+    <meta name="twitter:description"
+        content="Training-free selective memory updates for long-horizon streaming 3D reconstruction.">
+    <meta name="twitter:image" content="./static/images/memix-pipeline.png">
 
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-
-    gtag('config', 'G-PYVRSFMDRL');
-  </script>
-
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css?family=Google+Sans:400,600|Noto+Sans:400,600|Castoro:400,600"
         rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="./static/images/favicon-32.png">
+    <link rel="shortcut icon" href="./static/images/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./static/images/apple-touch-icon.png">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <script>
+        window.MathJax = {
+            startup: { typeset: false },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const nodes = Array.from(document.querySelectorAll('.math-caption, .math-render'));
+            if (!nodes.length) {
+                return;
+            }
 
-  <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon.svg">
+            const scheduleTypeset = function () {
+                if (!window.MathJax || typeof window.MathJax.typesetPromise !== 'function') {
+                    return;
+                }
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
+                window.MathJax.typesetPromise(nodes).catch(function (error) {
+                    console.error('MathJax typeset failed:', error);
+                });
+            };
+
+            if (window.MathJax && window.MathJax.startup && window.MathJax.startup.promise) {
+                window.MathJax.startup.promise.then(scheduleTypeset);
+            } else {
+                scheduleTypeset();
+            }
+        });
+
+        (function () {
+            function bootDemoViewer() {
+                if (window.location.protocol === 'file:') {
+                    document.documentElement.classList.add('is-file-protocol');
+                    document.querySelectorAll('.demo-status').forEach((node) => {
+                        node.textContent = '3D demos require HTTP. Run "python3 -m http.server 8000" and open http://localhost:8000/.';
+                        node.classList.add('is-error');
+                        node.hidden = false;
+                    });
+                    return;
+                }
+
+                const script = document.createElement('script');
+                script.type = 'module';
+                script.src = './static/js/demo-viewer.js';
+                document.head.appendChild(script);
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', bootDemoViewer);
+            } else {
+                bootDemoViewer();
+            }
+        }());
+    </script>
+    <script defer src="./static/js/nav.js"></script>
 </head>
+
 <body>
-
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://keunhong.com">
-      <span class="icon">
-          <i class="fas fa-home"></i>
-      </span>
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More Research
-        </a>
-        <div class="navbar-dropdown">
-          <a class="navbar-item" href="https://hypernerf.github.io">
-            HyperNeRF
-          </a>
-          <a class="navbar-item" href="https://nerfies.github.io">
-            Nerfies
-          </a>
-          <a class="navbar-item" href="https://latentfusion.github.io">
-            LatentFusion
-          </a>
-          <a class="navbar-item" href="https://photoshape.github.io">
-            PhotoShape
-          </a>
+    <header class="site-header">
+        <div class="container topbar">
+            <a class="brand" href="./">
+                <img class="brand-logo" src="./static/images/logo.png" alt="MeMix logo">
+                <span>MeMix</span>
+            </a>
+            <nav class="topnav" aria-label="Primary">
+                <a href="#abstract">Abstract</a>
+                <a href="#visuals">Visuals</a>
+                <a href="#demos">Interactive</a>
+                <a href="#experiments">Experiments</a>
+                <a href="#bibtex">BibTeX</a>
+            </nav>
         </div>
-      </div>
-    </div>
+    </header>
 
-  </div>
-</nav>
+    <main>
+        <section class="paper-hero">
+            <div class="container narrow paper-intro reveal">
+                <h1 class="paper-title">
+                    <span class="paper-title-mark">
+                        <img class="hero-logo-inline" src="./static/images/logo.png" alt="MeMix logo">
+                        <span>MeMix:</span>
+                    </span>
+                    <span class="paper-title-line">Writing Less, Remembering More for</span>
+                    <span class="paper-title-line">Streaming 3D Reconstruction</span>
+                </h1>
 
+                <div class="paper-authors" aria-label="Authors">
+                    <a class="author-link" href="https://dongjiacheng06.github.io/" target="_blank" rel="noopener"><span
+                            class="author-link-name">Jiacheng Dong</span><sup>2*</sup></a>
+                    <a class="author-link" href="https://github.com/HuanLi0311" target="_blank" rel="noopener"><span
+                            class="author-link-name">Huan Li</span><sup>1*</sup></a>
+                    <a class="author-link" href="https://tzblog.tech/about/" target="_blank" rel="noopener"><span
+                            class="author-link-name">Sicheng Zhou</span><sup>2*</sup></a>
+                    <a class="author-link" href="https://whhu7.github.io/" target="_blank"
+                        rel="noopener"><span class="author-link-name">Wenhao Hu</span><sup>2</sup></a>
+                    <a class="author-link" href="https://weili-0234.github.io/" target="_blank" rel="noopener"><span
+                            class="author-link-name">Weili Xu</span><sup>2</sup></a>
+                    <a class="author-link" href="https://yanwang202199.github.io/" target="_blank"
+                        rel="noopener"><span class="author-link-name">Yan Wang</span><sup>1&#8224;</sup></a>
+                </div>
 
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Nerfies: Deformable Neural Radiance Fields</h1>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="https://keunhong.com">Keunhong Park</a><sup>1</sup>,</span>
-            <span class="author-block">
-              <a href="https://utkarshsinha.com">Utkarsh Sinha</a><sup>2</sup>,</span>
-            <span class="author-block">
-              <a href="https://jonbarron.info">Jonathan T. Barron</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="http://sofienbouaziz.com">Sofien Bouaziz</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://www.danbgoldman.com">Dan B Goldman</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://homes.cs.washington.edu/~seitz/">Steven M. Seitz</a><sup>1,2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="http://www.ricardomartinbrualla.com">Ricardo Martin-Brualla</a><sup>2</sup>
-            </span>
-          </div>
+                <p class="paper-affiliations">
+                    <span><sup>1</sup>Institute for AI Industry Research, Tsinghua University</span>
+                    <span><sup>2</sup>Zhejiang University</span>
+                </p>
+                <p class="paper-note">* Equal contribution. &#8224; Corresponding author.</p>
 
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>University of Washington,</span>
-            <span class="author-block"><sup>2</sup>Google Research</span>
-          </div>
-
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link. -->
-              <span class="link-block">
-                <a href="https://arxiv.org/pdf/2011.12948"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2011.12948"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-              <!-- Video Link. -->
-              <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span>
-              <!-- Code Link. -->
-              <span class="link-block">
-                <a href="https://github.com/google/nerfies"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                  </a>
-              </span>
-              <!-- Dataset Link. -->
-              <span class="link-block">
-                <a href="https://github.com/google/nerfies/releases/tag/0.1"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Data</span>
-                  </a>
+                <div class="paper-links">
+                    <span class="button secondary is-disabled" aria-disabled="true">
+                        <span class="button-content">
+                            <svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M7 3.75h7.5L19.25 8.5V20.25H7z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/>
+                                <path d="M14.5 3.75v4.75h4.75" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/>
+                                <path d="M9.6 15.2l2.2-4.4 2.2 4.4m-3.45-1.7h2.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/>
+                            </svg>
+                            <span>arXiv</span>
+                        </span>
+                    </span>
+                    <a class="button primary" href="https://github.com/dongjiacheng06/MeMix" target="_blank"
+                        rel="noopener">
+                        <span class="button-content">
+                            <svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 2.75a9.25 9.25 0 0 0-2.93 18.02c.46.08.63-.2.63-.45v-1.6c-2.56.56-3.1-1.09-3.1-1.09-.42-1.07-1.03-1.35-1.03-1.35-.84-.57.06-.56.06-.56.93.07 1.42.95 1.42.95.82 1.42 2.17 1.01 2.7.77.08-.6.32-1.01.58-1.24-2.04-.23-4.19-1.02-4.19-4.55 0-1.01.36-1.84.95-2.49-.1-.23-.41-1.16.09-2.43 0 0 .77-.25 2.53.95a8.75 8.75 0 0 1 4.6 0c1.76-1.2 2.52-.95 2.52-.95.5 1.27.19 2.2.1 2.43.59.65.95 1.48.95 2.49 0 3.54-2.16 4.32-4.22 4.54.33.29.62.85.62 1.71v2.54c0 .25.17.54.64.45A9.25 9.25 0 0 0 12 2.75Z" fill="currentColor"/>
+                            </svg>
+                            <span>Code</span>
+                        </span>
+                    </a>
+                </div>
+                <p class="paper-tldr" role="note" aria-label="TL;DR">
+                    <strong>TL;DR:</strong> Training-free selective memory updates for long-horizon recurrent streaming
+                    3D reconstruction.
+                </p>
             </div>
 
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaser.mp4"
-                type="video/mp4">
-      </video>
-      <h2 class="subtitle has-text-centered">
-        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
-        free-viewpoint
-        portraits.
-      </h2>
-    </div>
-  </div>
-</section>
-
-
-<section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-steve">
-          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/steve.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-chair-tp">
-          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/chair-tp.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-shiba">
-          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/shiba.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-fullbody">
-          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/fullbody.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-blueshirt">
-          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/blueshirt.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-mask">
-          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/mask.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-coffee">
-          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/coffee.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-toby">
-          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/toby2.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            We present the first method capable of photorealistically reconstructing a non-rigidly
-            deforming scene using photos/videos captured casually from mobile phones.
-          </p>
-          <p>
-            Our approach augments neural radiance fields
-            (NeRF) by optimizing an
-            additional continuous volumetric deformation field that warps each observed point into a
-            canonical 5D NeRF.
-            We observe that these NeRF-like deformation fields are prone to local minima, and
-            propose a coarse-to-fine optimization method for coordinate-based models that allows for
-            more robust optimization.
-            By adapting principles from geometry processing and physical simulation to NeRF-like
-            models, we propose an elastic regularization of the deformation field that further
-            improves robustness.
-          </p>
-          <p>
-            We show that <span class="dnerf">Nerfies</span> can turn casually captured selfie
-            photos/videos into deformable NeRF
-            models that allow for photorealistic renderings of the subject from arbitrary
-            viewpoints, which we dub <i>"nerfies"</i>. We evaluate our method by collecting data
-            using a
-            rig with two mobile phones that take time-synchronized photos, yielding train/validation
-            images of the same pose at different viewpoints. We show that our method faithfully
-            reconstructs non-rigidly deforming scenes and reproduces unseen views with high
-            fidelity.
-          </p>
-        </div>
-      </div>
-    </div>
-    <!--/ Abstract. -->
-
-    <!-- Paper video. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-    <!--/ Paper video. -->
-  </div>
-</section>
-
-
-<section class="section">
-  <div class="container is-max-desktop">
-
-    <div class="columns is-centered">
-
-      <!-- Visual Effects. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-3">Visual Effects</h2>
-          <p>
-            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
-            would be impossible without nerfies since it would require going through a wall.
-          </p>
-          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/dollyzoom-stacked.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-      <!--/ Visual Effects. -->
-
-      <!-- Matting. -->
-      <div class="column">
-        <h2 class="title is-3">Matting</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <p>
-              As a byproduct of our method, we can also solve the matting problem by ignoring
-              samples that fall outside of a bounding box during rendering.
-            </p>
-            <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/matting.mp4"
-                      type="video/mp4">
-            </video>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    <!--/ Matting. -->
-
-    <!-- Animation. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Animation</h2>
-
-        <!-- Interpolating. -->
-        <h3 class="title is-4">Interpolating states</h3>
-        <div class="content has-text-justified">
-          <p>
-            We can also animate the scene by interpolating the deformation latent codes of two input
-            frames. Use the slider here to linearly interpolate between the left frame and the right
-            frame.
-          </p>
-        </div>
-        <div class="columns is-vcentered interpolation-panel">
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_start.jpg"
-                 class="interpolation-image"
-                 alt="Interpolate start reference image."/>
-            <p>Start Frame</p>
-          </div>
-          <div class="column interpolation-video-column">
-            <div id="interpolation-image-wrapper">
-              Loading...
+            <div class="container reveal delay-1">
+                <div class="video-placeholder">
+                    <video class="teaser-video" controls autoplay muted loop playsinline preload="auto"
+                        poster="./static/images/teaser-poster.jpg">
+                        <source src="./static/videos/memix-teaser.mp4?v=20260316-1818" type="video/mp4">
+                    </video>
+                </div>
             </div>
-            <input class="slider is-fullwidth is-large is-info"
-                   id="interpolation-slider"
-                   step="1" min="0" max="100" value="0" type="range">
-          </div>
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_end.jpg"
-                 class="interpolation-image"
-                 alt="Interpolation end reference image."/>
-            <p class="is-bold">End Frame</p>
-          </div>
-        </div>
-        <br/>
-        <!--/ Interpolating. -->
+        </section>
 
-        <!-- Re-rendering. -->
-        <h3 class="title is-4">Re-rendering the input video</h3>
-        <div class="content has-text-justified">
-          <p>
-            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
-            viewpoint such as a stabilized camera by playing back the training deformations.
-          </p>
-        </div>
-        <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="75%">
-            <source src="./static/videos/replay.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <!--/ Re-rendering. -->
+        <section id="abstract" class="section">
+            <div class="container narrow reveal">
+                <div class="section-heading centered">
+                    <h2>Abstract</h2>
+                </div>
+                <div class="scholarly-panel prose abstract-prose">
+                    <p>
+                        Reconstruction is a fundamental task in 3D vision and a fundamental capability for spatial
+                        intelligence. Particularly, streaming 3D reconstruction is central to real-time spatial
+                        perception, yet existing recurrent online models often suffer from progressive degradation on
+                        long sequences due to state drift and forgetting, motivating inference-time remedies. We present
+                        MeMix, a training-free, plug-and-play module that improves streaming reconstruction by recasting
+                        the recurrent state into a <strong>Memory Mixture</strong>. MeMix partitions the state into
+                        multiple independent memory patches and updates only the least-aligned memory patches while
+                        exactly preserving others. This selective update mitigates catastrophic forgetting while
+                        retaining O(1) inference memory, and requires no fine-tuning or additional learnable
+                        parameters, making it directly applicable to existing recurrent reconstruction models. Across
+                        standard benchmarks (ScanNet, 7-Scenes, KITTI, etc.), under identical backbones and inference
+                        settings, MeMix reduces reconstruction completeness error by <strong>15.3%</strong> on average
+                        (up to <strong>40.0%</strong>) across 300-500 frame streams on 7-Scenes.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-      </div>
-    </div>
-    <!--/ Animation. -->
+        <section id="visuals" class="section section-muted">
+            <div class="container reveal">
+                <div class="section-heading centered">
+                    <h2>Overview of MeMix</h2>
+                </div>
+
+                <div class="visual-single">
+                    <figure class="feature-figure">
+                        <div class="preview-frame preview-frame-plain overview-frame">
+                            <img src="./static/images/memix-pipeline.png"
+                                alt="Overview figure of MeMix with a ViT encoder, dual-stream decoder, and Bottom-k state updates."
+                                loading="lazy">
+                        </div>
+                        <figcaption class="math-caption">
+                            A ViT encoder encodes each frame to tokens $\mathbf{X}_t$, which interact with state tokens
+                            $\mathbf{S}_{t-1}$ through a dual-stream cross-attention decoder to produce predictions
+                            $\mathbf{Y}_t$ and candidate state $\widehat{\mathbf{S}}_t$. MeMix computes dot scores between
+                            $\widehat{\mathbf{S}}_t$ and ${\mathbf{X}_t}$, selects \texttt{Bottom-k} patches to construct a
+                            binary mask $\mathbf{M}_t$, updating only \texttt{Bottom-K} patches. Decoded image tokens
+                            $\mathbf{Y}_t$ are fed to the prediction head for output.
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section id="demos" class="section section-muted">
+            <div class="container reveal">
+                <div class="section-heading centered">
+                    <h2>Interactive Examples</h2>
+                </div>
+
+                <div class="demo-compare">
+                    <div class="demo-scene-current">
+                        <p class="demo-scene-current-label">Current Scene</p>
+                        <div class="demo-scene-current-main">
+                            <h3 id="demo-scene-title">Office Seq-07</h3>
+                            <p id="demo-scene-pair" class="demo-scene-pair">CUT / CUT w.MeMix · 300 views</p>
+                        </div>
+                    </div>
+
+                    <div class="demo-compare-grid">
+                        <article class="demo-viewer-card">
+                            <div class="demo-viewer-head">
+                                <p class="demo-mode-label">o.MeMix</p>
+                            </div>
+                            <div id="demo-left" class="demo-model-viewer" data-demo-webgl="viewer"
+                                data-demo-sync-group="memix-compare" data-demo-panel="left">
+                                <div class="demo-status">Loading 3D scene...</div>
+                            </div>
+                        </article>
+
+                        <article class="demo-viewer-card">
+                            <div class="demo-viewer-head">
+                                <p class="demo-mode-label">w.MeMix</p>
+                            </div>
+                            <div id="demo-right" class="demo-model-viewer" data-demo-webgl="viewer"
+                                data-demo-sync-group="memix-compare" data-demo-panel="right">
+                                <div class="demo-status">Loading 3D scene...</div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="demo-controls-guide" aria-label="3D interaction guide">
+                        <span class="demo-control-chip"><kbd>Left Drag</kbd><span>Orbit</span></span>
+                        <span class="demo-control-chip"><kbd>Wheel</kbd><span>Zoom</span></span>
+                        <span class="demo-control-chip"><kbd>Right Drag</kbd><span>Pan</span></span>
+                        <span class="demo-control-chip"><kbd>W A S D</kbd><span>Pan</span></span>
+                        <span class="demo-control-chip"><kbd>Hover / Click</kbd><span>Activate Panel</span></span>
+                    </div>
+
+                    <div class="demo-scene-picker" role="tablist" aria-label="Scene selection">
+                        <button class="demo-scene-button is-active" type="button" data-demo-scene="office-seq-07"
+                            aria-pressed="true">
+                            <span class="demo-scene-thumb" aria-hidden="true">
+                                <img src="./static/images/examples/office-seq-07.png" alt="" loading="lazy">
+                            </span>
+                            <span class="demo-scene-name">Office Seq-07</span>
+                            <span class="demo-scene-meta">CUT Pair · 300 views</span>
+                        </button>
+                        <button class="demo-scene-button" type="button" data-demo-scene="green-room" aria-pressed="false">
+                            <span class="demo-scene-thumb" aria-hidden="true">
+                                <img src="./static/images/examples/green-room.png" alt="" loading="lazy">
+                            </span>
+                            <span class="demo-scene-name">Green Room</span>
+                            <span class="demo-scene-meta">CUT Pair · 500 views</span>
+                        </button>
+                        <button class="demo-scene-button" type="button" data-demo-scene="fire-seq-03" aria-pressed="false">
+                            <span class="demo-scene-thumb" aria-hidden="true">
+                                <img src="./static/images/examples/fire-seq-03.png" alt="" loading="lazy">
+                            </span>
+                            <span class="demo-scene-name">Fire Seq-03</span>
+                            <span class="demo-scene-meta">TTT Pair · 400 views</span>
+                        </button>
+                        <button class="demo-scene-button" type="button" data-demo-scene="stairs-seq-01"
+                            aria-pressed="false">
+                            <span class="demo-scene-thumb" aria-hidden="true">
+                                <img src="./static/images/examples/stairs-seq-01.png" alt="" loading="lazy">
+                            </span>
+                            <span class="demo-scene-name">Stairs Seq-01</span>
+                            <span class="demo-scene-meta">TTT Pair · 400 views</span>
+                        </button>
+                        <button class="demo-scene-button" type="button" data-demo-scene="heads-seq-01" aria-pressed="false">
+                            <span class="demo-scene-thumb" aria-hidden="true">
+                                <img src="./static/images/examples/heads-seq-01.png" alt="" loading="lazy">
+                            </span>
+                            <span class="demo-scene-name">Heads Seq-01</span>
+                            <span class="demo-scene-meta">TTSA Pair · 500 views</span>
+                        </button>
+                        <button class="demo-scene-button" type="button" data-demo-scene="redkitchen-seq-03"
+                            aria-pressed="false">
+                            <span class="demo-scene-thumb" aria-hidden="true">
+                                <img src="./static/images/examples/redkitchen-seq-03.png" alt="" loading="lazy">
+                            </span>
+                            <span class="demo-scene-name">Red Kitchen Seq-03</span>
+                            <span class="demo-scene-meta">TTSA Pair · 500 views</span>
+                        </button>
+                    </div>
+
+                    <p class="demo-footnote">Results are downsampled for efficient online rendering, with each frame capped at 1200 points, and camera motion is synced with ~100ms delay.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experiments" class="section">
+            <div class="container reveal">
+                <div class="section-heading centered">
+                    <h2>Experiments</h2>
+                    <p>MeMix delivers consistent gains across multiple recurrent streaming 3D reconstruction backbones.</p>
+                </div>
+
+                <div class="experiment-tabs" role="tablist" aria-label="Experiment tables">
+                    <button class="experiment-tab is-active" type="button" role="tab" aria-selected="true"
+                        data-panel="sparse-3dr">Sparse 3D</button>
+                    <button class="experiment-tab" type="button" role="tab" aria-selected="false"
+                        data-panel="dense-3dr">Dense 3D</button>
+                    <button class="experiment-tab" type="button" role="tab" aria-selected="false"
+                        data-panel="pose">Pose</button>
+                    <button class="experiment-tab" type="button" role="tab" aria-selected="false"
+                        data-panel="depth">Depth</button>
+                    <button class="experiment-tab" type="button" role="tab" aria-selected="false"
+                        data-panel="efficiency">Efficiency</button>
+                </div>
+                <p class="experiment-note">Green cells indicate that <strong>w. MeMix</strong> matches or outperforms the corresponding backbone. Please refer to the paper for the complete tables.</p>
+
+                <div class="table-stack" data-tab-group="experiments">
+                    <article class="scholarly-panel table-panel experiment-panel is-active" data-panel="sparse-3dr">
+                        <div class="table-panel-head">
+                            <h3>Table 2. Sparse 3D Reconstruction Results</h3>
+                            <p>Representative results on 7-Scenes-S, evaluated with 300 views.</p>
+                        </div>
+                        <div class="table-wrap">
+                            <table class="metrics-table">
+                                <thead>
+                                    <tr>
+                                        <th>Method</th>
+                                        <th>MeMix</th>
+                                        <th>Acc Mean &darr;</th>
+                                        <th>Comp Mean &darr;</th>
+                                        <th>NC Mean &uarr;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>CUT3R [3]</td>
+                                        <td>&times;</td>
+                                        <td>0.141</td>
+                                        <td>0.076</td>
+                                        <td>0.543</td>
+                                    </tr>
+                                    <tr class="with-memix">
+                                        <td>CUT3R [3]</td>
+                                        <td>&check;</td>
+                                        <td class="metric-better-cell">0.106</td>
+                                        <td class="metric-better-cell">0.053</td>
+                                        <td class="metric-better-cell">0.550</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TTT3R [11]</td>
+                                        <td>&times;</td>
+                                        <td>0.040</td>
+                                        <td>0.024</td>
+                                        <td>0.567</td>
+                                    </tr>
+                                    <tr class="with-memix">
+                                        <td>TTT3R [11]</td>
+                                        <td>&check;</td>
+                                        <td class="metric-better-cell">0.034</td>
+                                        <td class="metric-better-cell">0.023</td>
+                                        <td class="metric-better-cell">0.567</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TTSA3R [15]</td>
+                                        <td>&times;</td>
+                                        <td>0.036</td>
+                                        <td>0.035</td>
+                                        <td>0.566</td>
+                                    </tr>
+                                    <tr class="with-memix">
+                                        <td>TTSA3R [15]</td>
+                                        <td>&check;</td>
+                                        <td class="metric-better-cell">0.026</td>
+                                        <td class="metric-better-cell">0.021</td>
+                                        <td class="metric-better-cell">0.568</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+
+                    <article class="scholarly-panel table-panel experiment-panel" data-panel="dense-3dr" hidden>
+                        <div class="table-panel-head">
+                            <h3>Table 5. Dense 3D Reconstruction Results</h3>
+                            <p>Representative results on 7-Scenes-D, evaluated with 300 views.</p>
+                        </div>
+                        <div class="table-wrap">
+                            <table class="metrics-table">
+                                <thead>
+                                    <tr>
+                                        <th>Method</th>
+                                        <th>MeMix</th>
+                                        <th>Acc Mean &darr;</th>
+                                        <th>Comp Mean &darr;</th>
+                                        <th>NC Mean &uarr;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>CUT3R [3]</td><td>&times;</td><td>0.099</td><td>0.048</td><td>0.542</td></tr>
+                                    <tr class="with-memix"><td>CUT3R [3]</td><td>&check;</td><td class="metric-better-cell">0.076</td><td class="metric-better-cell">0.039</td><td class="metric-better-cell">0.549</td></tr>
+                                    <tr><td>TTT3R [11]</td><td>&times;</td><td>0.030</td><td>0.019</td><td>0.558</td></tr>
+                                    <tr class="with-memix"><td>TTT3R [11]</td><td>&check;</td><td class="metric-better-cell">0.030</td><td class="metric-better-cell">0.019</td><td class="metric-better-cell">0.559</td></tr>
+                                    <tr><td>TTSA3R [15]</td><td>&times;</td><td>0.023</td><td>0.018</td><td>0.558</td></tr>
+                                    <tr class="with-memix"><td>TTSA3R [15]</td><td>&check;</td><td class="metric-better-cell">0.022</td><td class="metric-better-cell">0.017</td><td class="metric-better-cell">0.559</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+
+                    <article class="scholarly-panel table-panel experiment-panel" data-panel="pose" hidden>
+                        <div class="table-panel-head">
+                            <h3>Table 6. Evaluation on Short-Sequence Pose Estimation</h3>
+                            <p>Selected pose metrics with clearer gains on TUM-dynamics, ScanNet, and Sintel.</p>
+                        </div>
+                        <div class="table-wrap">
+                            <table class="metrics-table">
+                                <thead>
+                                    <tr>
+                                        <th>Method</th>
+                                        <th>MeMix</th>
+                                        <th>TUM ATE &darr;</th>
+                                        <th>TUM RPE rot &darr;</th>
+                                        <th>ScanNet ATE &darr;</th>
+                                        <th>Sintel RPE trans &darr;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>CUT3R [3]</td><td>&times;</td><td>0.045</td><td>0.443</td><td>0.096</td><td>0.069</td></tr>
+                                    <tr class="with-memix"><td>CUT3R [3]</td><td>&check;</td><td class="metric-better-cell">0.043</td><td class="metric-better-cell">0.424</td><td class="metric-better-cell">0.090</td><td>0.075</td></tr>
+                                    <tr><td>TTT3R [11]</td><td>&times;</td><td>0.029</td><td>0.380</td><td>0.065</td><td>0.093</td></tr>
+                                    <tr class="with-memix"><td>TTT3R [11]</td><td>&check;</td><td class="metric-better-cell">0.028</td><td class="metric-better-cell">0.376</td><td class="metric-better-cell">0.065</td><td class="metric-better-cell">0.083</td></tr>
+                                    <tr><td>TTSA3R [15]</td><td>&times;</td><td>0.026</td><td>0.372</td><td>0.058</td><td>0.084</td></tr>
+                                    <tr class="with-memix"><td>TTSA3R [15]</td><td>&check;</td><td class="metric-better-cell">0.025</td><td class="metric-better-cell">0.372</td><td class="metric-better-cell">0.057</td><td class="metric-better-cell">0.084</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+
+                    <article class="scholarly-panel table-panel experiment-panel" data-panel="depth" hidden>
+                        <div class="table-panel-head">
+                            <h3>Table 7. Video Depth Estimation</h3>
+                            <p>Selected per-sequence-scale metrics that most clearly show the depth gains of MeMix.</p>
+                        </div>
+                        <div class="table-wrap">
+                            <table class="metrics-table">
+                                <thead>
+                                    <tr>
+                                        <th>Method</th>
+                                        <th>MeMix</th>
+                                        <th>KITTI Abs Rel &darr;</th>
+                                        <th>KITTI &delta; &lt; 1.25 &uarr;</th>
+                                        <th>Sintel Abs Rel &darr;</th>
+                                        <th>Sintel &delta; &lt; 1.25 &uarr;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>CUT3R [3]</td><td>&times;</td><td>0.116</td><td>88.1</td><td>0.426</td><td>47.3</td></tr>
+                                    <tr class="with-memix"><td>CUT3R [3]</td><td>&check;</td><td class="metric-better-cell">0.115</td><td class="metric-better-cell">88.6</td><td>0.436</td><td>46.2</td></tr>
+                                    <tr><td>TTT3R [11]</td><td>&times;</td><td>0.107</td><td>91.2</td><td>0.409</td><td>48.9</td></tr>
+                                    <tr class="with-memix"><td>TTT3R [11]</td><td>&check;</td><td class="metric-better-cell">0.103</td><td class="metric-better-cell">92.1</td><td class="metric-better-cell">0.407</td><td class="metric-better-cell">49.2</td></tr>
+                                    <tr><td>TTSA3R [15]</td><td>&times;</td><td>0.103</td><td>91.9</td><td>0.410</td><td>49.6</td></tr>
+                                    <tr class="with-memix"><td>TTSA3R [15]</td><td>&check;</td><td class="metric-better-cell">0.103</td><td class="metric-better-cell">92.2</td><td class="metric-better-cell">0.400</td><td class="metric-better-cell">50.2</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+
+                    <article class="scholarly-panel table-panel experiment-panel" data-panel="efficiency" hidden>
+                        <div class="table-panel-head">
+                            <h3>Table 4. Efficiency</h3>
+                            <p>Inference FPS and peak GPU memory on KITTI. MeMix keeps GPU memory unchanged under the reported settings.</p>
+                        </div>
+                        <div class="table-wrap">
+                            <table class="metrics-table efficiency-table">
+                                <thead>
+                                    <tr>
+                                        <th>Method</th>
+                                        <th>FPS w/o</th>
+                                        <th>FPS w.</th>
+                                        <th>GPU w/o</th>
+                                        <th>GPU w.</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>CUT3R</td>
+                                        <td>14.39</td>
+                                        <td>14.13</td>
+                                        <td>5.31 GB</td>
+                                        <td>5.31 GB</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TTT3R</td>
+                                        <td>12.72</td>
+                                        <td>12.81</td>
+                                        <td>6.96 GB</td>
+                                        <td>6.96 GB</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TTSA3R</td>
+                                        <td>12.58</td>
+                                        <td>12.78</td>
+                                        <td>6.63 GB</td>
+                                        <td>6.63 GB</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
 
 
-    <!-- Concurrent Work. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
-
-        <div class="content has-text-justified">
-          <p>
-            There's a lot of excellent work that was introduced around the same time as ours.
-          </p>
-          <p>
-            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
-          </p>
-          <p>
-            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
-            both use deformation fields to model non-rigid scenes.
-          </p>
-          <p>
-            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
-          </p>
-          <p>
-            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
-          </p>
-        </div>
-      </div>
-    </div>
-    <!--/ Concurrent Work. -->
-
-  </div>
-</section>
-
-
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@article{park2021nerfies,
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
+        <section id="bibtex" class="section">
+            <div class="container narrow reveal">
+                <div class="section-heading centered">
+                    <h2>BibTeX</h2>
+                </div>
+                <div class="scholarly-panel code-panel">
+                    <div class="code-panel-head">
+                        <button class="code-copy-button" type="button" data-copy-target="bibtex-code"
+                            data-copy-default="Copy" aria-label="Copy BibTeX">
+                            Copy
+                        </button>
+                    </div>
+                    <pre><code id="bibtex-code">@misc{dong2026memix,
+  title  = {MeMix: Writing Less, Remembering More for Streaming 3D Reconstruction},
+  author = {Jiacheng Dong and Huan Li and Sicheng Zhou and Wenhao Hu and Weili Xu and Yan Wang},
+  year   = {2026},
+  note   = {Preprint}
 }</code></pre>
-  </div>
-</section>
+                </div>
+            </div>
+        </section>
+    </main>
 
-
-<footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-      <a class="icon-link"
-         href="./static/videos/nerfies_paper.pdf">
-        <i class="fas fa-file-pdf"></i>
-      </a>
-      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-            Please remember to remove the analytics code included in the header of the website which
-            you do not want on your website.
-          </p>
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <p>Design borrowed from <a href="https://nerfies.github.io/" target="_blank" rel="noopener">Nerfies</a>.</p>
         </div>
-      </div>
-    </div>
-  </div>
-</footer>
-
+    </footer>
 </body>
+
 </html>
