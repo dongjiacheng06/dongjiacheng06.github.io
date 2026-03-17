@@ -16,7 +16,6 @@ main:
     notes: "Preprint"
   - title: "TBR: A Training-Free Framework for Rapid Background Removal in Large-Scale Point Clouds"
     authors: "<strong>Jiacheng Dong</strong>, Yuxiao Zheng, Maolin Tian, Jun Liang, Jixing Cao"
-    conference: "Pattern Recognition, under review, 2025"
     image: ./assets/images/TBR.png
     summary: "I led the complete rewrite of the Python implementation, achieving a 20x performance improvement, and led manuscript writing covering methodology, experiments, and analysis."
     notes: "Under review"
