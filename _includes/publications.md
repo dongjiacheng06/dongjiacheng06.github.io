@@ -20,7 +20,9 @@
       {% if link.authors %}
       <div class="author">{{ link.authors }}</div>
       {% endif %}
+      {% if link.conference %}
       <div class="periodical"><em>{{ link.conference }}</em></div>
+      {% endif %}
       <div class="links">
         {% if link.arxiv %}
         <a href="{{ link.arxiv }}" class="btn btn-sm z-depth-0" role="button" target="_blank" style="font-size:12px;">arXiv</a>
@@ -29,7 +31,7 @@
         <a href="{{ link.code }}" class="btn btn-sm z-depth-0" role="button" target="_blank" style="font-size:12px;">Code</a>
         {% endif %}
         {% if link.page %}
-        <a href="{{ link.page }}" class="btn btn-sm z-depth-0" role="button" target="_blank" style="font-size:12px;">Project Page</a>
+        <a href="{{ link.page }}" class="btn btn-sm z-depth-0" role="button" target="_blank" style="font-size:12px;">Project</a>
         {% endif %}
         {% if link.notes %}
         <strong><i style="color:#e74d3c">{{ link.notes }}</i></strong>

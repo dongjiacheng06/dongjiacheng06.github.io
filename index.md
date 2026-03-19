@@ -17,6 +17,7 @@ My research focuses on understanding and modeling the dynamic 3D world. Current 
 - 3D representation learning for geometry, motion, and generation.
 
 ## News
+- **[Mar. 2026]** MeMix is out!
 - **[Dec. 2025]** Our paper **RecurGS** is out!
 - **[Oct. 2025]** Awarded the National Scholarship for academic excellence.
 - **[Jul. 2025]** Personal academic homepage launched.
