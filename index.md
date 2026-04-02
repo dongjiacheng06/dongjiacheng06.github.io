@@ -6,6 +6,8 @@ layout: homepage
 
 I am an undergraduate in Electrical Engineering at the ZJU-UIUC Institute of Zhejiang University (B.S. 2024-2028). I am an incoming research intern at HKUST, advised by [Professor Yinghao Xu](https://justimyhxu.github.io/). My research focuses on understanding and modeling the dynamic 3D world, with current interests in streaming 4D perception, long-context vision models, and 3D representation learning. 
 
+I welcome any collaboration or discussion, whether with seniors or peers. I am also happy to discuss potential research fit and collaboration opportunities, especially in the areas of 3D vision(and applications), representation learning, and long-context vision models. Please feel free to reach out to me via email or social media! 
+
 ## Research Interests
 
 My research focuses on understanding and modeling the dynamic 3D world. Current interests include:

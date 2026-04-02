@@ -101,6 +101,15 @@ body.wechat-modal-open {
   line-height: 1.6;
 }
 
+h2 {
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.18em;
+  -webkit-text-decoration-color: #f0a126;
+  text-decoration-color: #f0a126;
+}
+
 .section-list ol.bibliography {
   list-style: none;
   padding: 0;
