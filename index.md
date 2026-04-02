@@ -4,9 +4,7 @@ layout: homepage
 
 ## About Me
 
-I am an undergraduate in Electrical Engineering at the ZJU-UIUC Institute of Zhejiang University (B.S. 2024-2028). My research focuses on understanding and modeling the dynamic 3D world, with current interests in streaming 4D perception, long-context vision models, and 3D representation learning. Since July 2025, I have been working with [Prof. Gaoang Wang](https://cvnext.github.io/) in the CVNext Lab.
-
-I am currently interested in test-time training as a form of memory for long-context visual understanding.
+I am an undergraduate in Electrical Engineering at the ZJU-UIUC Institute of Zhejiang University (B.S. 2024-2028). I am an incoming research intern at HKUST, advised by [Professor Yinghao Xu](https://justimyhxu.github.io/). My research focuses on understanding and modeling the dynamic 3D world, with current interests in streaming 4D perception, long-context vision models, and 3D representation learning. 
 
 ## Research Interests
 
@@ -17,10 +15,9 @@ My research focuses on understanding and modeling the dynamic 3D world. Current 
 - 3D representation learning for geometry, motion, and generation.
 
 ## News
-- **[Mar. 2026]** MeMix is out!
+- **[Mar. 2026]** **MeMix** is out! See our project page for more details.
 - **[Dec. 2025]** Our paper **RecurGS** is out!
 - **[Oct. 2025]** Awarded the National Scholarship for academic excellence.
-- **[Jul. 2025]** Personal academic homepage launched.
 - **[Feb. 2025]** Won the Outstanding Award and SIAM Award in MCM 2025.
 - **[Sep. 2024]** Enrolled at the ZJU-UIUC Institute, Zhejiang University.
 
@@ -35,17 +32,16 @@ My research focuses on understanding and modeling the dynamic 3D world. Current 
 
 ## Research Experience
 
-- **Jul. 2025 - Present**, Research Assistant, CVNext Lab, ZJU-UIUC Institute
+- **Jul. 2025 - Mar. 2026**, Research Assistant, CVNext Lab, ZJU-UIUC Institute
   - Advisor: Prof. Gaoang Wang
   - Focus: streaming 4D perception, long-context vision models, and dynamic 3D world understanding
 - **Nov. 2024 - Present**, Undergraduate Researcher, Prof. Jixing Cao's Lab
   - Focus: point cloud understanding and efficient large-scale 3D scene processing
   - Led the core implementation and manuscript writing for the TBR project
 
-## Awards and Honors
+{% include_relative _includes/selected_awards.html %}
 
-- **National Scholarship**, Ministry of Education, China, Oct. 2025
-- **Outstanding Award and SIAM Award**, MCM 2025, Feb. 2025
+{% include_relative _includes/my_friends.html %}
 
 ## Visitors
 
