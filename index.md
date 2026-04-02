@@ -4,9 +4,11 @@ layout: homepage
 
 ## About Me
 
-I am an undergraduate in Electrical Engineering at the ZJU-UIUC Institute of Zhejiang University (B.S. 2024-2028). I am an incoming research intern at HKUST, advised by [Professor Yinghao Xu](https://justimyhxu.github.io/). My research focuses on understanding and modeling the dynamic 3D world, with current interests in streaming 4D perception, long-context vision models, and 3D representation learning. 
+I am currently a sophomore in Electrical Engineering at the [ZJU-UIUC Institute](https://zjui.intl.zju.edu.cn/en) of Zhejiang University. I am an incoming research intern at the Hong Kong University of Science and Technology, advised by [Professor Yinghao Xu](https://justimyhxu.github.io/). Before that, I was a research assistant at the CVNext Lab, ZJU-UIUC Institute, advised by [Professor Gaoang Wang](https://cvnext.github.io/).
 
-I welcome any collaboration or discussion, whether with seniors or peers. I am also happy to discuss potential research fit and collaboration opportunities, especially in the areas of 3D vision(and applications), representation learning, and long-context vision models. Please feel free to reach out to me via email or social media! 
+My research focuses on understanding and modeling the dynamic 3D world, with current interests in streaming 4D perception, long-context vision models, and 3D representation learning.
+
+I welcome any collaboration or discussion, whether with seniors or peers. I am also happy to discuss potential research fit and collaboration opportunities. Please feel free to reach out to me via email or wechat. &#x1F91D;
 
 ## Research Interests
 
@@ -43,7 +45,15 @@ My research focuses on understanding and modeling the dynamic 3D world. Current 
 
 {% include_relative _includes/selected_awards.html %}
 
+
 {% include_relative _includes/my_friends.html %}
+
+## Personality
+
+- &#x1F3D3; I have a great passion for sports, especially table tennis, fitness and running. I am a member of the IZJU table tennis team and I particularly enjoy the spin-pushing playing style.
+- &#x1F4F7; I also have a strong fondness for photography. I like to capture some human landscapes and a corner of the city.
+- &#x1F3B5; At the same time, I really like music. Currently, I am deeply obsessed with R&B and Chinese folk music.
+- &#x1F4DA; Finally, I really like reading. From philosophy and economics to online novels, I am very enthusiastic about all of them.
 
 ## Visitors
 
