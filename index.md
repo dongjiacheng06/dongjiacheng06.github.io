@@ -4,7 +4,7 @@ layout: homepage
 
 ## About Me
 
-I am a sophomore majoring in Electrical Engineering at Zhejiang University's [ZJU-UIUC Institute](https://zjui.intl.zju.edu.cn/en). I am currently a research intern at the Hong Kong University of Science and Technology, where I am supervised by [Professor Yinghao Xu](https://justimyhxu.github.io/) and mentored by [Linzhuo Chen](https://linzhuo.xyz/). Previously, I worked as a research assistant at the CVNext Lab in the ZJU-UIUC Institute under the supervision of [Professor Gaoang Wang](https://cvnext.github.io/).
+I am a sophomore majoring in Electrical Engineering at Zhejiang University's [ZJU-UIUC Institute](https://zjui.intl.zju.edu.cn/en). I will join HKUST as a research intern in Summer 2026, where I will be advised by [Professor Yinghao Xu](https://justimyhxu.github.io/) and mentored by [Linzhuo Chen](https://linzhuo.xyz/). Previously, I worked as a research assistant at the CVNext Lab in the ZJU-UIUC Institute under the supervision of [Professor Gaoang Wang](https://cvnext.github.io/).
 
 My research focuses on understanding and modeling the dynamic 3D world, with current interests in streaming 4D perception, long-context vision models, and 3D representation learning.
 
