@@ -39,7 +39,7 @@ My research focuses on understanding and modeling the dynamic 3D world. Current 
 - **Jul. 2025 - Mar. 2026**, Research Assistant, CVNext Lab, ZJU-UIUC Institute
   - Advisor: Prof. Gaoang Wang
   - Focus: streaming 4D perception, long-context vision models, and dynamic 3D world understanding
-- **Nov. 2024 - Present**, Undergraduate Researcher, Prof. Jixing Cao's Lab
+- **Nov. 2024 - Jun. 2025**, Undergraduate Researcher, Prof. Jixing Cao's Lab
   - Focus: point cloud understanding and efficient large-scale 3D scene processing
   - Led the core implementation and manuscript writing for the TBR project
 
