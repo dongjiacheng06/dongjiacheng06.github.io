@@ -5,12 +5,15 @@
 header .image.avatar {
   display: inline-block;
   width: min(100%, 180px);
+  overflow: hidden;
 }
 
 header .image.avatar img {
-  width: 100%;
+  width: calc(100% + 16px);
   height: auto;
   display: block;
+  max-width: none;
+  margin-left: -8px;
 }
 
 .news-board {
