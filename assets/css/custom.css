@@ -9,11 +9,11 @@ header .image.avatar {
 }
 
 header .image.avatar img {
-  width: calc(100% + 16px);
+  width: calc(100% + 28px);
   height: auto;
   display: block;
   max-width: none;
-  margin-left: -8px;
+  margin-left: -14px;
 }
 
 .news-board {
