@@ -3,17 +3,19 @@
 }
 
 header .image.avatar {
-  display: inline-block;
+  display: block;
   width: min(100%, 180px);
+  margin: 0 auto 1em;
   overflow: hidden;
 }
 
 header .image.avatar img {
-  width: calc(100% + 28px);
+  width: 100%;
   height: auto;
   display: block;
-  max-width: none;
-  margin-left: -14px;
+  max-width: 100%;
+  margin-left: 0;
+  padding: 0;
 }
 
 .news-board {
