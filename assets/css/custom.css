@@ -2,10 +2,6 @@
   margin-top: 2rem;
 }
 
-.image.avatar img {
-  object-position: 50% 22%;
-}
-
 .news-board {
   margin: 1.3rem 0 2.15rem;
   display: grid;
