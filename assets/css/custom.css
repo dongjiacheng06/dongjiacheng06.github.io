@@ -2,22 +2,6 @@
   margin-top: 2rem;
 }
 
-header .image.avatar {
-  display: block;
-  width: min(100%, 180px);
-  margin: 0 auto 1em;
-  overflow: hidden;
-}
-
-header .image.avatar img {
-  width: 100%;
-  height: auto;
-  display: block;
-  max-width: 100%;
-  margin-left: 0;
-  padding: 0;
-}
-
 .news-board {
   margin: 1.3rem 0 2.15rem;
   display: grid;
