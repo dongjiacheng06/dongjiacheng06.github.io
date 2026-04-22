@@ -4,7 +4,7 @@
 
 header .image.avatar {
   display: inline-block;
-  width: min(100%, 200px);
+  width: min(100%, 180px);
 }
 
 header .image.avatar img {
@@ -213,7 +213,7 @@ h2 {
 
 @media (max-width: 760px) {
   header .image.avatar {
-    width: min(62vw, 180px);
+    width: min(56vw, 160px);
   }
 
   .news-item {
