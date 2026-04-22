@@ -2,6 +2,17 @@
   margin-top: 2rem;
 }
 
+header .image.avatar {
+  display: inline-block;
+  width: min(100%, 240px);
+}
+
+header .image.avatar img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .news-board {
   margin: 1.3rem 0 2.15rem;
   display: grid;
@@ -201,6 +212,10 @@ h2 {
 }
 
 @media (max-width: 760px) {
+  header .image.avatar {
+    width: min(72vw, 220px);
+  }
+
   .news-item {
     grid-template-columns: 1fr;
     gap: 0.65rem;
