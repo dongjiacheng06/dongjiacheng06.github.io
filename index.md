@@ -4,7 +4,7 @@ layout: homepage
 
 ## About Me
 
-I am a sophomore majoring in Electrical Engineering at Zhejiang University's [ZJU-UIUC Institute](https://zjui.intl.zju.edu.cn/en). Previously, I worked as a research assistant at the CVNext Lab in the ZJU-UIUC Institute under the supervision of [Professor Gaoang Wang](https://cvnext.github.io/).
+I am a sophomore majoring in Electrical Engineering at Zhejiang University's [ZJU-UIUC Institute](https://zjui.intl.zju.edu.cn/en). Currently, I am a Research Intern at RobbyAnt, mentored by [Prof. Yinghao Xu](https://justimyhxu.github.io/). Previously, I worked as a research assistant at the CVNext Lab in the ZJU-UIUC Institute under the supervision of [Prof. Gaoang Wang](https://cvnext.github.io/).
 
 My research focuses on understanding and modeling the dynamic 3D world, with current interests in streaming 4D perception, long-context vision models, and 3D representation learning.
 
@@ -34,19 +34,9 @@ My research focuses on understanding and modeling the dynamic 3D world. Current 
 - **B.S. in Electrical Engineering**, ZJU-UIUC Institute, Zhejiang University, 2024-2028 (expected)
 - GPA: 3.86/4.0, 4.14/4.3
 
-## Research Experience
-
-- **Jul. 2025 - Mar. 2026**, Research Assistant, CVNext Lab, ZJU-UIUC Institute
-  - Advisor: Prof. Gaoang Wang
-  - Focus: streaming 4D perception, long-context vision models, and dynamic 3D world understanding
-- **Nov. 2024 - Jun. 2025**, Undergraduate Researcher, Prof. Jixing Cao's Lab
-  - Focus: point cloud understanding and efficient large-scale 3D scene processing
-  - Led the core implementation and manuscript writing for the TBR project
+{% include_relative _includes/experience.html %}
 
 {% include_relative _includes/selected_awards.html %}
-
-
-{% include_relative _includes/my_friends.html %}
 
 ## Personality
 
