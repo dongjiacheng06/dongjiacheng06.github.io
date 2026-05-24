@@ -43,6 +43,17 @@ a:hover {
   color: var(--green);
 }
 
+#about-me + p a {
+  color: var(--red);
+  font-weight: 620;
+  border-bottom: 1px solid rgba(195, 79, 63, 0.32);
+}
+
+#about-me + p a:hover {
+  color: var(--green);
+  border-bottom-color: rgba(20, 117, 104, 0.5);
+}
+
 strong,
 autocolor {
   color: var(--ink);
@@ -734,6 +745,10 @@ small {
 
   a:hover {
     color: var(--green);
+  }
+
+  #about-me + p a {
+    border-bottom-color: rgba(255, 144, 125, 0.38);
   }
 
   .profile-card,
