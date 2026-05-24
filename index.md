@@ -53,10 +53,24 @@ My research focuses on understanding and modeling the dynamic 3D world:
 
 ## Personality
 
-- &#x1F3D3; I have a great passion for sports, especially table tennis, fitness and running. I am a member of the IZJU table tennis team and I particularly enjoy the spin-pushing playing style.
-- &#x1F4F7; I also have a strong fondness for photography. I like to capture some human landscapes and a corner of the city.
-- &#x1F3B5; At the same time, I really like music. Currently, I am deeply obsessed with R&B and Chinese folk music.
-- &#x1F4DA; Finally, I really like reading. From philosophy and economics to online novels, I am very enthusiastic about all of them.
+<div class="personality-grid">
+  <div class="hobby-card">
+    <span class="hobby-icon">&#x1F3D3;</span>
+    <div class="hobby-body"><strong>Sports.</strong> Table tennis, fitness and running. Member of the IZJU table tennis team; I play a spin-pushing style.</div>
+  </div>
+  <div class="hobby-card">
+    <span class="hobby-icon">&#x1F4F7;</span>
+    <div class="hobby-body"><strong>Photography.</strong> Capturing human landscapes and quiet corners of the city.</div>
+  </div>
+  <div class="hobby-card">
+    <span class="hobby-icon">&#x1F3B5;</span>
+    <div class="hobby-body"><strong>Music.</strong> Currently deep in R&amp;B and Chinese folk.</div>
+  </div>
+  <div class="hobby-card">
+    <span class="hobby-icon">&#x1F4DA;</span>
+    <div class="hobby-body"><strong>Reading.</strong> From philosophy and economics to online novels &mdash; all of it.</div>
+  </div>
+</div>
 
 ## Visitors
 
