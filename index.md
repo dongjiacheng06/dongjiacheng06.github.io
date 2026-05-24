@@ -45,10 +45,7 @@ My research focuses on understanding and modeling the dynamic 3D world:
 
 {% include_relative _includes/projects.md %}
 
-## Education
-
-- **B.S. in Electrical Engineering**, ZJU-UIUC Institute, Zhejiang University, 2024-2028 (expected)
-- GPA: 3.86/4.0, 4.14/4.3
+{% include_relative _includes/education.html %}
 
 {% include_relative _includes/experience.html %}
 
