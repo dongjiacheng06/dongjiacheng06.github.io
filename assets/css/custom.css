@@ -505,44 +505,6 @@ h2::before {
   font-weight: 760;
 }
 
-.personality-grid {
-  margin: 1.1rem 0 1.85rem;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.75rem;
-}
-
-.personality-grid .hobby-card {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 0.78rem;
-  padding: 0.85rem 0.9rem;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--surface);
-  box-shadow: var(--shadow-soft);
-}
-
-.personality-grid .hobby-icon {
-  flex: 0 0 auto;
-  font-size: 1.35rem;
-  line-height: 1;
-  margin-top: 0.12rem;
-}
-
-.personality-grid .hobby-body {
-  flex: 1 1 auto;
-  min-width: 0;
-  color: var(--ink-soft);
-  font-size: 0.93rem;
-  line-height: 1.52;
-}
-
-.personality-grid .hobby-body strong {
-  color: var(--ink);
-}
-
 .visitor-panel {
   min-height: 240px;
   padding: 0.75rem;
@@ -741,10 +703,6 @@ small {
     height: 58px;
   }
 
-  .personality-grid {
-    grid-template-columns: 1fr;
-    gap: 0.65rem;
-  }
 }
 
 @media (max-width: 420px) {
@@ -799,7 +757,6 @@ small {
   .profile-card,
   .section-list .card-item,
   .experience-grid .exp-card,
-  .personality-grid .hobby-card,
   .visitor-panel {
     background: var(--surface);
   }
