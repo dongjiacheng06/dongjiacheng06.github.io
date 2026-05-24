@@ -1,84 +1,349 @@
-.section-list {
-  margin-top: 2rem;
+:root {
+  --page-bg: #f6f8fb;
+  --surface: #ffffff;
+  --surface-soft: #f2f5f8;
+  --ink: #172033;
+  --ink-soft: #344054;
+  --muted: #6b7485;
+  --line: rgba(23, 32, 51, 0.12);
+  --line-strong: rgba(23, 32, 51, 0.18);
+  --blue: #174c73;
+  --blue-soft: #e8f1f7;
+  --green: #147568;
+  --amber: #b8661d;
+  --red: #c34f3f;
+  --shadow: 0 18px 44px rgba(23, 32, 51, 0.09);
+  --shadow-soft: 0 10px 26px rgba(23, 32, 51, 0.07);
 }
 
-.news-board {
-  margin: 1.3rem 0 2.15rem;
-  display: grid;
-  gap: 0.55rem;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--page-bg);
+  color: var(--ink-soft);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.68;
 }
 
-.wechat-modal[hidden] {
-  display: none;
+a {
+  color: var(--blue);
+  text-decoration: none;
 }
 
-.wechat-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 999;
+a:hover {
+  color: var(--green);
 }
 
-.wechat-modal-backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(12, 18, 28, 0.42);
-  backdrop-filter: blur(2px);
+strong,
+autocolor {
+  color: var(--ink);
 }
 
-.wechat-modal-panel {
-  position: relative;
-  width: min(92vw, 360px);
-  margin: 8vh auto 0;
-  padding: 0.95rem;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.98);
-  border: 1px solid rgba(4, 51, 97, 0.1);
-  box-shadow: 0 20px 48px rgba(4, 51, 97, 0.18);
+p,
+ul,
+ol,
+table,
+pre,
+dl {
+  margin: 0 0 1.05rem;
+}
+
+.wrapper {
+  width: min(100% - 48px, 1080px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 286px minmax(0, 1fr);
+  gap: 48px;
+}
+
+header.profile-sidebar {
+  width: auto;
+  float: none;
+  position: sticky;
+  top: 28px;
+  align-self: start;
+  padding-top: 2.8rem;
+  text-align: left;
+}
+
+.profile-card {
+  padding: 1.15rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: var(--shadow);
+}
+
+.profile-avatar {
+  display: block;
+  width: 178px;
+  height: 178px;
+  margin: 0 auto 1.05rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  background: var(--surface-soft);
+}
+
+.profile-avatar img {
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+  border-radius: 50% !important;
+  object-fit: cover;
+  display: block;
+}
+
+.profile-kicker {
+  color: var(--green);
+  font-size: 0.74rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  line-height: 1.35;
+  margin-bottom: 0.45rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+header h1 {
+  color: var(--ink);
+  font-size: 1.8rem;
+  font-weight: 760;
+  line-height: 1.08;
+  margin: 0 0 0.75rem;
   text-align: center;
 }
 
-.wechat-modal-panel img {
-  width: 100%;
-  height: auto;
+.profile-meta {
+  display: grid;
+  gap: 0.22rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.profile-meta position {
   display: block;
-  border-radius: 14px;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  font-weight: 620;
 }
 
-.wechat-modal-title {
-  margin-bottom: 0.6rem;
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: #043361;
+.profile-meta email {
+  display: block;
+  color: var(--muted);
+  font-family: "Ubuntu Mono", ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  font-size: 0.89rem;
 }
 
-.wechat-modal-close {
-  position: absolute;
-  top: 0.35rem;
-  right: 0.5rem;
-  width: 2rem;
-  height: 2rem;
-  border: none;
-  background: transparent;
-  color: #5a6573;
-  font-size: 1.45rem;
+.social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.45rem;
+  margin: 1rem 0 0.95rem;
+}
+
+.social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  margin: 0 !important;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--blue) !important;
+  font-size: 1.04rem;
   line-height: 1;
-  cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, color 160ms ease;
 }
 
-body.wechat-modal-open {
-  overflow: hidden;
+.social-icons a:hover {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+.social-icons i {
+  font-size: 1.08rem !important;
+  line-height: 1;
+}
+
+.social-icons .social-xiaohongshu {
+  width: 1.02rem;
+  height: 1.02rem;
+  border-radius: 0.22rem;
+  display: block;
+}
+
+.profile-nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.35rem 0.8rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--line);
+}
+
+.profile-nav a {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 620;
+  line-height: 1.35;
+  border-bottom: 1px solid transparent;
+}
+
+.profile-nav a:hover {
+  color: var(--green);
+  border-bottom-color: rgba(20, 117, 104, 0.35);
+}
+
+section.page-content {
+  width: auto;
+  float: none;
+  padding-top: 3rem;
+  padding-bottom: 3.5rem;
+}
+
+.intro-panel {
+  margin: 0 0 2.2rem;
+  padding: 0 0 1.35rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.intro-eyebrow {
+  margin: 0 0 0.45rem;
+  color: var(--amber);
+  font-size: 0.82rem;
+  font-weight: 760;
+  letter-spacing: 0.12em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.intro-lead {
+  max-width: 690px;
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(1.45rem, 1.2rem + 0.9vw, 2.05rem);
+  font-weight: 730;
+  letter-spacing: 0;
+  line-height: 1.18;
+}
+
+.intro-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1.05rem;
+}
+
+.intro-actions a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.15rem;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  font-weight: 650;
+}
+
+.intro-actions a:hover {
+  border-color: rgba(20, 117, 104, 0.5);
+  color: var(--green);
+}
+
+h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--ink);
+  font-size: 1.28rem;
+  font-weight: 760;
+  letter-spacing: 0;
+  line-height: 1.25;
+  margin: 2rem 0 0.85rem !important;
+  text-decoration: none;
+}
+
+h2::before {
+  content: "";
+  width: 1.85rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--amber);
+  flex: 0 0 auto;
+}
+
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 1.1rem 0 1.8rem;
+}
+
+.research-card {
+  display: grid;
+  gap: 0.7rem;
+  min-height: 11.4rem;
+  padding: 0.95rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.research-index {
+  color: var(--green);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.research-card strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.98rem;
+  line-height: 1.32;
+}
+
+.research-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.91rem;
+  line-height: 1.55;
+}
+
+.news-board {
+  position: relative;
+  margin: 1.1rem 0 2.2rem;
+  display: grid;
+  gap: 0.25rem;
+  font-family: inherit;
 }
 
 .news-item {
   display: grid;
-  grid-template-columns: 88px minmax(0, 1fr);
-  gap: 0.95rem;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 1rem;
   align-items: baseline;
-  padding: 0.25rem 0;
-  border: none;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(23, 32, 51, 0.08);
   background: transparent;
   box-shadow: none;
   border-radius: 0;
@@ -86,166 +351,41 @@ body.wechat-modal-open {
 
 .news-date {
   display: inline-block;
-  color: #8a93a3;
-  font-size: 0.82rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
+  color: var(--green);
+  font-size: 0.78rem;
+  font-weight: 760;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
   text-transform: uppercase;
   white-space: nowrap;
   background: transparent;
   padding: 0;
-  border-radius: 0;
   min-height: 0;
 }
 
 .news-body {
-  line-height: 1.55;
-  color: #2c3543;
+  color: var(--ink-soft);
   font-size: 0.96rem;
+  line-height: 1.58;
 }
 
 .news-body strong {
-  color: #1a2230;
-  font-weight: 600;
+  color: var(--ink);
+  font-weight: 700;
 }
 
 .news-body a {
-  color: #043361;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(4, 51, 97, 0.3);
+  color: var(--blue);
+  border-bottom: 1px solid rgba(23, 76, 115, 0.3);
 }
 
 .news-body a:hover {
-  border-bottom-color: rgba(4, 51, 97, 0.7);
+  color: var(--green);
+  border-bottom-color: rgba(20, 117, 104, 0.55);
 }
 
-h2 {
-  text-decoration: underline;
-  text-decoration-style: solid;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 0.18em;
-  -webkit-text-decoration-color: #f0a126;
-  text-decoration-color: #f0a126;
-}
-
-.experience-grid {
-  margin: 1.4rem 0 1.85rem;
-  display: grid !important;
-  grid-template-columns: 1fr;
-  gap: 0.95rem;
-}
-
-.experience-grid .exp-card {
-  display: flex !important;
-  flex-direction: row;
-  align-items: center;
-  gap: 1.05rem;
-  padding: 0.95rem 1.05rem;
-  border-radius: 16px;
-  border: 1px solid rgba(4, 51, 97, 0.12);
-  background: linear-gradient(180deg, rgba(250, 252, 255, 0.98), rgba(245, 248, 253, 0.98));
-  box-shadow: 0 14px 28px rgba(4, 51, 97, 0.07);
-}
-
-.experience-grid .exp-logo {
-  flex: 0 0 72px;
-  width: 72px;
-  height: 72px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  border-radius: 12px;
-  background: #ffffff;
-  border: 1px solid rgba(4, 51, 97, 0.08);
-}
-
-.experience-grid .exp-logo img {
-  width: 84% !important;
-  height: 84% !important;
-  max-width: 84% !important;
-  max-height: 84% !important;
-  object-fit: contain;
-  display: block;
-  margin: 0;
-  padding: 0;
-  border-radius: 0;
-  box-shadow: none;
-  border: none;
-}
-
-.experience-grid .exp-meta {
-  flex: 1 1 auto;
-  min-width: 0;
-  line-height: 1.45;
-}
-
-.experience-grid .exp-org {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #1a2230;
-  margin: 0 0 0.1rem;
-  line-height: 1.3;
-}
-
-.experience-grid .exp-role,
-.experience-grid .exp-advisor {
-  color: #2c3543;
-  font-size: 0.95rem;
-}
-
-.experience-grid .exp-advisor a {
-  color: #e74d3c;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.experience-grid .exp-advisor a:hover {
-  text-decoration: underline;
-}
-
-.experience-grid .exp-date {
-  margin-top: 0.18rem;
-  color: #8a93a3;
-  font-size: 0.9rem;
-}
-
-.personality-grid {
-  margin: 1.3rem 0 1.75rem;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.85rem;
-}
-
-.personality-grid .hobby-card {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 0.85rem;
-  padding: 0.85rem 1rem;
-  border-radius: 14px;
-  border: 1px solid rgba(4, 51, 97, 0.1);
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 10px 22px rgba(4, 51, 97, 0.06);
-}
-
-.personality-grid .hobby-icon {
-  flex: 0 0 auto;
-  font-size: 1.5rem;
-  line-height: 1;
-  margin-top: 0.1rem;
-}
-
-.personality-grid .hobby-body {
-  flex: 1 1 auto;
-  min-width: 0;
-  line-height: 1.5;
-  color: #2c3543;
-  font-size: 0.95rem;
-}
-
-.personality-grid .hobby-body strong {
-  color: #1a2230;
+.section-list {
+  margin-top: 1.1rem;
 }
 
 .section-list ol.bibliography {
@@ -256,15 +396,22 @@ h2 {
 
 .section-list ol.bibliography li {
   min-height: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 0.9rem;
 }
 
 .section-list .card-item {
-  background: rgba(255, 255, 255, 0.94);
-  border: 1px solid rgba(4, 51, 97, 0.12);
-  border-radius: 18px;
-  box-shadow: 0 16px 32px rgba(4, 51, 97, 0.08);
-  padding: 0.95rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.section-list .card-item:hover {
+  transform: translateY(-1px);
+  border-color: rgba(20, 117, 104, 0.26);
+  box-shadow: 0 14px 32px rgba(23, 32, 51, 0.1);
 }
 
 .section-list .pub-row {
@@ -273,8 +420,8 @@ h2 {
 }
 
 .section-list .col-sm-3.abbr {
-  flex: 0 0 32%;
-  min-width: 250px;
+  flex: 0 0 34%;
+  min-width: 232px;
   padding-left: 0 !important;
   padding-right: 0 !important;
   display: flex;
@@ -301,32 +448,58 @@ h2 {
   width: auto !important;
   height: auto !important;
   max-width: 100%;
-  max-height: 172px;
+  max-height: 166px;
   margin: 0 !important;
-  border-radius: 12px !important;
-  box-shadow: none !important;
   border: none;
+  border-radius: 6px !important;
+  box-shadow: none !important;
   object-fit: contain;
   display: block;
 }
 
 .section-list .title {
-  font-size: 1.08rem;
+  color: var(--ink);
+  font-size: 1.05rem;
+  font-weight: 760;
   line-height: 1.35;
   margin-bottom: 0.35rem;
 }
 
 .section-list .author,
 .section-list .periodical {
-  line-height: 1.55;
+  color: var(--ink-soft);
+  line-height: 1.56;
+}
+
+.section-list .periodical {
+  color: var(--muted);
 }
 
 .section-list .links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem 0.6rem;
+  gap: 0.48rem 0.55rem;
   align-items: center;
   margin-top: 0.75rem;
+}
+
+.publications ol.bibliography li .links a.btn,
+.section-list .links a.btn {
+  padding: 0.16rem 0.55rem !important;
+  border: 1px solid var(--line-strong) !important;
+  border-radius: 5px;
+  color: var(--ink-soft) !important;
+  background: var(--surface-soft);
+  font-size: 0.78rem !important;
+  font-weight: 650;
+  line-height: 1.45;
+}
+
+.publications ol.bibliography li .links a.btn:hover,
+.section-list .links a.btn:hover {
+  color: var(--green) !important;
+  border-color: rgba(20, 117, 104, 0.45) !important;
+  background: rgba(20, 117, 104, 0.06);
 }
 
 .section-list .link-badge {
@@ -338,31 +511,339 @@ h2 {
   width: auto;
 }
 
+.experience-grid {
+  margin: 1.05rem 0 1.85rem;
+  display: grid !important;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.experience-grid .exp-card {
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.95rem;
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.experience-grid .exp-logo {
+  flex: 0 0 66px;
+  width: 66px;
+  height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 7px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+}
+
+.experience-grid .exp-logo img {
+  width: 84% !important;
+  height: 84% !important;
+  max-width: 84% !important;
+  max-height: 84% !important;
+  object-fit: contain;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.experience-grid .exp-meta {
+  flex: 1 1 auto;
+  min-width: 0;
+  line-height: 1.45;
+}
+
+.experience-grid .exp-org {
+  color: var(--ink);
+  font-size: 1.02rem;
+  font-weight: 740;
+  line-height: 1.3;
+  margin: 0 0 0.1rem;
+}
+
+.experience-grid .exp-role,
+.experience-grid .exp-advisor {
+  color: var(--ink-soft);
+  font-size: 0.94rem;
+}
+
+.experience-grid .exp-advisor a {
+  color: var(--red);
+  font-weight: 620;
+}
+
+.experience-grid .exp-advisor a:hover {
+  color: var(--green);
+  text-decoration: none;
+}
+
+.experience-grid .exp-date {
+  margin-top: 0.18rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+#selected-awards + ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.05rem 0 1.7rem !important;
+}
+
+#selected-awards + ul li {
+  margin: 0;
+  padding: 0.62rem 0;
+  border-bottom: 1px solid rgba(23, 32, 51, 0.08);
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+#selected-awards + ul li strong:first-child {
+  color: var(--green);
+  font-weight: 760;
+}
+
+.personality-grid {
+  margin: 1.1rem 0 1.85rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.personality-grid .hobby-card {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.78rem;
+  padding: 0.85rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.personality-grid .hobby-icon {
+  flex: 0 0 auto;
+  font-size: 1.35rem;
+  line-height: 1;
+  margin-top: 0.12rem;
+}
+
+.personality-grid .hobby-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  color: var(--ink-soft);
+  font-size: 0.93rem;
+  line-height: 1.52;
+}
+
+.personality-grid .hobby-body strong {
+  color: var(--ink);
+}
+
+.visitor-panel {
+  min-height: 240px;
+  padding: 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.wechat-modal[hidden] {
+  display: none;
+}
+
+.wechat-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+}
+
+.wechat-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 18, 28, 0.42);
+  backdrop-filter: blur(2px);
+}
+
+.wechat-modal-panel {
+  position: relative;
+  width: min(92vw, 360px);
+  margin: 8vh auto 0;
+  padding: 0.95rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 20px 48px rgba(23, 32, 51, 0.18);
+  text-align: center;
+}
+
+.wechat-modal-panel img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+}
+
+.wechat-modal-title {
+  margin-bottom: 0.6rem;
+  color: var(--blue);
+  font-size: 0.9rem;
+  font-weight: 760;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.wechat-modal-close {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 1.45rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+body.wechat-modal-open {
+  overflow: hidden;
+}
+
+small {
+  color: var(--muted);
+}
+
+@media (max-width: 1040px) {
+  .wrapper {
+    width: min(100% - 36px, 820px);
+    display: block;
+  }
+
+  header.profile-sidebar {
+    position: static;
+    padding-top: 1.1rem;
+  }
+
+  .profile-card {
+    display: grid;
+    grid-template-columns: 142px minmax(0, 1fr);
+    grid-template-areas:
+      "avatar kicker"
+      "avatar title"
+      "avatar meta"
+      "social social"
+      "nav nav";
+    column-gap: 1.2rem;
+    align-items: center;
+  }
+
+  .profile-avatar {
+    grid-area: avatar;
+    width: 142px;
+    height: 142px;
+    margin: 0;
+  }
+
+  .profile-kicker {
+    grid-area: kicker;
+    text-align: left;
+  }
+
+  header h1 {
+    grid-area: title;
+    text-align: left;
+  }
+
+  .profile-meta {
+    grid-area: meta;
+    text-align: left;
+  }
+
+  .social-icons {
+    grid-area: social;
+  }
+
+  .profile-nav {
+    grid-area: nav;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  section.page-content {
+    border: 0;
+    margin: 0;
+    padding: 1.5rem 0 3rem;
+  }
+}
+
 @media (max-width: 760px) {
-  header .image.avatar {
-    width: min(56vw, 160px);
+  body {
+    padding: 0;
   }
 
-  .experience-grid .exp-card {
-    padding: 0.85rem 0.9rem;
-    gap: 0.85rem;
+  .wrapper {
+    width: min(100% - 28px, 620px);
   }
 
-  .experience-grid .exp-logo {
-    flex-basis: 60px;
-    width: 60px;
-    height: 60px;
+  .profile-card {
+    display: block;
+    text-align: center;
   }
 
-  .personality-grid {
+  .profile-avatar {
+    width: min(52vw, 156px);
+    height: min(52vw, 156px);
+    margin: 0 auto 1rem;
+  }
+
+  .profile-kicker,
+  header h1,
+  .profile-meta {
+    text-align: center;
+  }
+
+  .profile-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .intro-panel {
+    margin-bottom: 1.65rem;
+  }
+
+  .intro-lead {
+    font-size: 1.42rem;
+  }
+
+  .intro-actions a {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+
+  .research-grid {
     grid-template-columns: 1fr;
-    gap: 0.7rem;
+    gap: 0.65rem;
+  }
+
+  .research-card {
+    min-height: 0;
   }
 
   .news-item {
     grid-template-columns: 1fr;
-    gap: 0.15rem;
-    padding: 0.35rem 0;
+    gap: 0.08rem;
+    padding: 0.48rem 0;
   }
 
   .news-date {
@@ -371,7 +852,7 @@ h2 {
 
   .section-list .pub-row {
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 0.82rem;
   }
 
   .section-list .col-sm-3.abbr {
@@ -387,101 +868,134 @@ h2 {
   .section-list .teaser-frame {
     width: 100%;
   }
+
+  .experience-grid .exp-card {
+    padding: 0.85rem 0.9rem;
+    gap: 0.8rem;
+  }
+
+  .experience-grid .exp-logo {
+    flex-basis: 58px;
+    width: 58px;
+    height: 58px;
+  }
+
+  .personality-grid {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .profile-nav {
+    gap: 0.28rem 0.6rem;
+  }
+
+  .intro-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .experience-grid .exp-card {
+    align-items: flex-start;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
+  :root {
+    --page-bg: #181b22;
+    --surface: #22262f;
+    --surface-soft: #1c2028;
+    --ink: #edf1f5;
+    --ink-soft: #c9d1da;
+    --muted: #909bab;
+    --line: rgba(218, 226, 235, 0.14);
+    --line-strong: rgba(218, 226, 235, 0.22);
+    --blue: #8bbfe3;
+    --blue-soft: rgba(139, 191, 227, 0.12);
+    --green: #71c7b9;
+    --amber: #e5a454;
+    --red: #ff907d;
+    --shadow: 0 20px 46px rgba(0, 0, 0, 0.28);
+    --shadow-soft: 0 12px 28px rgba(0, 0, 0, 0.22);
+  }
+
+  body {
+    background: var(--page-bg);
+    color: var(--ink-soft);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  autocolor {
+    color: var(--ink);
+  }
+
+  a {
+    color: var(--blue);
+  }
+
+  a:hover {
+    color: var(--green);
+  }
+
+  .profile-card,
+  .intro-actions a,
+  .research-card,
+  .section-list .card-item,
+  .experience-grid .exp-card,
+  .personality-grid .hobby-card,
+  .visitor-panel {
+    background: var(--surface);
+  }
+
+  .profile-avatar,
+  .experience-grid .exp-logo {
+    background: #ffffff;
+  }
+
+  .social-icons a {
+    background: var(--surface-soft);
+    color: var(--blue) !important;
+  }
+
+  .social-icons a:hover {
+    background: var(--green);
+    border-color: var(--green);
+    color: #111820 !important;
+  }
+
+  .publications ol.bibliography li .links a.btn,
+  .section-list .links a.btn {
+    background: var(--surface-soft);
+    color: var(--ink-soft) !important;
+    border-color: var(--line-strong) !important;
+  }
+
+  .news-item,
+  #selected-awards + ul li {
+    border-bottom-color: rgba(218, 226, 235, 0.1);
+  }
+
   .wechat-modal-backdrop {
     background: rgba(8, 12, 18, 0.62);
   }
 
   .wechat-modal-panel {
-    background: rgba(33, 34, 43, 0.98);
-    border-color: rgba(98, 180, 219, 0.18);
+    background: rgba(34, 38, 47, 0.98);
     box-shadow: 0 24px 48px rgba(0, 0, 0, 0.32);
   }
 
   .wechat-modal-title {
-    color: #dbe8f2;
+    color: var(--ink);
   }
 
   .wechat-modal-close {
-    color: #b7c2d1;
+    color: var(--muted);
   }
-
-  .news-item {
-    background: transparent;
-    border: none;
-    box-shadow: none;
-  }
-
-  .news-date {
-    color: #7d8696;
-    background: transparent;
-  }
-
-  .news-body {
-    color: #b7c2d1;
-  }
-
-  .news-body strong {
-    color: #e6ecf2;
-  }
-
-  .news-body a {
-    color: #9cc7e8;
-    border-bottom-color: rgba(156, 199, 232, 0.35);
-  }
-
-  .news-body a:hover {
-    border-bottom-color: rgba(156, 199, 232, 0.8);
-  }
-
-  .section-list .card-item {
-    background: rgba(33, 34, 43, 0.94);
-    border-color: rgba(98, 180, 219, 0.22);
-    box-shadow: 0 18px 32px rgba(0, 0, 0, 0.22);
-  }
-
-  .experience-grid .exp-card {
-    background: linear-gradient(180deg, rgba(39, 41, 53, 0.98), rgba(32, 33, 43, 0.98));
-    border-color: rgba(98, 180, 219, 0.18);
-    box-shadow: 0 18px 32px rgba(0, 0, 0, 0.2);
-  }
-
-  .experience-grid .exp-logo {
-    background: rgba(245, 248, 253, 0.96);
-    border-color: rgba(98, 180, 219, 0.12);
-  }
-
-  .experience-grid .exp-org {
-    color: #e6ecf2;
-  }
-
-  .experience-grid .exp-role,
-  .experience-grid .exp-advisor {
-    color: #b7c2d1;
-  }
-
-  .experience-grid .exp-advisor a {
-    color: #ff8a73;
-  }
-
-  .experience-grid .exp-date {
-    color: #7d8696;
-  }
-
-  .personality-grid .hobby-card {
-    background: rgba(39, 41, 53, 0.98);
-    border-color: rgba(98, 180, 219, 0.18);
-    box-shadow: 0 14px 26px rgba(0, 0, 0, 0.18);
-  }
-
-  .personality-grid .hobby-body {
-    color: #b7c2d1;
-  }
-
-  .personality-grid .hobby-body strong {
-    color: #e6ecf2;
-  }
-
 }

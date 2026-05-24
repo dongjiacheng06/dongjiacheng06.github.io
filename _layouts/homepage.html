@@ -38,49 +38,48 @@
   </head>
   <body>
     <div class="wrapper">
-      <header>
+      <header class="profile-sidebar">
+        <div class="profile-card">
         {% if site.avatar %}
-        <a class="image avatar"><img src="{{ site.avatar }}" alt="avatar" /></a>
+        <a class="image avatar profile-avatar"><img src="{{ site.avatar }}" alt="{{ site.title }} avatar" /></a>
         {% endif %}
 
+        <div class="profile-kicker">3D Vision / 4D Perception</div>
         <h1>{{ site.title }}</h1>
 
+        <div class="profile-meta">
         {% if site.position %}
-        <position style="font-size:1.10rem;">{{ site.position }}</position>
-        <br>
+        <position>{{ site.position }}</position>
         {% endif %}
         {% if site.affiliation %}
         <a href="{{ site.affiliation_link }}" rel="noopener"><autocolor>{{ site.affiliation }}</autocolor></a>
-        <br>
         {% endif %}
         {% if site.email %}
         <email>{{ site.email }}</email>
         {% endif %}
+        </div>
 
-        <br>
-        <br>
         <div class="social-icons">
         {% if site.google_scholar %}
-        <a style="margin: 0 5px 0 0" href="{{ site.google_scholar }}" title="Google Scholar" rel="noopener" target="_blank">
-          <i class="ai ai-google-scholar" style="font-size:1.2rem"></i>
+        <a href="{{ site.google_scholar }}" title="Google Scholar" aria-label="Google Scholar" rel="noopener" target="_blank">
+          <i class="ai ai-google-scholar"></i>
         </a>
         {% endif %}
 
         {% if site.cv_link %}
-        <a style="margin: 0 5px 0 0" href="{{ site.cv_link }}">
-          <i class="ai ai-cv" style="font-size:1.3rem;"></i>
+        <a href="{{ site.cv_link }}" title="Education" aria-label="Education">
+          <i class="ai ai-cv"></i>
         </a>
         {% endif %}
 
         {% if site.github_link %}
-        <a style="margin: 0 5px 0 0" href="{{ site.github_link }}">
+        <a href="{{ site.github_link }}" title="GitHub" aria-label="GitHub" rel="noopener" target="_blank">
           <i class="fab fa-github"></i>
         </a>
         {% endif %}
 
         {% if site.wechat_qr %}
         <a
-          style="margin: 0 5px 0 0"
           href="#wechat-modal"
           id="wechat-trigger"
           title="WeChat"
@@ -91,32 +90,43 @@
         {% endif %}
 
         {% if site.xiaohongshu_link %}
-        <a style="margin: 0 5px 0 0" href="{{ site.xiaohongshu_link }}" title="Xiaohongshu" rel="noopener">
+        <a href="{{ site.xiaohongshu_link }}" title="Xiaohongshu" aria-label="Xiaohongshu" rel="noopener" target="_blank">
           <img
+            class="social-xiaohongshu"
             src="{{ site.xiaohongshu_icon }}"
             onerror="this.onerror=null;this.src='{{ site.xiaohongshu_icon_fallback }}';"
             alt="Xiaohongshu"
-            style="width:1.12rem;height:1.12rem;border-radius:0.28rem;display:inline-block;vertical-align:-0.14rem;"
           >
         </a>
         {% endif %}
 
         {% if site.linkedin %}
-        <a style="margin: 0 5px 0 0" href="{{ site.linkedin }}">
+        <a href="{{ site.linkedin }}" title="LinkedIn" aria-label="LinkedIn" rel="noopener" target="_blank">
           <i class="fab fa-linkedin"></i>
         </a>
         {% endif %}
 
         {% if site.twitter %}
-        <a style="margin: 0 0 0 0" href="{{ site.twitter }}">
+        <a href="{{ site.twitter }}" title="X" aria-label="X" rel="noopener" target="_blank">
           <i class="fab fa-x-twitter"></i>
         </a>
         {% endif %}
         </div>
-        <br>
+
+        <nav class="profile-nav" aria-label="Homepage sections">
+          <a href="#about-me">About</a>
+          <a href="#research-interests">Research</a>
+          <a href="#news">News</a>
+          <a href="#publications">Publications</a>
+          <a href="#selected-projects">Projects</a>
+          <a href="#education">Education</a>
+          <a href="#experience">Experience</a>
+          <a href="#selected-awards">Awards</a>
+        </nav>
+        </div>
 
       </header>
-      <section>
+      <section class="page-content">
 
       {{ content }}
 
