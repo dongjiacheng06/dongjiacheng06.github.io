@@ -2,16 +2,6 @@
 layout: homepage
 ---
 
-<div class="intro-panel">
-  <p class="intro-eyebrow">Undergraduate researcher in 3D vision</p>
-  <p class="intro-lead">I work on streaming 3D reconstruction, long-context visual learning, and representations for dynamic scenes.</p>
-  <div class="intro-actions">
-    <a href="#publications">Publications</a>
-    <a href="#selected-projects">Projects</a>
-    <a href="mailto:{{ site.email }}">Contact</a>
-  </div>
-</div>
-
 ## About Me
 
 I am a sophomore majoring in Electrical Engineering at Zhejiang University's [ZJU-UIUC Institute](https://zjui.intl.zju.edu.cn/en). Currently, I am a Research Intern at RobbyAnt, mentored by [Prof. Yinghao Xu](https://justimyhxu.github.io/). Previously, I worked as a research assistant at the CVNext Lab in the ZJU-UIUC Institute under the supervision of [Prof. Gaoang Wang](https://cvnext.github.io/).
