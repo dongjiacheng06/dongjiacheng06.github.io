@@ -8,8 +8,6 @@ I am a sophomore majoring in Electrical Engineering at Zhejiang University's [ZJ
 
 My research focuses on understanding and modeling the dynamic 3D world, including streaming 4D perception and reconstruction of dynamic scenes, long-context vision models for learning from continuous visual experience, and 3D representation learning for geometry, motion, and generation.
 
-I welcome collaboration and discussion with both seniors and peers. I am also happy to discuss potential research fit and collaboration opportunities. Please feel free to reach out to me via email or WeChat.
-
 ## News
 
 <div class="news-board">
@@ -47,10 +45,10 @@ I welcome collaboration and discussion with both seniors and peers. I am also ha
 
 ## Personality
 
-- <strong>Sports.</strong> Table tennis, fitness and running. Member of the IZJU table tennis team; I play a spin-pushing style.
-- <strong>Photography.</strong> Capturing human landscapes and quiet corners of the city.
-- <strong>Music.</strong> Currently deep in R&amp;B and Chinese folk.
-- <strong>Reading.</strong> From philosophy and economics to online novels &mdash; all of it.
+- &#x1F3D3; <strong>Sports.</strong> Table tennis, fitness and running. Member of the IZJU table tennis team; I play a spin-pushing style.
+- &#x1F4F7; <strong>Photography.</strong> Capturing human landscapes and quiet corners of the city.
+- &#x1F3B5; <strong>Music.</strong> Currently deep in R&amp;B and Chinese folk.
+- &#x1F4DA; <strong>Reading.</strong> From philosophy and economics to online novels &mdash; all of it.
 
 ## Visitors
 
