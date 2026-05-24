@@ -6,35 +6,13 @@ layout: homepage
 
 I am a sophomore majoring in Electrical Engineering at Zhejiang University's [ZJU-UIUC Institute](https://zjui.intl.zju.edu.cn/en). Currently, I am a Research Intern at RobbyAnt, mentored by [Prof. Yinghao Xu](https://justimyhxu.github.io/). Previously, I worked as a research assistant at the CVNext Lab in the ZJU-UIUC Institute under the supervision of [Prof. Gaoang Wang](https://cvnext.github.io/).
 
-I welcome collaboration and discussion with both seniors and peers. I am also happy to discuss potential research fit and collaboration opportunities. Please feel free to reach out to me via email or WeChat.
-
-## Research Interests
-
 My research focuses on understanding and modeling the dynamic 3D world:
 
-<div class="research-grid">
-  <div class="research-card">
-    <span class="research-index">01</span>
-    <div>
-      <strong>Streaming 4D perception</strong>
-      <p>Reconstructing and reasoning about dynamic scenes as observations arrive continuously.</p>
-    </div>
-  </div>
-  <div class="research-card">
-    <span class="research-index">02</span>
-    <div>
-      <strong>Long-context vision models</strong>
-      <p>Learning from extended visual experience rather than isolated frames or short clips.</p>
-    </div>
-  </div>
-  <div class="research-card">
-    <span class="research-index">03</span>
-    <div>
-      <strong>3D representation learning</strong>
-      <p>Building representations for geometry, motion, generation, and interactive scene modeling.</p>
-    </div>
-  </div>
-</div>
+- Streaming 4D perception and reconstruction of dynamic scenes.
+- Long-context vision models for learning from continuous visual experience.
+- 3D representation learning for geometry, motion, and generation.
+
+I welcome collaboration and discussion with both seniors and peers. I am also happy to discuss potential research fit and collaboration opportunities. Please feel free to reach out to me via email or WeChat.
 
 ## News
 
