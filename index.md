@@ -4,9 +4,9 @@ layout: homepage
 
 ## About Me
 
-I am a sophomore majoring in Electrical Engineering at Zhejiang University's [ZJU-UIUC Institute](https://zjui.intl.zju.edu.cn/en). Currently, I am a Research Intern at RobbyAnt, mentored by [Prof. Yinghao Xu](https://justimyhxu.github.io/). Previously, I worked as a research assistant at the CVNext Lab in the ZJU-UIUC Institute under the supervision of [Prof. Gaoang Wang](https://cvnext.github.io/).
+I am a junior majoring in Electrical Engineering at Zhejiang University's [ZJU-UIUC Institute](https://zjui.intl.zju.edu.cn/en). Currently, I am a Research Intern at RobbyAnt, mentored by [Prof. Yinghao Xu](https://justimyhxu.github.io/). Previously, I worked as a research assistant at the CVNext Lab in the ZJU-UIUC Institute under the supervision of [Prof. Gaoang Wang](https://cvnext.github.io/).
 
-My research focuses on understanding and modeling the dynamic 3D world, including streaming 4D perception and reconstruction of dynamic scenes, long-context vision models for learning from continuous visual experience, and 3D representation learning for geometry, motion, and generation.
+My research aims to let machines perceive the physical world and act within it: building vision foundation models that perceive and understand the 3D world, and robot foundation models that translate this understanding into action.
 
 ## News
 
@@ -43,7 +43,7 @@ My research focuses on understanding and modeling the dynamic 3D world, includin
 
 {% include_relative _includes/selected_awards.html %}
 
-## Personality
+## Beyond Research
 
 - &#x1F3D3; <strong>Sports.</strong> Table tennis, fitness and running. Member of the IZJU table tennis team; I play a spin-pushing style.
 - &#x1F4F7; <strong>Photography.</strong> Capturing human landscapes and quiet corners of the city.

@@ -1,15 +1,13 @@
 main:
   - title: "MeMix: Writing Less, Remembering More for Streaming 3D Reconstruction"
     authors: "<strong>Jiacheng Dong</strong>*, Huan Li*, Sicheng Zhou*, Wenhao Hu, Weili Xu, Yan Wang"
-    conference: "preprint"
     image: ./images/Memix.png
-    arxiv: "https://arxiv.org/pdf/2603.15330"
+    arxiv: "https://arxiv.org/abs/2603.15330"
     code: "https://github.com/dongjiacheng06/MeMix"
     page: "https://dongjiacheng06.github.io/MeMix/"
     notes: "Preprint"
   - title: "RecurGS: Interactive Scene Modeling via Discrete-State Recurrent Gaussian Fusion"
     authors: "Wenhao Hu, Haonan Zhou, Zesheng Li, Liu Liu, <strong>Jiacheng Dong</strong>, Zhizhong Su, Gaoang Wang"
-    conference: "Preprint"
     image: ./assets/images/recurgs.png
     summary: "Interactive scene modeling with discrete-state recurrent Gaussian fusion for dynamic 3D understanding."
     arxiv: "https://arxiv.org/abs/2512.18386"

@@ -4,9 +4,10 @@ affiliation: Zhejiang University
 affiliation_link: https://www.zju.edu.cn/
 email: Dong48@illinois.edu
 
-description: Jiacheng Dong's academic homepage featuring research in 3D and 4D scene perception, long-context vision models, publications, and projects.
-keywords: Jiacheng Dong, 3D vision, 4D perception, long-context vision, world models
+description: Jiacheng Dong's academic homepage — research on 3D and vision foundation models and their value for robotics, from reconstructing the 3D world to driving embodied action. Includes publications and projects.
+keywords: Jiacheng Dong, 3D foundation models, vision foundation models, 3D reconstruction, robotics, embodied AI, world models
 canonical: https://dongjiacheng06.github.io/
+og_image: https://dongjiacheng06.github.io/assets/images/profile-20260524b.png
 
 cv_link: "#education"
 github_link: https://github.com/dongjiacheng06

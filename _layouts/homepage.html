@@ -14,6 +14,18 @@
     <link rel="canonical" href="{{ site.canonical }}"/>
     {% endif %}
 
+    <!-- Open Graph / social share preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ site.title }} | {{ site.affiliation }}">
+    <meta property="og:description" content="{{ site.description }}">
+    <meta property="og:site_name" content="{{ site.title }}">
+    {% if site.canonical %}<meta property="og:url" content="{{ site.canonical }}">{% endif %}
+    {% if site.og_image %}<meta property="og:image" content="{{ site.og_image }}">{% endif %}
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ site.title }} | {{ site.affiliation }}">
+    <meta name="twitter:description" content="{{ site.description }}">
+    {% if site.og_image %}<meta name="twitter:image" content="{{ site.og_image }}">{% endif %}
+
     <link rel="icon" media="(prefers-color-scheme:dark)" href="{{ site.favicon_dark }}" type="image/png" />
     <link rel="icon" media="(prefers-color-scheme:light)" href="{{ site.favicon }}" type="image/png" />
     <script src="./assets/js/favicon-switcher.js" type="application/javascript"></script>
