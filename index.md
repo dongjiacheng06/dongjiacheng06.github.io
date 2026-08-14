@@ -4,7 +4,7 @@ layout: homepage
 
 ## About Me
 
-I am an undergraduate student majoring in Electrical Engineering at Zhejiang University's [ZJU-UIUC Institute](https://zjui.intl.zju.edu.cn/en). I am advised by [Prof. Yinghao Xu](https://justimyhxu.github.io/) and currently work as a Research Intern at [RobbyAnt](https://www.robbyant.com/). Previously, I worked as a research assistant at the CVNext Lab in the ZJU-UIUC Institute under the supervision of [Prof. Gaoang Wang](https://cvnext.github.io/).
+I am an undergraduate student majoring in Electrical Engineering at Zhejiang University's [ZJU-UIUC Institute](https://zjui.intl.zju.edu.cn/en). I am fortunate to be advised by [Prof. Yinghao Xu](https://justimyhxu.github.io/). I currently work as a Research Intern at [RobbyAnt](https://www.robbyant.com/). Previously, I worked as a research assistant at the CVNext Lab in the ZJU-UIUC Institute under the supervision of [Prof. Gaoang Wang](https://cvnext.github.io/).
 
 My research aims to let machines perceive the physical world and act within it: building vision foundation models that perceive and understand the 3D world, and robot foundation models that translate this understanding into action.
 
