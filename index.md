@@ -4,7 +4,7 @@ layout: homepage
 
 ## About Me
 
-I am a junior majoring in Electrical Engineering at Zhejiang University's [ZJU-UIUC Institute](https://zjui.intl.zju.edu.cn/en). Currently, I am a Research Intern at RobbyAnt, mentored by [Prof. Yinghao Xu](https://justimyhxu.github.io/). Previously, I worked as a research assistant at the CVNext Lab in the ZJU-UIUC Institute under the supervision of [Prof. Gaoang Wang](https://cvnext.github.io/).
+I am an undergraduate student majoring in Electrical Engineering at Zhejiang University's [ZJU-UIUC Institute](https://zjui.intl.zju.edu.cn/en). I am advised by [Prof. Yinghao Xu](https://justimyhxu.github.io/) and currently work as a Research Intern at [RobbyAnt](https://www.robbyant.com/). Previously, I worked as a research assistant at the CVNext Lab in the ZJU-UIUC Institute under the supervision of [Prof. Gaoang Wang](https://cvnext.github.io/).
 
 My research aims to let machines perceive the physical world and act within it: building vision foundation models that perceive and understand the 3D world, and robot foundation models that translate this understanding into action.
 
@@ -45,8 +45,8 @@ My research aims to let machines perceive the physical world and act within it: 
 
 ## Beyond Research
 
-- &#x1F3D3; <strong>Sports.</strong> Table tennis, fitness and running. Member of the IZJU table tennis team; I play a spin-pushing style.
-- &#x1F4F7; <strong>Photography.</strong> Capturing human landscapes and quiet corners of the city.
+- &#x1F3D3; <strong>Sports.</strong> Table tennis, fitness, and running. I am a member of the IZJU table tennis team and play a spin-heavy, control-oriented style.
+- &#x1F4F7; <strong>Photography.</strong> Capturing street life and quiet corners of the city.
 - &#x1F3B5; <strong>Music.</strong> Currently deep in R&amp;B and Chinese folk.
 - &#x1F4DA; <strong>Reading.</strong> From philosophy and economics to online novels &mdash; all of it.
 
