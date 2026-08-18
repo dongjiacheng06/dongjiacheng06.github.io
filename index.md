@@ -13,7 +13,7 @@ My research aims to let machines perceive the physical world and act within it: 
 <div class="news-board">
   <div class="news-item">
     <span class="news-date">May 2026</span>
-    <div class="news-body">Won a <strong>Gold Award</strong> at the Zhejiang Provincial &ldquo;Challenge Cup&rdquo; College Students Entrepreneurship Plan Competition.</div>
+    <div class="news-body">Won <strong>Gold</strong> at the Zhejiang Provincial &ldquo;Challenge Cup&rdquo;.</div>
   </div>
   <div class="news-item">
     <span class="news-date">Mar 2026</span>
