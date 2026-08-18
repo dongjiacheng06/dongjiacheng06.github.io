@@ -53,7 +53,7 @@
       <header class="profile-sidebar">
         <div class="profile-card">
         {% if site.avatar %}
-        <a class="image avatar profile-avatar"><img src="{{ site.avatar }}" alt="{{ site.title }} avatar" /></a>
+        <div class="image avatar profile-avatar"><img src="{{ site.avatar }}" alt="Portrait of {{ site.title }}" /></div>
         {% endif %}
 
         <h1>{{ site.title }}</h1>
@@ -66,7 +66,7 @@
         <a href="{{ site.affiliation_link }}" rel="noopener"><autocolor>{{ site.affiliation }}</autocolor></a>
         {% endif %}
         {% if site.email %}
-        <email>{{ site.email }}</email>
+        <a class="profile-email" href="mailto:{{ site.email }}">{{ site.email }}</a>
         {% endif %}
         </div>
 
@@ -165,19 +165,34 @@
       (function() {
         var trigger = document.getElementById('wechat-trigger');
         var modal = document.getElementById('wechat-modal');
+        var closeButton = modal ? modal.querySelector('.wechat-modal-close') : null;
+        var previouslyFocusedElement = null;
         if (!trigger || !modal) {
           return;
         }
 
         function closeWeChatModal() {
+          if (modal.hidden) {
+            return;
+          }
+
           modal.hidden = true;
           document.body.classList.remove('wechat-modal-open');
+
+          if (previouslyFocusedElement && typeof previouslyFocusedElement.focus === 'function') {
+            previouslyFocusedElement.focus();
+          }
         }
 
         function openWeChatModal(event) {
           event.preventDefault();
+          previouslyFocusedElement = document.activeElement;
           modal.hidden = false;
           document.body.classList.add('wechat-modal-open');
+
+          if (closeButton) {
+            closeButton.focus();
+          }
         }
 
         trigger.addEventListener('click', openWeChatModal);
@@ -189,8 +204,18 @@
         });
 
         document.addEventListener('keydown', function(event) {
-          if (event.key === 'Escape' && !modal.hidden) {
+          if (modal.hidden) {
+            return;
+          }
+
+          if (event.key === 'Escape') {
             closeWeChatModal();
+            return;
+          }
+
+          if (event.key === 'Tab' && closeButton) {
+            event.preventDefault();
+            closeButton.focus();
           }
         });
       })();

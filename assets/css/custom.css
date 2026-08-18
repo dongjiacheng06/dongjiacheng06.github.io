@@ -139,11 +139,23 @@ header h1 {
   font-weight: 620;
 }
 
-.profile-meta email {
+.profile-meta .profile-email {
   display: block;
   color: var(--muted);
   font-family: "Ubuntu Mono", ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
   font-size: 0.89rem;
+}
+
+.profile-meta .profile-email:hover {
+  color: var(--green);
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+}
+
+.profile-meta .profile-email:focus-visible {
+  border-radius: 2px;
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
 }
 
 .social-icons {
@@ -170,11 +182,17 @@ header h1 {
   transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, color 160ms ease;
 }
 
-.social-icons a:hover {
+.social-icons a:hover,
+.social-icons a:focus-visible {
   background: var(--blue);
   border-color: var(--blue);
   color: #ffffff !important;
   transform: translateY(-1px);
+}
+
+.social-icons a:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
 }
 
 .social-icons i {
@@ -571,6 +589,12 @@ h2::before {
   font-size: 1.45rem;
   line-height: 1;
   cursor: pointer;
+}
+
+.wechat-modal-close:focus-visible {
+  border-radius: 4px;
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
 }
 
 body.wechat-modal-open {

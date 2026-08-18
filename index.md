@@ -12,12 +12,16 @@ My research aims to let machines perceive the physical world and act within it: 
 
 <div class="news-board">
   <div class="news-item">
+    <span class="news-date">May 2026</span>
+    <div class="news-body">Won a <strong>Gold Award</strong> at the Zhejiang Provincial &ldquo;Challenge Cup&rdquo; College Students Entrepreneurship Plan Competition.</div>
+  </div>
+  <div class="news-item">
     <span class="news-date">Mar 2026</span>
     <div class="news-body"><strong>MeMix</strong> is out! See our <a href="./MeMix/">project page</a> for more details.</div>
   </div>
   <div class="news-item">
     <span class="news-date">Dec 2025</span>
-    <div class="news-body">Our paper <strong>RecurGS</strong> is out!</div>
+    <div class="news-body">Our paper <a href="https://arxiv.org/abs/2512.18386"><strong>RecurGS</strong></a> is out!</div>
   </div>
   <div class="news-item">
     <span class="news-date">Oct 2025</span>
