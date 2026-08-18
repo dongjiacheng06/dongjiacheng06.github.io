@@ -6,6 +6,14 @@ email: Dong48@illinois.edu
 
 description: Jiacheng Dong's academic homepage — research on 3D and vision foundation models and their value for robotics, from reconstructing the 3D world to driving embodied action. Includes publications and projects.
 keywords: Jiacheng Dong, 3D foundation models, vision foundation models, 3D reconstruction, robotics, embodied AI, world models
+research_interests:
+  - 3D vision
+  - vision foundation models
+  - 3D reconstruction
+  - robot foundation models
+  - robotics
+  - embodied AI
+  - world models
 canonical: https://dongjiacheng06.github.io/
 og_image: https://dongjiacheng06.github.io/assets/images/profile-20260524b.png
 

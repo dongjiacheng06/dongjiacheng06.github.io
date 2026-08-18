@@ -5,13 +5,13 @@ main:
     arxiv: "https://arxiv.org/abs/2603.15330"
     code: "https://github.com/dongjiacheng06/MeMix"
     page: "https://dongjiacheng06.github.io/MeMix/"
-    notes: "Preprint"
+    notes: "arXiv, 2026"
   - title: "RecurGS: Interactive Scene Modeling via Discrete-State Recurrent Gaussian Fusion"
     authors: "Wenhao Hu, Haonan Zhou, Zesheng Li, Liu Liu, <strong>Jiacheng Dong</strong>, Zhizhong Su, Gaoang Wang"
     image: ./assets/images/thumbs/recurgs.png
     summary: "Interactive scene modeling with discrete-state recurrent Gaussian fusion for dynamic 3D understanding."
     arxiv: "https://arxiv.org/abs/2512.18386"
-    notes: "Preprint"
+    notes: "arXiv, 2025"
   - title: "TBR: A Training-Free Framework for Rapid Background Removal in Large-Scale Point Clouds"
     authors: "<strong>Jiacheng Dong</strong>, Yuxiao Zheng, Maolin Tian, Jun Liang, Jixing Cao"
     image: ./assets/images/thumbs/tbr.png
