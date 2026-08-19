@@ -24,11 +24,18 @@
       "image": {{ site.og_image | jsonify }},
       "jobTitle": {{ site.position | jsonify }},
       "description": {{ site.description | jsonify }},
-      "affiliation": {
-        "@type": "CollegeOrUniversity",
-        "name": {{ site.affiliation | jsonify }},
-        "url": {{ site.affiliation_link | jsonify }}
-      },
+      "affiliation": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": {{ site.affiliation | jsonify }},
+          "url": {{ site.affiliation_link | jsonify }}
+        },
+        {
+          "@type": "CollegeOrUniversity",
+          "name": {{ site.secondary_affiliation | jsonify }},
+          "url": {{ site.secondary_affiliation_link | jsonify }}
+        }
+      ],
       "sameAs": [
         {{ site.github_link | jsonify }},
         {{ site.google_scholar | jsonify }},
