@@ -54,11 +54,9 @@ My research aims to let machines perceive the physical world and act within it: 
 - &#x1F3B5; <strong>Music.</strong> Currently deep in R&amp;B and Chinese folk.
 - &#x1F4DA; <strong>Reading.</strong> From philosophy and economics to online novels &mdash; all of it.
 
-## Visitors
-
 <div class="visitor-counter">
   <a href="https://www.easycounter.com/" aria-label="EasyCounter website">
     <img src="https://www.easycounter.com/counter.php?jiachengdong" alt="Unique visitor counter">
   </a>
-  <span>unique visitors since December 2025</span>
+  <small>unique visitors since December 2025</small>
 </div>
