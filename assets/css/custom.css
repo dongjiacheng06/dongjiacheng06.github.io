@@ -523,13 +523,24 @@ h2::before {
   font-weight: 760;
 }
 
-.visitor-panel {
-  min-height: 240px;
-  padding: 0.75rem;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--surface);
-  box-shadow: var(--shadow-soft);
+.visitor-counter {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 1rem 0 0.65rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.visitor-counter a {
+  display: inline-flex;
+  line-height: 0;
+}
+
+.visitor-counter img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 .wechat-modal[hidden] {
@@ -777,8 +788,7 @@ small {
 
   .profile-card,
   .section-list .card-item,
-  .experience-grid .exp-card,
-  .visitor-panel {
+  .experience-grid .exp-card {
     background: var(--surface);
   }
 

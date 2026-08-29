@@ -56,9 +56,9 @@ My research aims to let machines perceive the physical world and act within it: 
 
 ## Visitors
 
-Visitor locations are approximate and provided by MapMyVisitors.
-
-<div class="visitor-panel">
-  <script type="text/javascript" id="mapmyvisitors" src="https://mapmyvisitors.com/map.js?cl=ffffff&w=a&t=tt&d=Alhn33sy7T7USCgc9_Vaq5J7IenRhtRoRzYJZN21IQY"></script>
-  <noscript><a href="https://mapmyvisitors.com" title="Visitor map">Visitor map</a></noscript>
+<div class="visitor-counter">
+  <a href="https://www.easycounter.com/" aria-label="EasyCounter website">
+    <img src="https://www.easycounter.com/counter.php?jiachengdong" alt="Unique visitor counter">
+  </a>
+  <span>unique visitors since December 2025</span>
 </div>
