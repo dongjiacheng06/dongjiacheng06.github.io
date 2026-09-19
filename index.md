@@ -10,7 +10,7 @@ My research aims to let machines perceive the physical world and act within it: 
 
 ## News
 
-<div class="news-board">
+<div class="news-board" role="region" aria-label="News" tabindex="0">
   <div class="news-item">
     <span class="news-date">May 2026</span>
     <div class="news-body">Won <strong>Gold</strong> at the Zhejiang Provincial &ldquo;Challenge Cup&rdquo;.</div>
@@ -31,10 +31,6 @@ My research aims to let machines perceive the physical world and act within it: 
     <span class="news-date">Feb 2025</span>
     <div class="news-body">Won the <strong>Outstanding Award</strong> and <strong>SIAM Award</strong> in MCM 2025.</div>
   </div>
-  <div class="news-item">
-    <span class="news-date">Sep 2024</span>
-    <div class="news-body">Enrolled at the <strong>ZJU-UIUC Institute</strong>, Zhejiang University.</div>
-  </div>
 </div>
 
 {% include_relative _includes/publications.md %}
@@ -42,8 +38,6 @@ My research aims to let machines perceive the physical world and act within it: 
 {% include_relative _includes/projects.md %}
 
 {% include_relative _includes/education.html %}
-
-{% include_relative _includes/experience.html %}
 
 {% include_relative _includes/selected_awards.html %}
 

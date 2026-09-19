@@ -1,5 +1,6 @@
 main:
   - title: "MeMix: Writing Less, Remembering More for Streaming 3D Reconstruction"
+    selected: true
     authors: "<strong>Jiacheng Dong</strong>*, Huan Li*, Sicheng Zhou*, Wenhao Hu, Weili Xu, Yan Wang"
     image: ./assets/images/thumbs/memix.png
     arxiv: "https://arxiv.org/abs/2603.15330"
@@ -16,4 +17,4 @@ main:
     authors: "<strong>Jiacheng Dong</strong>, Yuxiao Zheng, Maolin Tian, Jun Liang, Jixing Cao"
     image: ./assets/images/thumbs/tbr.png
     summary: "I led the complete rewrite of the Python implementation, achieving a 20x performance improvement, and led manuscript writing covering methodology, experiments, and analysis."
-    notes: "Under review at Pattern Recognition"
+    notes: "Under Review"
