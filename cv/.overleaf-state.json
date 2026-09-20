@@ -1,0 +1,9 @@
+{
+  "remote": "https://git@git.overleaf.com/68738fee05adfe9c675162a5",
+  "branch": "main",
+  "commit": "f0e96052bcceff637e76274dbf986a7c4e7fc9b5",
+  "sha256": {
+    "main.tex": "f5df88a6b38ed9339b24053337b25f48dc5a777322fb5147a40331d2ab44c650",
+    "resume.cls": "bc375bd673c92cc640a920f8aac971f4f7dfee6a05dd81d29a4f520fa62aa7e2"
+  }
+}

@@ -19,7 +19,7 @@ research_interests:
 canonical: https://dongjiacheng06.github.io/
 og_image: https://dongjiacheng06.github.io/assets/images/profile-20260524b.png
 
-cv_link: "#education"
+cv_link: "./assets/pdf/cv.pdf"
 github_link: https://github.com/dongjiacheng06
 google_scholar: https://scholar.google.com/citations?user=YGfbISMAAAAJ
 xiaohongshu_link: https://www.xiaohongshu.com/user/profile/5f1457fa00000000010029ab
@@ -41,6 +41,8 @@ plugins:
   - jekyll-remote-theme
 
 exclude:
+  - cv/
+  - scripts/
   - Gemfile
   - Gemfile.lock
   - .bundle/

@@ -1,0 +1,122 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Medium Length Professional CV
+% Custom version for Jiacheng Dong
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{resume} % Use the custom resume.cls style 
+\usepackage[dvipsnames]{xcolor}
+\usepackage[left=0.4 in,top=0.3 in,right=0.4 in,bottom=0.3in]{geometry} % Document margins
+\usepackage{hyperref}
+\newcommand{\tab}[1]{\hspace{.2667\textwidth}\rlap{#1}}
+\newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
+\newcommand{\experienceentry}[5]{%
+  \noindent\begin{tabular}{@{}>{\raggedleft\arraybackslash}p{0.26\linewidth}@{\hspace{1em}}!{\color{gray!50}\vrule width 0.5pt}@{\hspace{1em}}p{\dimexpr0.74\linewidth-2em-0.5pt\relax}@{}}
+    \textbf{#1}\par #2 & #3\par Working on #4\par {\small\textcolor{gray!80!black}{#5}}
+  \end{tabular}\par
+}
+
+\name{Jiacheng Dong} % Your name 
+
+\address{ZJU-UIUC Institute, Zhejiang University, Haining, Zhejiang, China} % Address or affiliation
+\address{\href{mailto:dong48@illinois.edu}{dong48@illinois.edu} \quad $\cdot$ \quad \href{https://dongjiacheng06.github.io}{Homepage} \quad $\cdot$ \quad \href{https://scholar.google.com/citations?user=YGfbISMAAAAJ}{Google Scholar} \quad $\cdot$ \quad \href{https://github.com/dongjiacheng06}{GitHub}}
+\definecolor{TsinghuaPurple}{cmyk}{0.58,0.90,0,0}
+\renewenvironment{rSection}[1]{
+\sectionskip
+\textcolor{TsinghuaPurple}{\MakeUppercase{#1}}
+\sectionlineskip
+\hrule
+\begin{list}{}{
+\setlength{\leftmargin}{0em}
+}
+\item[]
+}{
+\end{list}
+}
+
+\begin{document}  
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{Education}
+\vspace{0.3em}
+{\bf Zhejiang University, ZJU-UIUC Institute} \hfill {Sep 2024 -- Present}\\
+B.S. in Electrical Engineering \hfill {Expected Jun 2028}\\
+\textbf{University of Illinois Urbana-Champaign}\\
+B.S. in Electrical Engineering \hfill {Expected 2028}\\
+{\small Dual Degree Program with Zhejiang University}
+\end{rSection} 
+
+%----------------------------------------------------------------------------------------
+%	RESEARCH INTERESTS
+%----------------------------------------------------------------------------------------
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	RESEARCH EXPERIENCE
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{Research Experience}
+\vspace{0.3em}
+\experienceentry{Research Intern}{Apr 2026 -- Present}{RobbyAnt}{World-Action Models and 3D Foundation Models}{Mentor: \href{https://justimyhxu.github.io/}{Yinghao Xu}}
+\vspace{0.6em}
+\experienceentry{Research Intern}{Jan 2026 -- May 2026}{THU AIR, Tsinghua University}{Streaming 3D Reconstruction}{Mentor: \href{https://yanwang202199.github.io/}{Yan Wang}}
+\vspace{0.6em}
+\experienceentry{Research Assistant}{Jul 2025 -- Mar 2026}{CVNext Lab, ZJU-UIUC Institute}{3D Perception}{Mentor: \href{https://cvnext.github.io/}{Gaoang Wang}}
+\end{rSection}
+
+%--------------------------------------------------------------------------------------
+%   PREPRINTS AND SUBMISSIONS
+%--------------------------------------------------------------------------------------
+\begin{rSection}{Publications and Preprints}
+
+\vspace{0.1em}
+
+\textbf{\textit{MeMix: Writing Less, Remembering More for Streaming 3D Reconstruction}}\\
+{\small \textbf{Jiacheng Dong}*, \textcolor{gray}{Huan Li*, Sicheng Zhou*, Wenhao Hu, Weili Xu, Yan Wang}}\\
+{\small Preprint, 2026 \quad \href{https://arxiv.org/abs/2603.15330}{arXiv} \,|\, \href{https://github.com/dongjiacheng06/MeMix}{Code} \,|\, \href{https://dongjiacheng06.github.io/MeMix/}{Project}}
+
+\vspace{0.1em}
+
+\textbf{\textit{RecurGS: Interactive Scene Modeling via Discrete-State Recurrent Gaussian Fusion}}\\
+{\small
+\textcolor{gray}{Wenhao Hu, Haonan Zhou, Zesheng Li, Liu Liu, }
+\textbf{Jiacheng Dong}
+\textcolor{gray}{, Zhizhong Su, Gaoang Wang}
+}\\
+{\small Preprint, 2025 \quad \href{https://arxiv.org/abs/2512.18386}{arXiv}}
+
+\vspace{0.1em}
+
+\textbf{\textit{TBR: A Training-Free Framework for Rapid Background Removal in Large-Scale Point Clouds}}\\
+{\small\textbf{Jiacheng Dong}, \textcolor{gray}{Yuxiao Zheng, Maolin Tian, Jun Liang, Jixing Cao}}\\
+{\small Under Review}
+
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%	HONORS & AWARDS
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{Selected Honors and Awards} \itemsep -3pt  
+
+\textbf{Gold Award}, Zhejiang Provincial ``Challenge Cup'' \hfill May 2026\\
+\textbf{National Scholarship}, Ministry of Education, China \hfill Oct 2025\\
+\textbf{First-Class Scholarship} (Top 3\%) \& \textbf{Outstanding Student}, Zhejiang University \hfill Sep 2025\\
+\textbf{Outstanding Winner}, The Mathematical Contest in Modeling (MCM) 2025 \hfill Jan 2025
+
+\end{rSection}
+
+
+
+\begin{rSection}{Selected Projects}
+\textbf{\href{https://github.com/dongjiacheng06/Learning-based-3D-Vision}{Learning-based-3D-Vision}} \hfill {\small \textbf{100+ GitHub stars}}\\
+{\small A curated resource on learning-based 3D and 4D vision.}
+
+\end{rSection}
+
+
+\end{document}
