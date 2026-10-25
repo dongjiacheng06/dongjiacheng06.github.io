@@ -33,6 +33,20 @@ My research interests lie in vision foundation models and embodied foundation mo
   </div>
 </div>
 
+<script>
+  // Fade the News box's bottom edge until it is scrolled to the end, so the last items are discoverable.
+  (function () {
+    var board = document.querySelector('.news-board');
+    if (!board) return;
+    function update() {
+      board.classList.toggle('has-more', board.scrollTop + board.clientHeight < board.scrollHeight - 4);
+    }
+    board.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+</script>
+
 {% include_relative _includes/publications.md %}
 
 {% include_relative _includes/projects.md %}
@@ -44,7 +58,7 @@ My research interests lie in vision foundation models and embodied foundation mo
 ## Beyond Research
 
 - &#x1F3D3; <strong>Sports.</strong> Table tennis, fitness, and running. I am a member of the IZJU table tennis team and play a spin-heavy, control-oriented style.
-- &#x1F4F7; <strong>Photography.</strong> Capturing street life and quiet corners of the city.
+- &#x1F4F7; <strong><a href="./life.html">Photography</a>.</strong> Capturing street life and quiet corners of the city.
 - &#x1F3B5; <strong>Music.</strong> Currently deep in R&amp;B and Chinese folk.
 - &#x1F4DA; <strong>Reading.</strong> From philosophy and economics to online novels &mdash; all of it.
 

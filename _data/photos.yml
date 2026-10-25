@@ -1,0 +1,18 @@
+# Photos on life.html, newest first. Each file lives in assets/images/photos/full/ (2400 px long
+# edge) and assets/images/photos/thumbs/ (1200 px), both exported without EXIF.
+- file: 20261024-guitarist.jpg
+  date: 2026-10-24
+  place: Ohio
+  alt: A man in a patchwork flat cap playing an acoustic guitar on a wooden bench in autumn sunlight
+- file: 20261024-autumn-tree.jpg
+  date: 2026-10-24
+  place: Ohio
+  alt: A lone maple turning orange and gold against a clear blue sky
+- file: 20250820-fuzhou-105.jpg
+  date: 2025-08-20
+  place: Fuzhou, China
+  alt: Sunset over layered blue mountains above Fuzhou
+- file: 20250820-fuzhou-166.jpg
+  date: 2025-08-20
+  place: Fuzhou, China
+  alt: Light trails curving through a highway interchange at night

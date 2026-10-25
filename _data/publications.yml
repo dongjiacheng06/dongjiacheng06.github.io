@@ -2,7 +2,7 @@ main:
   - title: "MeMix: Writing Less, Remembering More for Streaming 3D Reconstruction"
     selected: true
     authors: "<strong>Jiacheng Dong</strong>*, Huan Li*, Sicheng Zhou*, Wenhao Hu, Weili Xu, Yan Wang"
-    image: ./assets/images/thumbs/memix.png
+    image: ./assets/images/thumbs/memix.webp
     arxiv: "https://arxiv.org/abs/2603.15330"
     code: "https://github.com/dongjiacheng06/MeMix"
     page: "https://dongjiacheng06.github.io/MeMix/"
