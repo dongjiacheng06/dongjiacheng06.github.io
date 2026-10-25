@@ -33,7 +33,7 @@
         </a>
         {% endif %}
         {% if link.notes %}
-        <strong><i style="color:#e74d3c">{{ link.notes }}</i></strong>
+        <span class="pub-venue-note">{{ link.notes }}</span>
         {% endif %}
       </div>
     </div>

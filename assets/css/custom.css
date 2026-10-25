@@ -128,9 +128,9 @@ a:hover {
 }
 
 #about-me + p a {
-  color: var(--red);
+  color: var(--blue);
   font-weight: 620;
-  border-bottom: 1px solid rgba(195, 79, 63, 0.32);
+  border-bottom: 1px solid color-mix(in srgb, var(--blue) 35%, transparent);
 }
 
 #about-me + p a:hover {
@@ -1112,4 +1112,12 @@ body.photo-lightbox-open {
 .news-board.has-more {
   -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent);
   mask-image: linear-gradient(to bottom, #000 72%, transparent);
+}
+
+/* Venue / year note after the link buttons (was inline red italic). */
+.section-list .pub-venue-note {
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-style: italic;
+  font-weight: 600;
 }
