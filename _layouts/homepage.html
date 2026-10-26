@@ -4,6 +4,7 @@
     {%- comment -%} Sub-pages such as life.md set title/description; the homepage keeps the site-wide values. {%- endcomment -%}
     {%- if page.title -%}{%- assign page_title = page.title | append: " | " | append: site.title -%}{%- else -%}{%- assign page_title = site.title | append: " | " | append: site.affiliation -%}{%- endif -%}
     {%- assign page_description = page.description | default: site.description -%}
+    {%- assign page_image = page.og_image | default: site.og_image -%}
     {%- assign page_url = site.canonical -%}
     {%- if page.url != "/" -%}{%- assign page_url = site.canonical | append: page.url | replace: ".io//", ".io/" -%}{%- endif %}
     <title>{{ page_title }}</title>
@@ -56,18 +57,16 @@
     <meta property="og:description" content="{{ page_description }}">
     <meta property="og:site_name" content="{{ site.title }}">
     {% if site.canonical %}<meta property="og:url" content="{{ page_url }}">{% endif %}
-    {% if site.og_image %}<meta property="og:image" content="{{ site.og_image }}">{% endif %}
+    {% if page_image %}<meta property="og:image" content="{{ page_image }}">{% endif %}
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="{{ page_title }}">
     <meta name="twitter:description" content="{{ page_description }}">
-    {% if site.og_image %}<meta name="twitter:image" content="{{ site.og_image }}">{% endif %}
+    {% if page_image %}<meta name="twitter:image" content="{{ page_image }}">{% endif %}
 
     <link rel="icon" media="(prefers-color-scheme:dark)" href="{{ site.favicon_dark }}" type="image/png" />
     <link rel="icon" media="(prefers-color-scheme:light)" href="{{ site.favicon }}" type="image/png" />
     <script src="./assets/js/favicon-switcher.js" type="application/javascript"></script>
 
-    <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin=anonymous>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     {% if site.font == "Sans Serif" %}
     <link rel="stylesheet" href="./assets/css/font_sans_serif.css">
@@ -102,26 +101,31 @@
         <a href="{{ site.affiliation_link }}" rel="noopener"><autocolor>{{ site.affiliation }}</autocolor></a>
         {% endif %}
         {% if site.email %}
-        <a class="profile-email" href="mailto:{{ site.email }}">{{ site.email }}</a>
+        {%- comment -%} Spam protection: the page source never contains the address or a mailto
+          link. Without JS visitors see "user [at] host [dot] tld"; the script below assembles the
+          real address and link from the data attributes. {%- endcomment -%}
+        {%- assign email_user = site.email | split: "@" | first -%}
+        {%- assign email_host_parts = site.email | split: "@" | last | split: "." -%}
+        <a class="profile-email" id="profile-email" data-u="{{ email_user }}" data-h="{{ email_host_parts | join: ' ' }}">{{ email_user }} [at] {{ email_host_parts | join: " [dot] " }}</a>
         {% endif %}
         </div>
 
         <div class="social-icons">
         {% if site.google_scholar %}
         <a href="{{ site.google_scholar }}" title="Google Scholar" aria-label="Google Scholar" rel="noopener" target="_blank">
-          <i class="ai ai-google-scholar"></i>
+          {% include icons/google-scholar.svg %}
         </a>
         {% endif %}
 
         {% if site.cv_link %}
         <a href="{{ site.cv_link }}" title="CV (PDF)" aria-label="CV (PDF)" target="_blank" rel="noopener">
-          <i class="ai ai-cv"></i>
+          {% include icons/cv.svg %}
         </a>
         {% endif %}
 
         {% if site.github_link %}
         <a href="{{ site.github_link }}" title="GitHub" aria-label="GitHub" rel="noopener" target="_blank">
-          <i class="fab fa-github"></i>
+          {% include icons/github.svg %}
         </a>
         {% endif %}
 
@@ -132,7 +136,7 @@
           title="WeChat"
           aria-label="Open WeChat QR code"
         >
-          <i class="fab fa-weixin"></i>
+          {% include icons/wechat.svg %}
         </a>
         {% endif %}
 
@@ -149,13 +153,13 @@
 
         {% if site.linkedin %}
         <a href="{{ site.linkedin }}" title="LinkedIn" aria-label="LinkedIn" rel="noopener" target="_blank">
-          <i class="fab fa-linkedin"></i>
+          {% include icons/linkedin.svg %}
         </a>
         {% endif %}
 
         {% if site.twitter %}
         <a href="{{ site.twitter }}" title="X" aria-label="X" rel="noopener" target="_blank">
-          <i class="fab fa-x-twitter"></i>
+          {% include icons/x.svg %}
         </a>
         {% endif %}
         </div>
@@ -260,5 +264,14 @@
       })();
     </script>
     {% endif %}
+    <script>
+      (function () {
+        var a = document.getElementById('profile-email');
+        if (!a) return;
+        var addr = a.getAttribute('data-u') + String.fromCharCode(64) + a.getAttribute('data-h').split(' ').join('.');
+        a.textContent = addr;
+        a.setAttribute('href', 'mai' + 'lto:' + addr);
+      })();
+    </script>
   </body>
 </html>

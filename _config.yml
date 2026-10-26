@@ -17,6 +17,7 @@ research_interests:
   - embodied AI
   - world models
 canonical: https://dongjiacheng06.github.io/
+url: https://dongjiacheng06.github.io  # absolute URLs in sitemap.xml
 og_image: https://dongjiacheng06.github.io/assets/images/profile-20260524b.png
 
 cv_link: "./assets/pdf/cv.pdf"
@@ -40,6 +41,7 @@ remote_theme: yaoyao-liu/minimal-light
 
 plugins:
   - jekyll-remote-theme
+  - jekyll-sitemap
 
 exclude:
   - cv/
@@ -50,3 +52,10 @@ exclude:
   - .sass-cache/
   - vendor/
   - _site/
+
+# robots.txt disallows /assets/, so keep files under it out of sitemap.xml too.
+defaults:
+  - scope:
+      path: "assets"
+    values:
+      sitemap: false

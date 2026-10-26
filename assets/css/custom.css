@@ -226,7 +226,7 @@ header h1 {
 .profile-meta .profile-email {
   display: block;
   color: var(--muted);
-  font-family: "Ubuntu Mono", ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
   font-size: 0.89rem;
 }
 
@@ -282,6 +282,14 @@ header h1 {
 .social-icons i {
   font-size: 1.08rem !important;
   line-height: 1;
+}
+
+/* Inline SVG icons (_includes/icons/), replacing the Font Awesome and Academicons web fonts. */
+.social-icons .icon {
+  display: block;
+  width: 1.08rem;
+  height: 1.08rem;
+  fill: currentColor;
 }
 
 .social-icons .social-xiaohongshu {

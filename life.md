@@ -1,5 +1,6 @@
 ---
 layout: homepage
+og_image: https://dongjiacheng06.github.io/assets/images/photos/thumbs/20261024-guitarist.jpg
 title: Life
 description: Photographs by Jiacheng Dong — street life and quiet corners, from the places I live in and pass through.
 ---
