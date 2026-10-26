@@ -42,6 +42,10 @@ remote_theme: yaoyao-liu/minimal-light
 plugins:
   - jekyll-remote-theme
   - jekyll-sitemap
+  - jekyll-feed
+
+feed:
+  path: /blog/feed.xml
 
 exclude:
   - cv/

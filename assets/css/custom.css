@@ -1238,6 +1238,11 @@ body.photo-lightbox-open {
   background: none;
 }
 
+/* KaTeX fonts have no CJK glyphs; use the body's Chinese sans fonts instead of the system serif. */
+.post-body .katex .cjk_fallback {
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
 /* "All posts / All photos" link at the right end of a homepage section heading. */
 h2 .section-more {
   margin-left: auto;

@@ -16,3 +16,11 @@ layout: homepage
     {{ content }}
   </div>
 </article>
+
+{% if page.math %}
+<!-- KaTeX 0.16.11, self-hosted (no CDN). kramdown only knows $$...$$: inline it emits \( \), on its own line \[ \]. Single $ is plain text. -->
+<link rel="stylesheet" href="/assets/vendor/katex/katex.min.css">
+<script defer src="/assets/vendor/katex/katex.min.js"></script>
+<script defer src="/assets/vendor/katex/auto-render.min.js"
+  onload="renderMathInElement(document.querySelector('.post-body'), {delimiters: [{left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}], throwOnError: false});"></script>
+{% endif %}
