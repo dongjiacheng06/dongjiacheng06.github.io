@@ -55,10 +55,12 @@ My research interests lie in vision foundation models and embodied foundation mo
 
 {% include_relative _includes/selected_awards.html %}
 
+{% include home_life.html %}
+
 ## Beyond Research
 
 - &#x1F3D3; <strong>Sports.</strong> Table tennis, fitness, and running. I am a member of the IZJU table tennis team and play a spin-heavy, control-oriented style.
-- &#x1F4F7; <strong><a href="./life.html">Photography</a>.</strong> Capturing street life and quiet corners of the city.
+- &#x1F4F7; <strong>Photography.</strong> Capturing street life and quiet corners of the city.
 - &#x1F3B5; <strong>Music.</strong> Currently deep in R&amp;B and Chinese folk.
 - &#x1F4DA; <strong>Reading.</strong> From philosophy and economics to online novels &mdash; all of it.
 

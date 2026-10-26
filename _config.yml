@@ -20,18 +20,18 @@ canonical: https://dongjiacheng06.github.io/
 url: https://dongjiacheng06.github.io  # absolute URLs in sitemap.xml
 og_image: https://dongjiacheng06.github.io/assets/images/profile-20260524b.png
 
-cv_link: "./assets/pdf/cv.pdf"
+cv_link: "/assets/pdf/cv.pdf"
 github_link: https://github.com/dongjiacheng06
 twitter: https://x.com/Jiacheng_Dong
 google_scholar: https://scholar.google.com/citations?user=YGfbISMAAAAJ
 xiaohongshu_link: https://www.xiaohongshu.com/user/profile/5f1457fa00000000010029ab
 xiaohongshu_icon: https://qimg.xiaohongshu.com/56b419e1cd35ad6a15406d3f21e9fda88e99b767?s=1476879314
-xiaohongshu_icon_fallback: ./assets/images/xiaohongshu.png
-wechat_qr: ./assets/images/wechat.jpg
+xiaohongshu_icon_fallback: /assets/images/xiaohongshu.png
+wechat_qr: /assets/images/wechat.jpg
 
-avatar: ./assets/images/thumbs/profile.jpg
-favicon: ./images/favicon-dog.png
-favicon_dark: ./images/favicon-dog.png
+avatar: /assets/images/thumbs/profile.jpg
+favicon: /images/favicon-dog.png
+favicon_dark: /images/favicon-dog.png
 
 enable_footnote: true
 auto_dark_mode: true
@@ -58,4 +58,11 @@ defaults:
   - scope:
       path: "assets"
     values:
+      sitemap: false
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      permalink: /blog/:year/:title/
       sitemap: false

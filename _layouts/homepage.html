@@ -8,6 +8,9 @@
     {%- assign page_url = site.canonical -%}
     {%- if page.url != "/" -%}{%- assign page_url = site.canonical | append: page.url | replace: ".io//", ".io/" -%}{%- endif %}
     <title>{{ page_title }}</title>
+    {%- if page.url contains '/blog/' %}
+    <meta name="robots" content="noindex">
+    {%- endif %}
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -65,22 +68,22 @@
 
     <link rel="icon" media="(prefers-color-scheme:dark)" href="{{ site.favicon_dark }}" type="image/png" />
     <link rel="icon" media="(prefers-color-scheme:light)" href="{{ site.favicon }}" type="image/png" />
-    <script src="./assets/js/favicon-switcher.js" type="application/javascript"></script>
+    <script src="/assets/js/favicon-switcher.js" type="application/javascript"></script>
 
 
     {% if site.font == "Sans Serif" %}
-    <link rel="stylesheet" href="./assets/css/font_sans_serif.css">
+    <link rel="stylesheet" href="/assets/css/font_sans_serif.css">
     {% else %}
-    <link rel="stylesheet" href="./assets/css/font.css">
+    <link rel="stylesheet" href="/assets/css/font.css">
     {% endif %}
     {% if site.auto_dark_mode %}
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/publications.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/publications.css">
     {% else %}
-    <link rel="stylesheet" href="./assets/css/style-no-dark-mode.css">
-    <link rel="stylesheet" href="./assets/css/publications-no-dark-mode.css">
+    <link rel="stylesheet" href="/assets/css/style-no-dark-mode.css">
+    <link rel="stylesheet" href="/assets/css/publications-no-dark-mode.css">
     {% endif %}
-    <link rel="stylesheet" href="./assets/css/custom.css?v={{ site.time | date: '%s' }}">
+    <link rel="stylesheet" href="/assets/css/custom.css?v={{ site.time | date: '%s' }}">
 
   </head>
   <body>
@@ -160,6 +163,13 @@
         {% if site.twitter %}
         <a href="{{ site.twitter }}" title="X" aria-label="X" rel="noopener" target="_blank">
           {% include icons/x.svg %}
+        </a>
+        {% endif %}
+
+        {%- comment -%} Personal blog (Chinese, year-end reviews). Low-key: only an icon, and only once a post exists. {%- endcomment -%}
+        {% if site.posts.size > 0 %}
+        <a href="/blog/" title="Blog (CN)" aria-label="Blog (in Chinese)">
+          {% include icons/blog.svg %}
         </a>
         {% endif %}
         </div>

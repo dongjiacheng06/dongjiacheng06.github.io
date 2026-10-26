@@ -1,0 +1,18 @@
+---
+layout: homepage
+---
+<a class="life-back" href="/blog/">&larr; Blog</a>
+
+<article class="post">
+  <div class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <p class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %-d, %Y" }}</time>
+      {%- if page.lang == "zh" %} · 中文{% endif %}
+    </p>
+  </div>
+
+  <div class="post-body">
+    {{ content }}
+  </div>
+</article>

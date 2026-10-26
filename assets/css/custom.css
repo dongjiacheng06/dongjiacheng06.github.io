@@ -246,7 +246,7 @@ header h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.38rem;
+  gap: 0.3rem;
   margin: 1rem 0 0;
 }
 
@@ -254,8 +254,8 @@ header h1 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.1rem;
-  height: 2.1rem;
+  width: 1.9rem;
+  height: 1.9rem;
   margin: 0 !important;
   border: 1px solid var(--line);
   border-radius: 50%;
@@ -287,8 +287,8 @@ header h1 {
 /* Inline SVG icons (_includes/icons/), replacing the Font Awesome and Academicons web fonts. */
 .social-icons .icon {
   display: block;
-  width: 1.08rem;
-  height: 1.08rem;
+  width: 1rem;
+  height: 1rem;
   fill: currentColor;
 }
 
@@ -948,10 +948,6 @@ small {
   color: var(--green);
 }
 
-.life-intro {
-  color: var(--ink-soft);
-}
-
 .photo-grid {
   column-count: 2;
   column-gap: 1.2rem;
@@ -1128,4 +1124,163 @@ body.photo-lightbox-open {
   font-size: 0.86rem;
   font-style: italic;
   font-weight: 600;
+}
+
+/* Blog list page. */
+.blog-year {
+  margin: 1.6rem 0 0.3rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.blog-list {
+  margin-bottom: 0.6rem;
+}
+
+.blog-title {
+  color: var(--ink);
+  font-weight: 650;
+}
+
+.blog-title:hover {
+  color: var(--green);
+}
+
+.blog-lang {
+  margin-left: 0.35rem;
+  padding: 0.05rem 0.35rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+
+.blog-summary {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.blog-feed {
+  margin-top: 1.4rem;
+  font-size: 0.85rem;
+}
+
+/* Blog post page. */
+.post-header {
+  margin-bottom: 1.6rem;
+}
+
+.post-title {
+  margin: 0.4rem 0 0.4rem;
+  color: var(--ink);
+  font-size: 1.7rem;
+  line-height: 1.3;
+}
+
+.post-meta {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.post-body {
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+  line-height: 1.8;
+}
+
+.post-body h2 {
+  margin-top: 2.2rem !important;
+}
+
+.post-body h3 {
+  margin: 1.6rem 0 0.6rem;
+  color: var(--ink);
+  font-size: 1.08rem;
+}
+
+.post-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.2rem auto;
+  border-radius: 6px;
+}
+
+.post-body blockquote {
+  margin: 1.2rem 0;
+  padding: 0.2rem 0 0.2rem 1rem;
+  border-left: 3px solid var(--amber);
+  color: var(--muted);
+}
+
+.post-body code {
+  padding: 0.1rem 0.3rem;
+  border-radius: 4px;
+  background: var(--surface-soft);
+  font-size: 0.9em;
+}
+
+.post-body pre {
+  overflow-x: auto;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface-soft);
+  line-height: 1.5;
+}
+
+.post-body pre code {
+  padding: 0;
+  background: none;
+}
+
+/* "All posts / All photos" link at the right end of a homepage section heading. */
+h2 .section-more {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+h2 .section-more:hover {
+  color: var(--green);
+}
+
+/* Homepage Life block: four square thumbnails in a row (two per row on phones). */
+.life-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.6rem;
+  margin: 1rem 0 0.6rem;
+}
+
+.life-strip a {
+  display: block;
+  overflow: hidden;
+  border-radius: 6px;
+  aspect-ratio: 1 / 1;
+}
+
+.life-strip img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 260ms ease, filter 260ms ease;
+}
+
+.life-strip a:hover img,
+.life-strip a:focus-visible img {
+  transform: scale(1.03);
+  filter: brightness(1.05);
+}
+
+@media (max-width: 760px) {
+  .life-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }

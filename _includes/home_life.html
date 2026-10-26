@@ -1,0 +1,11 @@
+{%- comment -%} Homepage Life block: a row of the four newest photos linking to life.html. {%- endcomment -%}
+{%- if site.data.photos.size > 0 -%}
+<h2 id="life">Life <a class="section-more" href="/life.html">All photos &rarr;</a></h2>
+<div class="life-strip">
+  {%- for photo in site.data.photos limit: 4 %}
+  <a href="/life.html" title="{{ photo.date | date: '%b %-d, %Y' }} · {{ photo.place }}">
+    <img src="/assets/images/photos/thumbs/{{ photo.file }}" alt="{{ photo.alt }}" loading="lazy" decoding="async">
+  </a>
+  {%- endfor %}
+</div>
+{%- endif -%}
